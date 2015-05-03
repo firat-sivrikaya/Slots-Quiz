@@ -19,7 +19,7 @@ public class SlotsPanel extends JPanel {
 	private JLabel label1;
 	private Timer timer;
 	private Random generator= new Random();
-	private SlotButton button;
+	private SlotsButton button;
 	private JPanel panel;
 
 	public SlotsPanel(){
@@ -37,7 +37,7 @@ public class SlotsPanel extends JPanel {
 		bandLabels[4] = new JLabel(bands[2]);
 		
 		slot = new ImageIcon("button.png");
-		button = new SlotButton("");
+		button = new SlotsButton("");
 		button.setBounds(180, 340, 100, 100);
 		button.setIcon(slot);
 		button.setBackground(Color.red);

@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
 
-public class SlotButton extends JButton {
+public class SlotsButton extends JButton {
 	
-	public SlotButton(String label) {
+	public SlotsButton(String label) {
 	    super(label);
 
 	    setPreferredSize(new Dimension(100, 100));
