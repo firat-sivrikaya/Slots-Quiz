@@ -1,5 +1,16 @@
 import java.sql.*;
 import java.util.ArrayList;
+
+/**
+ * @class Slots Database
+ * 
+ * @author Firat Sivrikaya
+ * @date 28/04/2015
+ * 
+ * 
+ *
+ */
+
 public class SlotsDatabase {
 
     // JDBC driver name, Database URL, User and Password
@@ -9,24 +20,36 @@ public class SlotsDatabase {
     static final String PASS = "";
     static final int QUESTION_COUNT = 100;
     
-    
-    String imageLocation;
-    Connection conn;
-    Statement stmt;
-    String sql;
-    ResultSet rs;
+    // Properties
+    String     		   imageLocation;
+    Connection         conn;
+    Statement   	   stmt;
+    String     		   sql;
+    ResultSet          rs;
     ArrayList<Integer> ids;
     
+    // Constructor
     public SlotsDatabase()
     {
+    	// Create an arraylist to hold question ids
     	ids = new ArrayList<Integer>();
-        createDatabase();
+        // Register JDBC driver
+        try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+
+        // Get database connection
         try {
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+        
+        // Initialize statement
         try {
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
@@ -34,6 +57,7 @@ public class SlotsDatabase {
 			e.printStackTrace();
 		}         	
     }
+    
     /*
      * method: nextQuestion()
      * This type of nextQuestion method is used in CoinGenerator
@@ -45,8 +69,6 @@ public class SlotsDatabase {
     {
     	Question q = new Question();
     	int id = (int) (Math.random() * QUESTION_COUNT + 1);
-    	sql = "SELECT text FROM Questions WHERE id = " + id;
-    	rs = stmt.executeQuery(sql);
     	for ( Integer i : ids )
     	{
     		if ( i == id )
@@ -54,13 +76,10 @@ public class SlotsDatabase {
     			id = (int) (Math.random() * QUESTION_COUNT + 1);
     		}
     	}
-    	rs.next();
-    	String text = rs.getString("text");
     	ids.add( id );
     	q.setId(id);
-    	q.setLocation(text);
+    	q.setLocation( getLocation(id) );
     	q.setAnswer( getAnswer(id) );
-    	rs.close();
     	return q;
     }    
     
@@ -75,7 +94,7 @@ public class SlotsDatabase {
     	
     }
     
-    public String getQuestion( int id ) throws SQLException {
+    public String getLocation( int id ) throws SQLException {
     	sql = "SELECT text FROM Questions WHERE id = " + id;
     	rs = stmt.executeQuery( sql );
     	rs.next();
@@ -85,16 +104,15 @@ public class SlotsDatabase {
     	
     }
     
-    public String nextQuestion( int lowerBound, int upperBound ) throws SQLException
+    public Question nextQuestion( int lowerBound, int upperBound ) throws SQLException
     {
+    	Question q = new Question();
     	int id = (int) (Math.random() * (upperBound - lowerBound) + lowerBound );
+    	q.setId(id);
     	ids.add(id);
-    	sql = "SELECT text FROM Questions WHERE id = " + id;
-    	rs = stmt.executeQuery(sql);
-    	rs.next();
-    	String text = rs.getString("text");
-    	rs.close();
-    	return text;
+    	q.setLocation( getLocation(id) );
+    	q.setAnswer( getAnswer(id) );
+    	return q;
     }
     
     public void printQuestionList() throws SQLException
@@ -126,7 +144,7 @@ public class SlotsDatabase {
             // Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
 
-            //STEP 3: Open a connection
+            // Open a connection
     //        System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
     //        System.out.println("Connection successful!");
