@@ -24,7 +24,7 @@ public class HydrocarbonQ extends Question{
 	
 	public Question askQuestion() throws SQLException
 	{
-		return nextQuestion();
+		return nextQuestion(LOWER_BOUND, UPPER_BOUND);
 	}
 
 }

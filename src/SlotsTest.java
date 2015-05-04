@@ -9,8 +9,7 @@ public class SlotsTest {
 		HydrocarbonQ h = new HydrocarbonQ();
 		database.printQuestionList();
 		for ( int i = 0 ; i < 20 ; i++ )
-		System.out.println( h.nextQuestion() );
-		System.out.println( h.nextQuestion() );
+		System.out.println( h.askQuestion() );
 		System.out.println( "----------------");
 //		for ( int j = 0 ; j < 20 ; j++ )
 //			System.out.println( database.nextQuestion( 41, 70) );
