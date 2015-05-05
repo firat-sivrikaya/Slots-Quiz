@@ -1,4 +1,5 @@
 /* @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
  * Question Class
  */
 

@@ -38,7 +38,7 @@ public class Question extends SlotsDatabase {
 	
 	public String toString()
 	{
-		return "ID: " + id + "\nLocation: " + location + "\nAnswer: " + answer;
+		return "ID: " + id + "\nLocation: " + location + "\nAnswer: " + answer + "\n --------";
 	}
 
 }

@@ -7,6 +7,11 @@ import java.util.ArrayList;
  * @author Firat Sivrikaya
  * @date 28/04/2015
  * 
+ * This is the core class for integrating with database.
+ * Slots Database uses Connector/J driver for integrating with MySQL.
+ * 
+ * Slots Database gets question locations, answers and ids from
+ * the question database and sets the variables accordingly.
  * 
  *
  */
@@ -19,6 +24,7 @@ public class SlotsDatabase {
     static final String USER = "root";
     static final String PASS = "";
     static final int QUESTION_COUNT = 100;
+    static final int QUESTION_LIST_RESET_COUNT = 7;
     
     // Properties
     String     		   imageLocation;
@@ -68,15 +74,8 @@ public class SlotsDatabase {
     public Question nextQuestion() throws SQLException
     {
     	Question q = new Question();
-    	int id = (int) (Math.random() * QUESTION_COUNT + 1);
-    	for ( Integer i : ids )
-    	{
-    		if ( i == id )
-    		{
-    			id = (int) (Math.random() * QUESTION_COUNT + 1);
-    		}
-    	}
-    	ids.add( id );
+    	int id = generate();
+//    	ids.add( id );
     	q.setId(id);
     	q.setLocation( getLocation(id) );
     	q.setAnswer( getAnswer(id) );
@@ -107,13 +106,13 @@ public class SlotsDatabase {
     public Question nextQuestion( int lowerBound, int upperBound ) throws SQLException
     {
     	Question q = new Question();
-    	int id = (int) (Math.random() * (upperBound - lowerBound) + lowerBound );
-    	q.setId(id);
-    	ids.add(id);
-    	q.setLocation( getLocation(id) );
-    	q.setAnswer( getAnswer(id) );
+    	generate( lowerBound, upperBound );
+    	q.setId( ids.get( ids.size() - 1) );
+    	q.setLocation( getLocation( ids.get( ids.size() - 1) ) );
+    	q.setAnswer( getAnswer( ids.get( ids.size() - 1) ) );
     	return q;
     }
+    
     
     public void printQuestionList() throws SQLException
     {
@@ -233,6 +232,71 @@ public class SlotsDatabase {
                 se.printStackTrace();
             }//end finally try
         }//end try        
+    }
+    
+    // Random number generator methods
+    
+    // Generates a unique number depending on question count
+    public int generate()
+    {
+    	int id = (int) (Math.random() * QUESTION_COUNT + 1);
+    	for ( Integer i : ids )
+    	{
+    		if ( i == id )
+    			generate();
+    	}
+    	ids.add( id );
+    	return id;
+    }
+    
+    // Generates a unique number between lower and upper bounds. 
+    public void generate( int lowerBound, int upperBound )
+    {
+    	boolean found = false;
+    	int id = (int) (Math.random() * (upperBound - lowerBound + 1) + lowerBound );
+    	
+    	// If question list reset count reached, remove the id at first index to prevent repetition.
+    	if ( ids.size() == QUESTION_LIST_RESET_COUNT )
+    	{
+    		ids.remove(0);
+// 			TEST LINE System.out.println("Unique list: "); printIDs();
+    	}
+    	
+    	// Initial state
+    	if ( ids.size() == 0 )
+    	{
+    		ids.add( id );
+    	}
+    	else
+    	{
+    		for ( int i = 0 ; i < ids.size(); i++ )
+    		{
+    			if ( ids.get(i) == id )
+    			{
+    				// If the generated id is found in id list, found is true.
+    				found = true;
+    			}
+    		}
+    		
+    		if ( found )
+    		{
+    			generate( lowerBound, upperBound );
+    		}
+    		else
+    		{
+    			ids.add( id );
+    		}
+    	}
+    }
+    
+    public void printIDs()
+    {
+    	System.out.println("ID LIST:");
+    	for ( Integer i : ids )
+    	{
+    		System.out.print( i + " ");
+    	}
+    	System.out.println();
     }
     
 }
