@@ -1,158 +1,171 @@
 /*
- * @author Hazal Buruk
- */
+ * by Hüseyin BEYAN
+ * vers 1.0   24.04.2015
+ * 
+ * Panel to entering page of Slots in our project
+ */ 
 
-import javax.swing.*;
-import javax.swing.Timer;
 import java.awt.*;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.*;
+
 import java.awt.event.*;
-import java.util.*;
+import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
+
 
 public class SlotsPanel extends JPanel {
+	//VARIABLES
 	
-	private ImageIcon[] icon, bands;
-	private ImageIcon slot;
-	private int first;
-	private int[] saver;
-	private final int DELAY = 500;
-	private JLabel[] label, bandLabels;
-	private JLabel label1;
-	private Timer timer;
-	private Random generator= new Random();
-	private SlotsButton button;
-	private JPanel panel;
+	//image variables
+	private Image background;
+	private Image hyrocarbonIm;
+	
+	//sound variables
+	
+private File lockSound;
+	
+	
+private AudioInputStream createLockSound;
+	
+	
+private Clip startLockSound;
+	
+	private String next;
+	
+	public SlotsPanel() {		
+		setVisible( true);
+		setFocusable(true);
+		requestFocusInWindow();		
+		
+		next = "";
+				
+		hyrocarbonIm = new ImageIcon( "images\\hyrocarbon.jpg").getImage();
+		
+		CurrencyPanel curpanel = new CurrencyPanel( 200, 4);
+		add( curpanel);
+		
+		ProjectButton hydroBtn = new ProjectButton("HYDROCARBONS");
+		hydroBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				next = "hydrocarbons";
+				
+				if(event.getSource()==hydroBtn){
+					lockSound = new File("sounds\\door_lock.wav");
+					
+					try {
+						createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+						try {
+							startLockSound = AudioSystem.getClip();
+							
+							
+						} catch (LineUnavailableException e) {
+							
+							e.printStackTrace();
+						}
+					} catch (UnsupportedAudioFileException e) {
+						  
+						e.printStackTrace();
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					} 
+					
+					try {
+						startLockSound.open(createLockSound);
+					} catch (LineUnavailableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					startLockSound.start();
+				setVisible( false);
+			}
+				
+				setVisible( false);
+			}
+		});
+		hydroBtn.setBounds(75, 270, 300, 50);
+		hydroBtn.setFocusable(false);
+		add(hydroBtn);
+		
+		ProjectButton aldeBtn = new ProjectButton("Locked-ALDEHYDES/KETONS");
+		aldeBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				next = "aldehydes";
+				setVisible( false);	
+			}
+		});
+		aldeBtn.setBounds(75, 400, 300, 50);
+		aldeBtn.setFocusable(false);
+		add(aldeBtn);
+		
+		ProjectButton alcoBtn = new ProjectButton("Locked-ALCOHOLS/ETHERS");
+		alcoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				next = "alcohols";
+				setVisible( false);				
+			}
+		});
+		alcoBtn.setBounds(425, 270, 300, 50);
+		alcoBtn.setFocusable(false);
+		add(alcoBtn);
+		
+		ProjectButton carboxBtn = new ProjectButton("Locked-CARBOXCYLÝC ACIDS");
+		carboxBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				next = "carboxacids";
+				setVisible( false);
+			}
+		});
+		carboxBtn.setBounds(425, 400, 300, 50);
+		carboxBtn.setFocusable(false);
+		add(carboxBtn);
+		
+		JLabel slotsLabel = new JLabel("");
+		slotsLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		slotsLabel.setIcon( new ImageIcon("images\\slots.png"));
+		slotsLabel.setBounds(225, 102, 350, 100);
+		add(slotsLabel);
+		
+		setLayout( null);
+		setBounds( 0, 0, 800, 600);
+		
+		// Create an RGB buffered image
+		BufferedImage bimage = new BufferedImage(hyrocarbonIm.getWidth(null), hyrocarbonIm.getHeight(null), BufferedImage.TYPE_INT_RGB);
 
-	public SlotsPanel(){
+		// Copy non-RGB image to the RGB buffered image
+		Graphics2D g = bimage.createGraphics();
+		g.drawImage(hyrocarbonIm, 0, 0, null);
+		g.dispose();
 		
-		bands = new ImageIcon[3];
-		bandLabels = new JLabel[5];
-		bands[0] = new ImageIcon("band1.png");
-		bands[1] = new ImageIcon("band2.gif");
-		bands[2] = new ImageIcon("band3.gif");
-		
-		bandLabels[0] = new JLabel(bands[0]);
-		bandLabels[1] = new JLabel(bands[0]);
-		bandLabels[2] = new JLabel(bands[0]);
-		bandLabels[3] = new JLabel(bands[1]);
-		bandLabels[4] = new JLabel(bands[2]);
-		
-		slot = new ImageIcon("button.png");
-		button = new SlotsButton("");
-		button.setBounds(180, 340, 100, 100);
-		button.setIcon(slot);
-		button.setBackground(Color.red);
-		button.addActionListener(new ButtonListener());
-		
-		first=0;
-		timer = new Timer(DELAY, new SlotListener());
-		
-		label1 = new JLabel("Counter: 0" + "            ");
-		label1.setBounds(10, 393, 123, 17);
-		label1.setForeground(Color.white);
-		label1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		label = new JLabel[9];
-		
-		panel = new JPanel();
-		panel.setBounds(1, 5, 330, 330);
-		
-		panel.setLayout( new GridLayout(3,3));
-		icon = new ImageIcon[5];
-		icon[4] = new ImageIcon("001.png");
-		icon[1] = new ImageIcon("002.png");
-		icon[2] = new ImageIcon("003.png");
-		icon[3] = new ImageIcon("004.png");
-		icon[0] = new ImageIcon("gifh.gif");
-		
-		saver = new int[9];
-		for(int i = 0; i<9; i++)
-			saver[i]=0;
-		
-		for ( int i = 0; i<9 ; i++)
-		{
-			int b = generator.nextInt(5-1)+1;
-			label[i] = new JLabel(icon[1]);
-			panel.add(label[i]);
-		}
-		setLayout(null);
-	
-		add(panel);
-		panel.setPreferredSize(new Dimension (330, 330));
-		panel.setBackground(Color.black);
-		add(label1);
-		add(button); 
-		
-		for(int i=0; i<5; i++)
-			add(bandLabels[i]);
-		
-		setBackground(Color.red);
-		setPreferredSize(new Dimension(332, 790));
-		
+		// Darken the image by 10%
+		float scaleFactor = 0.5f;
+		RescaleOp op = new RescaleOp(scaleFactor, 0, null);
+		bimage = op.filter(bimage, null);
 	}
 	
-	private class SlotListener implements ActionListener{
+	public void paintComponent( Graphics g)
+	{   
+		super.paintComponent( g);
 		
-		public void actionPerformed(ActionEvent event){
-			if(first < 9)
-			{
-				int num = generator.nextInt(5-1)+1;
-				label[first].setIcon(icon[num]);
-				saver[first]=num;
-				first++;
-			}
-			else
-			{
-				timer.stop();
-				label1.setText("Counter: " + lineCounter() +"            ");
-			}
-		}
-	}
+		background = new ImageIcon("images\\background.png" ).getImage();		
+		
+		g.drawImage( background, 0, 0, null);
+		
+	}	
 	
-	private class ButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent event){
-			for ( int i = 0; i<9 ; i++)
-			{
-				label[i].setIcon(icon[0]);
-				label1.setText("Counter: 0            ");
-			}
-			first=0;
-			timer.start();
-		}
-	}
-	
-	private boolean isChangable(){
-		for(int i= 0; i<9; i++)
-		{
-			if(label[i].getDisabledIcon() == icon[0])
-				return true;
-		}
-		return false;
-	}
-	
-	public int lineCounter(){
-		int counter=0;
-		if(saver[0] == 0)
-			return 0;
-		else
-		{
-			if(saver[0]== saver[1] && saver[1]== saver[2])
-				counter++;
-			if(saver[0]== saver[4] && saver[4]== saver[8])
-				counter++;
-			if(saver[3]== saver[4] && saver[4]== saver[5])
-				counter++;
-			if(saver[6]== saver[4] && saver[4]== saver[2])
-				counter++;
-			if(saver[6]== saver[7] && saver[7]== saver[8])
-				counter++;
-		}
-		return counter;
-			
-	}
-	
-	public boolean isTriggered(){
-		if(lineCounter()>0)
-			return true;
-		return false;
+	public String getNext()
+	{
+		return next;
 	}
 	
 }

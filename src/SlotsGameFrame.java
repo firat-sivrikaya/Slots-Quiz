@@ -6,7 +6,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class SlotsGame {
+public class SlotsGameFrame {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Slots Game");
