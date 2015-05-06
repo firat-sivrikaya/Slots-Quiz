@@ -1,5 +1,5 @@
 /*
- * by Hüseyin BEYAN
+ * by Hï¿½seyin BEYAN
  * vers 1.0   22.04.2015
  * 
  * Panel to show play page of our project
@@ -49,7 +49,7 @@ public class PlayPanel extends JPanel {
 		next = "";
 		
 		JLabel titleLabel = new JLabel("");
-		titleLabel.setIcon(new ImageIcon("images\\6ondddiQAq.png"));
+		titleLabel.setIcon(new ImageIcon("images/6ondddiQAq.png"));
 		titleLabel.setBounds(142, 141, 480, 76);
 		add(titleLabel);
 		
@@ -58,7 +58,7 @@ public class PlayPanel extends JPanel {
 		{ public void actionPerformed(ActionEvent event) {
 				next = "slots";
 				if(event.getSource()==slotsBtn){
-					buttonSound3 = new File("sounds\\buttonSound.wav");
+					buttonSound3 = new File("sounds/buttonSound.wav");
 					
 					try {
 						createButtonSound3	 =  AudioSystem.getAudioInputStream(buttonSound3);
@@ -100,7 +100,7 @@ public class PlayPanel extends JPanel {
 			public void actionPerformed(ActionEvent event) {
 				next = "coinGen";
 				if(event.getSource()==coinGenButton){
-					buttonSound3 = new File("D:\\SlotsQuiz\\buttonSound.wav");
+					buttonSound3 = new File("sounds/buttonSound.wav");
 					
 					try {
 						createButtonSound3	 =  AudioSystem.getAudioInputStream(buttonSound3);
@@ -143,7 +143,7 @@ public class PlayPanel extends JPanel {
 			public void actionPerformed(ActionEvent event) {	
 				next = "back";
 				if(event.getSource()==backBtn){
-					buttonSound3 = new File("sounds\\slotSound.wav");
+					buttonSound3 = new File("sounds/slotSound.wav");
 					
 					try {
 						createButtonSound3	 =  AudioSystem.getAudioInputStream(buttonSound3);
@@ -189,7 +189,7 @@ public class PlayPanel extends JPanel {
 	{
 		super.paintComponent( g);		
 
-		background = new ImageIcon( "images\\background.png" ).getImage();
+		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);
 		

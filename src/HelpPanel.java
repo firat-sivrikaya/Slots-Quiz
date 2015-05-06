@@ -1,5 +1,5 @@
 /*
-  * by Hüseyin BEYAN
+  * by Hï¿½seyin BEYAN
  * vers 1.0   28.04.2015
  * 
  * Panel to show help page of our project
@@ -25,14 +25,11 @@ public class HelpPanel extends JPanel {
 	
 	//image variable
 	private Image background;
+	
 	//sound varibles
-	 private File buttonSound4;
-		
-		
-	 private AudioInputStream createButtonSound4;
-		
-		
-	 private Clip startButtonSound4;
+	private File buttonSound4;
+	private AudioInputStream createButtonSound4;
+	private Clip startButtonSound4;
 	
 	private Help helping;
 	private JList list;
@@ -54,14 +51,14 @@ public class HelpPanel extends JPanel {
 		JLabel lblHelp = new JLabel("");
 		lblHelp.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblHelp.setBounds(290, 40, 220, 100);
-		lblHelp.setIcon( new ImageIcon( "images\\help.png"));
+		lblHelp.setIcon( new ImageIcon( "images/help.png"));
 		add(lblHelp);
 		
 		ProjectButton btnBack = new ProjectButton("BACK");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if(event.getSource()==btnBack){
-					buttonSound4 = new File("sounds\\slotSound.wav");
+					buttonSound4 = new File("sounds/slotSound.wav");
 					
 					try {
 						createButtonSound4	 =  AudioSystem.getAudioInputStream(buttonSound4);
@@ -108,7 +105,7 @@ public class HelpPanel extends JPanel {
 		
 		String[] helps = { "Introduction", "Definitions", "Symbols"};
 		
-		Object[] images = { new ImageIcon( "images\\intro.png"), new ImageIcon( "images\\def.png"), new ImageIcon( "images\\sym.png")};
+		Object[] images = { new ImageIcon( "images/intro.png"), new ImageIcon( "images/def.png"), new ImageIcon( "images/sym.png")};
 		
 		list = new JList (images);
 		list.setForeground(new Color(0, 0, 128));
@@ -131,7 +128,7 @@ public class HelpPanel extends JPanel {
 	{
 		super.paintComponent( g);		
 
-		background = new ImageIcon( "images\\background.png" ).getImage();
+		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);		
 	}
@@ -146,13 +143,13 @@ public class HelpPanel extends JPanel {
 	         {
 	            ImageIcon source = (ImageIcon)list.getSelectedValue();
 	            
-	            if( source.toString().equals("images\\intro.png") )
+	            if( source.toString().equals("images/intro.png") )
 	            	label.setText( helping.getIntro());
 	            
-	            if(  source.toString().equals("images\\def.png") )
+	            if(  source.toString().equals("images/def.png") )
 	            	label.setText( helping.getDef());
 	            
-	            if(  source.toString().equals("images\\sym.png") )
+	            if(  source.toString().equals("images/sym.png") )
 	            	label.setText( helping.getSym());
 	         }
 	      }

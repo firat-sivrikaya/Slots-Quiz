@@ -1,5 +1,5 @@
 /*
- * by Hüseyin BEYAN
+ * by Hï¿½seyin BEYAN
  * vers 1.0   22.04.2015
  * 
  * Panel to show welcome page of our project
@@ -50,7 +50,7 @@ public class WelcomePanel extends JPanel {
 		requestFocusInWindow();
 		
 		JLabel titleLabel = new JLabel("");
-		titleLabel.setIcon(new ImageIcon("images\\6ondddiQAq.png"));
+		titleLabel.setIcon(new ImageIcon("images/6ondddiQAq.png"));
 		titleLabel.setBounds(142, 141, 480, 76);
 		add(titleLabel);
 		
@@ -61,7 +61,7 @@ public class WelcomePanel extends JPanel {
 				next = "play";
 				
 				if(event.getSource()==playButton){
-					buttonSound = new File("sounds\\buttonSound.wav");
+					buttonSound = new File("sounds/buttonSound.wav");
 					
 					try {
 						createButtonSound	 =  AudioSystem.getAudioInputStream(buttonSound);
@@ -98,7 +98,7 @@ public class WelcomePanel extends JPanel {
 			}
 		});
 			
-		playButton.setBounds(230, 293, 326, 35);
+		playButton.setBounds(230, 303, 326, 35);
 		add(playButton);
 		
 		optionButton = new ProjectButton("OPTIONS");
@@ -107,7 +107,7 @@ public class WelcomePanel extends JPanel {
 				setVisible( false);
 				next = "options";
 				if(event.getSource()==optionButton){
-					buttonSound = new File("sounds\\buttonSound.wav");
+					buttonSound = new File("sounds/buttonSound.wav");
 					
 					try {
 						createButtonSound	 =  AudioSystem.getAudioInputStream(buttonSound);
@@ -145,7 +145,7 @@ public class WelcomePanel extends JPanel {
 		});
 			
 		
-		optionButton.setBounds(230, 367, 326, 35);
+		optionButton.setBounds(230, 366, 326, 35);
 		add(optionButton);
 		
 		helpButton = new ProjectButton("HELP");
@@ -154,7 +154,7 @@ public class WelcomePanel extends JPanel {
 				setVisible( false);
 				next = "help";
 				if(event.getSource()==helpButton){
-					buttonSound = new File("sounds\\buttonSound.wav");
+					buttonSound = new File("sounds/buttonSound.wav");
 					
 					try {
 						createButtonSound	 =  AudioSystem.getAudioInputStream(buttonSound);
@@ -200,7 +200,7 @@ public class WelcomePanel extends JPanel {
 				
 				
 				if(event.getSource()==exitButton){
-					buttonSound = new File("sounds\\buttonSound.wav");
+					buttonSound = new File("sounds/buttonSound.wav");
 					
 					try {
 						createButtonSound	 =  AudioSystem.getAudioInputStream(buttonSound);
@@ -251,7 +251,7 @@ public class WelcomePanel extends JPanel {
 	{
 		super.paintComponent( g);		
 
-		background = new ImageIcon( "images\\background.png" ).getImage();
+		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);		
 	}

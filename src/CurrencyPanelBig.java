@@ -1,5 +1,5 @@
 /*
- * by Hüseyin BEYAN
+ * by Hï¿½seyin BEYAN
  * vers 1.0   28.04.2015
  * 
  * This panel is the same as the currency panel, however it is in larger size to be used in menu and statistics screens
@@ -39,12 +39,12 @@ public class CurrencyPanelBig extends JPanel {
 		add(crysLabel);
 		
 		JLabel coinPict = new JLabel("");
-		coinPict.setIcon(new ImageIcon("images\\coinbig.png"));
+		coinPict.setIcon(new ImageIcon("images/coinbig.png"));
 		coinPict.setBounds(2, 2, 40, 47);
 		add(coinPict);
 		
 		JLabel crysPict = new JLabel("");
-		crysPict.setIcon(new ImageIcon("images\\crystalbig.png"));
+		crysPict.setIcon(new ImageIcon("images/crystalbig.png"));
 		crysPict.setBounds(2, 52, 45, 45);
 		add(crysPict);
 		

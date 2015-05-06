@@ -1,5 +1,5 @@
 /*
- * by Hüseyin BEYAN
+ * by Hï¿½seyin BEYAN
  * vers 1.0   28.04.2015
  * 
  * This panel will allow us to switch between different panels of the game
@@ -22,7 +22,7 @@ public class MainPanel extends JPanel {
 	private HelpPanel help ;
 	private StatisticsPanel stat ;
 	private OptionsPanel opt;
-	
+	private SlotsQuestionPanel sqp;
 	
 	private HydrocarbonSlotsPanel hydro;
 	private AlcoholEtherSlotsPanel alco;
@@ -83,7 +83,9 @@ public class MainPanel extends JPanel {
 		carbox.setVisible( false);
 		add( carbox);
 		
-		
+		sqp = new SlotsQuestionPanel("Hydrocarbon");
+		sqp.setVisible( false );
+		add( sqp );
 		
 		
 		

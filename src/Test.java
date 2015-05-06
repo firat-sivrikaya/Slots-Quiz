@@ -1,5 +1,5 @@
 /*
- * by Hüseyin BEYAN
+ * by Hï¿½seyin BEYAN
  * vers 1.0   22.04.2015
  * 
  * This class contains a main method to test the appearence of the designed Panels
@@ -25,6 +25,7 @@ public class Test {
 		HelpPanel help = new HelpPanel();
 		
 		StatisticsPanel stat = new StatisticsPanel();
+		
 		
 
 

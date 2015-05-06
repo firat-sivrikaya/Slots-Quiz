@@ -43,7 +43,7 @@ public class OptionsPanel extends JPanel {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if(event.getSource()==backButton){
-					buttonSound2 = new File("sounds\\slotSound.wav");
+					buttonSound2 = new File("sounds/slotSound.wav");
 					
 					try {
 						createButtonSound2	 =  AudioSystem.getAudioInputStream(buttonSound2);
@@ -94,7 +94,7 @@ public class OptionsPanel extends JPanel {
 	{
 		super.paintComponent( g);		
 
-		background = new ImageIcon( "images\\background.png" ).getImage();
+		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);		
 	}

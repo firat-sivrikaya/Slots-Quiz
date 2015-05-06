@@ -6,7 +6,7 @@ public class QuestionPanelTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		JFrame frame = new JFrame( "Slots Quiz");
-		SlotsQuestionPanel panel = new SlotsQuestionPanel();
+		SlotsQuestionPanel panel = new SlotsQuestionPanel("AlcoholEther");
 		
 		frame.getContentPane().add( panel );
 		

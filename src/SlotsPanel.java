@@ -1,5 +1,5 @@
 /*
- * by Hüseyin BEYAN
+ * by Hï¿½seyin BEYAN
  * vers 1.0   24.04.2015
  * 
  * Panel to entering page of Slots in our project
@@ -25,7 +25,6 @@ public class SlotsPanel extends JPanel {
 	
 	//image variables
 	private Image background;
-	private Image hyrocarbonIm;
 	
 	//sound variables
 	
@@ -46,7 +45,6 @@ private Clip startLockSound;
 		
 		next = "";
 				
-		hyrocarbonIm = new ImageIcon( "images\\hyrocarbon.jpg").getImage();
 		
 		CurrencyPanel curpanel = new CurrencyPanel( 200, 4);
 		add( curpanel);
@@ -57,7 +55,7 @@ private Clip startLockSound;
 				next = "hydrocarbons";
 				
 				if(event.getSource()==hydroBtn){
-					lockSound = new File("sounds\\door_lock.wav");
+					lockSound = new File("sounds/door_lock.wav");
 					
 					try {
 						createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
@@ -119,7 +117,7 @@ private Clip startLockSound;
 		alcoBtn.setFocusable(false);
 		add(alcoBtn);
 		
-		ProjectButton carboxBtn = new ProjectButton("Locked-CARBOXCYLÝC ACIDS");
+		ProjectButton carboxBtn = new ProjectButton("Locked-CARBOXCYLï¿½C ACIDS");
 		carboxBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				next = "carboxacids";
@@ -132,32 +130,20 @@ private Clip startLockSound;
 		
 		JLabel slotsLabel = new JLabel("");
 		slotsLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
-		slotsLabel.setIcon( new ImageIcon("images\\slots.png"));
+		slotsLabel.setIcon( new ImageIcon("images/slots.png"));
 		slotsLabel.setBounds(225, 102, 350, 100);
 		add(slotsLabel);
 		
 		setLayout( null);
 		setBounds( 0, 0, 800, 600);
 		
-		// Create an RGB buffered image
-		BufferedImage bimage = new BufferedImage(hyrocarbonIm.getWidth(null), hyrocarbonIm.getHeight(null), BufferedImage.TYPE_INT_RGB);
-
-		// Copy non-RGB image to the RGB buffered image
-		Graphics2D g = bimage.createGraphics();
-		g.drawImage(hyrocarbonIm, 0, 0, null);
-		g.dispose();
-		
-		// Darken the image by 10%
-		float scaleFactor = 0.5f;
-		RescaleOp op = new RescaleOp(scaleFactor, 0, null);
-		bimage = op.filter(bimage, null);
 	}
 	
 	public void paintComponent( Graphics g)
 	{   
 		super.paintComponent( g);
 		
-		background = new ImageIcon("images\\background.png" ).getImage();		
+		background = new ImageIcon("images/background.png" ).getImage();		
 		
 		g.drawImage( background, 0, 0, null);
 		

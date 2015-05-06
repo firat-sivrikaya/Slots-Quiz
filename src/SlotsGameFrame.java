@@ -10,9 +10,10 @@ public class SlotsGameFrame {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Slots Game");
+		MainPanel mainPanel = new MainPanel();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel mainPanel = new JPanel();
-		mainPanel.setBackground(Color.black);
+//		JPanel mainPanel = new JPanel();
+//		mainPanel.setBackground(Color.black);
 		mainPanel.setPreferredSize(new Dimension(800, 600));
 		SlotsPanel slotsPanel = new SlotsPanel();
 		mainPanel.add(slotsPanel);

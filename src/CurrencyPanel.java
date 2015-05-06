@@ -1,5 +1,5 @@
 /*
- * by Hüseyin BEYAN
+ * by Hï¿½seyin BEYAN
  * vers 1.0   22.04.2015
  * 
  * Panel to show currency of the user of the game, it shows the amount of coins and crystals, also 
@@ -37,12 +37,12 @@ public class CurrencyPanel extends JPanel {
 		add(crysLabel);
 		
 		JLabel coinPict = new JLabel("");
-		coinPict.setIcon(new ImageIcon("images\\coin.jpg"));
+		coinPict.setIcon(new ImageIcon("images/coin.jpg"));
 		coinPict.setBounds(2, 2, 17, 21);
 		add(coinPict);
 		
 		JLabel crysPict = new JLabel("");
-		crysPict.setIcon(new ImageIcon("images\\crystal.jpg"));
+		crysPict.setIcon(new ImageIcon("images/crystal.jpg"));
 		crysPict.setBounds(2, 27, 21, 21);
 		add(crysPict);
 		

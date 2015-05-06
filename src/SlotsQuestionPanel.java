@@ -3,6 +3,7 @@
  * Question Class
  */
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -31,18 +32,15 @@ public class SlotsQuestionPanel extends JPanel {
 	private JButton buttonE;
 	private JLabel timeLabel;
 	private JPanel panel;
-	private HydrocarbonQ hydrocarbon;
 	private String answer;
 	private String location;
 	
-	public SlotsQuestionPanel() {
-		
-		// Initialize specific database portion for the category
-		hydrocarbon = new HydrocarbonQ();
+	public SlotsQuestionPanel( String s ) {
 		
 		// Initialize question panel
 		panel = new JPanel();
-		panel.setBounds(48, 32, 704, 411);
+		panel.setBounds(48, 62, 700, 350);
+		panel.setPreferredSize( new Dimension(700, 350));
 		
 		
 		//Panel has to be 800* 600
@@ -54,21 +52,43 @@ public class SlotsQuestionPanel extends JPanel {
 		//In order to move the necessary components
 		setLayout(null);
 
-		
-		// Get the question from database
-		try {
-			Question question = hydrocarbon.askQuestion();
-			// Get the answer
-			answer = question.getAnswer();
-			// Get the location
-			location = question.getLocation();
-			// Print location and answer for test purpose
-			System.out.println( "Location: " + location );
-			System.out.println( "Answer: " + answer );
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		// Check the current slot category and set the question accordingly.
+		if ( s.equals("Hydrocarbon") )
+		{
+			HydrocarbonS slots = new HydrocarbonS();
+			Question q = slots.askQuestion();
+			answer = q.getAnswer();
+			location = q.getLocation();
 		}
+		
+		else if ( s.equals("AlcoholEther") )
+		{
+			AlcoholEtherS slots = new AlcoholEtherS();
+			Question q = slots.askQuestion();
+			answer = q.getAnswer();
+			location = q.getLocation();			
+		}
+		
+		else if ( s.equals("AldeKet") )
+		{
+			AldeKetS slots = new AldeKetS();
+			Question q = slots.askQuestion();
+			answer = q.getAnswer();
+			location = q.getLocation();				
+		}
+		
+		else if ( s.equals("CarboxylicAcid") )
+		{
+			CarboxylicAcidS slots = new CarboxylicAcidS();
+			Question q = slots.askQuestion();
+			answer = q.getAnswer();
+			location = q.getLocation();	
+		}
+		
+		
+		// Print location and answer for test purpose
+		System.out.println( "Location: " + location );
+		System.out.println( "Answer: " + answer );		
 		
 		
 		
@@ -204,7 +224,7 @@ public class SlotsQuestionPanel extends JPanel {
 	{
 		super.paintComponent( g);		
 
-		background = new ImageIcon( "images\\background.png" ).getImage();
+		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);
 		

@@ -70,35 +70,35 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 		saver = new int[9];
 		
 		//fill the header with the icon
-		header = new ImageIcon("images\\alceth\\alcoholether.png");
+		header = new ImageIcon("images/alceth/alcoholether.png");
 		
 		//counter pictures for counter label
-		counters[0] = new ImageIcon("images\\counter0.png");
-		counters[1] = new ImageIcon("images\\counter1.png");
-		counters[2] = new ImageIcon("images\\counter2.png");
-		counters[3] = new ImageIcon("images\\counter3.png");
-		counters[4] = new ImageIcon("images\\counter4.png");
-		counters[5] = new ImageIcon("images\\counter5.png");
+		counters[0] = new ImageIcon("images/counter0.png");
+		counters[1] = new ImageIcon("images/counter1.png");
+		counters[2] = new ImageIcon("images/counter2.png");
+		counters[3] = new ImageIcon("images/counter3.png");
+		counters[4] = new ImageIcon("images/counter4.png");
+		counters[5] = new ImageIcon("images/counter5.png");
 		
 		//number pictures for number labels
-		numbers[0] = new ImageIcon("images\\numbers01.png");
-		numbers[1] = new ImageIcon("images\\numbers02.png");
-		numbers[2] = new ImageIcon("images\\numbers03.png");
-		numbers[3] = new ImageIcon("images\\numbers04.png");
-		numbers[4] = new ImageIcon("images\\numbers05.png");
-		numbers[5] = new ImageIcon("images\\numbers06.png");
-		numbers[6] = new ImageIcon("images\\numbers07.png");
-		numbers[7] = new ImageIcon("images\\numbers08.png");
-		numbers[8] = new ImageIcon("images\\numbers09.png");
-		numbers[9] = new ImageIcon("images\\numbers10.png");
+		numbers[0] = new ImageIcon("images/numbers01.png");
+		numbers[1] = new ImageIcon("images/numbers02.png");
+		numbers[2] = new ImageIcon("images/numbers03.png");
+		numbers[3] = new ImageIcon("images/numbers04.png");
+		numbers[4] = new ImageIcon("images/numbers05.png");
+		numbers[5] = new ImageIcon("images/numbers06.png");
+		numbers[6] = new ImageIcon("images/numbers07.png");
+		numbers[7] = new ImageIcon("images/numbers08.png");
+		numbers[8] = new ImageIcon("images/numbers09.png");
+		numbers[9] = new ImageIcon("images/numbers10.png");
 		
 		//currency panel
 		currencyPanel = new CurrencyPanel(0,0); //create
 		currencyPanel.setLocation(0, 0); //setting location
 		
 		//spin button pictures
-		slotoff = new ImageIcon("images\\spinoff.png");
-		sloton = new ImageIcon("images\\spinon.png");
+		slotoff = new ImageIcon("images/spinoff.png");
+		sloton = new ImageIcon("images/spinon.png");
 		
 		//create spin button
 		button = new JButton("");
@@ -135,11 +135,11 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 		panel.setLayout( new GridLayout(3,3));
 		
 		//pictures to full grid layout
-		icon[0] = new ImageIcon("images\\alceth\\gifalceth.gif"); //gif
-		icon[1] = new ImageIcon("images\\alceth\\alcolet001.png"); 
-		icon[2] = new ImageIcon("images\\alceth\\alcolet002.png");
-		icon[3] = new ImageIcon("images\\alceth\\alcolet003.png");
-		icon[4] = new ImageIcon("images\\alceth\\alcolet004.png");
+		icon[0] = new ImageIcon("images/alceth/gifalceth.gif"); //gif
+		icon[1] = new ImageIcon("images/alceth/alcolet001.png"); 
+		icon[2] = new ImageIcon("images/alceth/alcolet002.png");
+		icon[3] = new ImageIcon("images/alceth/alcolet003.png");
+		icon[4] = new ImageIcon("images/alceth/alcolet004.png");
 		
 		//full savers with '0' for the start
 		for(int i = 0; i<9; i++)
@@ -228,7 +228,7 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 	{
 		super.paintComponent( g);		
 
-		background = new ImageIcon("images\\slotsBackground.png").getImage(); //get background icon as image
+		background = new ImageIcon("images/slotsBackground.png").getImage(); //get background icon as image
 		
 		g.drawImage( background, 0, 0, null); //draw background
 	}
@@ -295,7 +295,7 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 			timer2.start();
 			//start the sound when triggered
 			if(event.getSource()==button){
-				clickSound2 = new File("sounds\\slot_payoff.wav");
+				clickSound2 = new File("sounds/slot_payoff.wav");
 				
 				try {
 					createClick2 =  AudioSystem.getAudioInputStream(clickSound2);
@@ -367,7 +367,7 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 			}
 		}
 		if(counter!=0){
-			winSlot2 = new File("sounds\\win.wav");
+			winSlot2 = new File("sounds/win.wav");
 		
 		try {
 			createWin2 =  AudioSystem.getAudioInputStream(winSlot2);
@@ -396,7 +396,14 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	winSound2.start();
+		winSound2.start();
+		JFrame frame = new JFrame("Question");
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("AlcoholEther");
+		frame.getContentPane().add( qpanel );
+		frame.setBounds(400, 400, 800, 600);
+		frame.setVisible( true );		
+		
+		
 		}
 			
 		
