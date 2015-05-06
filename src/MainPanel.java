@@ -23,7 +23,7 @@ public class MainPanel extends JPanel {
 	private StatisticsPanel stat ;
 	private OptionsPanel opt;
 	private SlotsQuestionPanel sqp;
-	
+	private CoinGeneratorPanel cgp;
 	private HydrocarbonSlotsPanel hydro;
 	private AlcoholEtherSlotsPanel alco;
 	private AldehydeKetoneSlotsPanel alde;
@@ -83,9 +83,12 @@ public class MainPanel extends JPanel {
 		carbox.setVisible( false);
 		add( carbox);
 		
-		sqp = new SlotsQuestionPanel("Hydrocarbon");
-		sqp.setVisible( false );
-		add( sqp );
+		cgp = new CoinGeneratorPanel();
+		cgp.setVisible( false );
+		add( cgp );		
+
+		
+		
 		
 		
 		
@@ -127,7 +130,7 @@ public class MainPanel extends JPanel {
 					slots.setVisible( true);
 				}
 				if( play.getNext().equals("coinGen"))
-					play.setVisible( true);
+					cgp.setVisible( true);
 				
 				if( play.getNext().equals("back"))
 					wel.setVisible( true);

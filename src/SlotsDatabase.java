@@ -20,9 +20,9 @@ public class SlotsDatabase {
 
     // JDBC driver name, Database URL, User and Password
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/TEST";
-    static final String USER = "root";
-    static final String PASS = "";
+    static final String DB_URL = "jdbc:mysql://sql5.freemysqlhosting.net:3306/sql576373";
+    static final String USER = "sql576373";
+    static final String PASS = "hJ3%jG5!";
     static final int QUESTION_COUNT = 100;
     static final int QUESTION_LIST_RESET_COUNT = 7;
     
@@ -84,7 +84,7 @@ public class SlotsDatabase {
     
     public String getAnswer( int id ) throws SQLException{
 		
-    	sql = "SELECT answer FROM Questions WHERE id = " + id;
+    	sql = "SELECT answer FROM QUESTIONS WHERE id = " + id;
     	rs = stmt.executeQuery( sql );
     	rs.next();
     	String answer = rs.getString("answer");
@@ -94,7 +94,7 @@ public class SlotsDatabase {
     }
     
     public String getLocation( int id ) throws SQLException {
-    	sql = "SELECT text FROM Questions WHERE id = " + id;
+    	sql = "SELECT text FROM QUESTIONS WHERE id = " + id;
     	rs = stmt.executeQuery( sql );
     	rs.next();
     	String address = rs.getString("text");
@@ -116,7 +116,7 @@ public class SlotsDatabase {
     
     public void printQuestionList() throws SQLException
     {
-        sql = "SELECT id, text, answer FROM Questions";
+        sql = "SELECT id, text, answer FROM QUESTIONS";
         rs = stmt.executeQuery(sql);   		
         stmt = conn.createStatement();
             
