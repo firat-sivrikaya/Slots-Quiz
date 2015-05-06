@@ -18,11 +18,16 @@ import java.util.ArrayList;
 
 public class SlotsDatabase {
 
+	// Online database info
+	// DB_URL = jdbc:mysql://sql5.freemysqlhosting.net:3306/sql576373
+	// USER = sql576373
+	// PASS = hJ3%jG5!
+	
     // JDBC driver name, Database URL, User and Password
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://sql5.freemysqlhosting.net:3306/sql576373";
-    static final String USER = "sql576373";
-    static final String PASS = "hJ3%jG5!";
+    static final String DB_URL = "jdbc:mysql://localhost/TEST";
+    static final String USER = "root";
+    static final String PASS = "";
     static final int QUESTION_COUNT = 100;
     static final int QUESTION_LIST_RESET_COUNT = 7;
     
