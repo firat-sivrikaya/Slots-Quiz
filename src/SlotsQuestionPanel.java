@@ -28,11 +28,11 @@ public class SlotsQuestionPanel extends JPanel {
 	private SlotsQuestionPanel sqp;
 	private CurrencyPanel curPanel;
 	private Image background;
-	private JButton buttonA;
-	private JButton buttonB;
-	private JButton buttonC;
-	private JButton buttonD;
-	private JButton buttonE;
+	private ProjectButton buttonA;
+	private ProjectButton buttonB;
+	private ProjectButton buttonC;
+	private ProjectButton buttonD;
+	private ProjectButton buttonE;
 	private JLabel timeLabel;
 	private JPanel panel;
 	private JPanel slotspanel;
@@ -110,11 +110,11 @@ public class SlotsQuestionPanel extends JPanel {
 		add(curPanel); 
 		
 		//Initializing the buttons
-		buttonA = new JButton("A");
-		buttonB = new JButton("B");
-		buttonC = new JButton("C");
-		buttonD = new JButton("D");
-		buttonE = new JButton("E");
+		buttonA = new ProjectButton("A");
+		buttonB = new ProjectButton("B");
+		buttonC = new ProjectButton("C");
+		buttonD = new ProjectButton("D");
+		buttonE = new ProjectButton("E");
 		
 	
 		//settings for A button
