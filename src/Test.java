@@ -26,6 +26,9 @@ public class Test {
 		
 		StatisticsPanel stat = new StatisticsPanel();
 		
+		SlotsQuestionPanel panel = new SlotsQuestionPanel("HydroCarbon", play,  new Statistics() );
+		
+		
 		
 
 
@@ -42,7 +45,8 @@ public class Test {
 		//frame.getContentPane().add( menu);	
 		//frame.getContentPane().add( help);
 		//frame.getContentPane().add( stat);
-		frame.getContentPane().add( main);
+		//frame.getContentPane().add( main);
+		frame.getContentPane().add( panel);
 		
 		
 		frame.setVisible( true);

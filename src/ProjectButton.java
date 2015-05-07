@@ -123,6 +123,42 @@ public class ProjectButton extends JButton
 			setIcon(new ImageIcon("images/buttons/backtomain.png"));
 			setText( "");
 		}
+		
+		if( s.equals( "A"))
+		{
+			setIcon(new ImageIcon("images/AnswerButtons/answerona.png"));
+			setRolloverIcon(new ImageIcon("images/AnswerButtons/answeroffa.png"));
+			setText( "");
+		}
+		
+		if( s.equals( "B"))
+		{
+			setIcon(new ImageIcon("images/AnswerButtons/answeronb.png"));
+			setRolloverIcon(new ImageIcon("images/AnswerButtons/answeroffb.png"));
+			setText( "");
+		}
+		
+		if( s.equals( "C"))
+		{
+			setIcon(new ImageIcon("images/AnswerButtons/answeronc.png"));
+			setRolloverIcon(new ImageIcon("images/AnswerButtons/answeroffc.png"));
+			setText( "");
+		}
+		
+		if( s.equals( "D"))
+		{
+			setIcon(new ImageIcon("images/AnswerButtons/answerond.png"));
+			setRolloverIcon(new ImageIcon("images/AnswerButtons/answeroffd.png"));
+			setText( "");
+		}
+		
+		if( s.equals( "E"))
+		{
+			setIcon(new ImageIcon("images/AnswerButtons/answerone.png"));
+			setRolloverIcon(new ImageIcon("images/AnswerButtons/answeroffe.png"));
+			setText( "");
+		}
+		
 	}
 	
 	public void paint(Graphics g) 
