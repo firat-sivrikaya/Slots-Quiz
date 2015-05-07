@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * defined as constants.
  * 
  * The questions from Hydrocarbons are written
- * by Irmak Akkuzuluoglu.
+ * by Firat Sivrikaya.
  * 
  *
  */

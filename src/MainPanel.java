@@ -28,12 +28,16 @@ public class MainPanel extends JPanel {
 	private AlcoholEtherSlotsPanel alco;
 	private AldehydeKetoneSlotsPanel alde;
 	private CarboxylicAcidSlotsPanel carbox;
+	private SlotsHelpPanel shp;
+	private Statistics statistics;
 	
 	private JPanel last;
 	
 	JPanel[] array;
 	
-	public MainPanel() {				
+	public MainPanel() {	
+		
+		statistics = new Statistics();
 		setBounds( 0, 0, 800, 600);
 		setLayout( null);				
 		setFocusable(true);
@@ -67,26 +71,29 @@ public class MainPanel extends JPanel {
 		menu.setVisible( false);
 		add( menu);	
 		
-		hydro = new HydrocarbonSlotsPanel();
+		hydro = new HydrocarbonSlotsPanel( statistics );
 		hydro.setVisible( false);
 		add( hydro);	
 		
-		alco = new AlcoholEtherSlotsPanel();
+		alco = new AlcoholEtherSlotsPanel( statistics );
 		alco.setVisible( false);
 		add( alco);
 		
-		alde = new AldehydeKetoneSlotsPanel();
+		alde = new AldehydeKetoneSlotsPanel( statistics );
 		alde.setVisible( false);
 		add( alde);		
 		
-		carbox = new CarboxylicAcidSlotsPanel();
+		carbox = new CarboxylicAcidSlotsPanel( statistics );
 		carbox.setVisible( false);
 		add( carbox);
 		
 		cgp = new CoinGeneratorPanel();
 		cgp.setVisible( false );
 		add( cgp );		
-
+		
+		shp = new SlotsHelpPanel();
+		shp.setVisible( false );
+		add( shp );
 		
 		
 		
@@ -120,6 +127,13 @@ public class MainPanel extends JPanel {
 			public void componentHidden(ComponentEvent e) {
 				help.reset();
 				wel.setVisible( true);
+			}
+		});
+		
+		shp.addComponentListener(new ComponentAdapter() {			
+			public void componentHidden(ComponentEvent e) {
+				help.reset();
+				menu.setVisible( true);
 			}
 		});
 		
@@ -178,7 +192,7 @@ public class MainPanel extends JPanel {
 					wel.setVisible( true);
 				
 				if( menu.getNext().equals("help"))
-					help.setVisible( true);
+					shp.setVisible( true);
 			}
 		});
 		

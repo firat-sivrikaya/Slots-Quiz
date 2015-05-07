@@ -19,6 +19,8 @@ public class HydrocarbonSlotsPanel extends JPanel {
 	
 	//VARIABLES
 	
+	private Statistics stats;
+	
 	//images variables
 	private ImageIcon[] icon, numbers, counters;
 	private Image background;
@@ -57,9 +59,9 @@ public class HydrocarbonSlotsPanel extends JPanel {
 	private CurrencyPanel currencyPanel; //Currency Panel
 
 	//CONSTRUCTORS
-	public HydrocarbonSlotsPanel(){
-
+	public HydrocarbonSlotsPanel( Statistics statistics ){
 		
+		stats = statistics;
 		//create the arrays
 		counters = new ImageIcon[6];
 		icon = new ImageIcon[5];
@@ -91,7 +93,7 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		numbers[9] = new ImageIcon("images/numbers10.png");
 		
 		//currency panel
-		currencyPanel = new CurrencyPanel(0,0); //create
+		currencyPanel = new CurrencyPanel( stats.getCoin(), stats.getCrystal() ); //create
 		currencyPanel.setLocation(0, 0); //setting location
 		
 		//spin button pictures
@@ -263,6 +265,55 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		}
 	}
 	
+	//question frame listener
+	// TODO:
+	private class QuestionFrameListener implements WindowListener
+	{
+
+		@Override
+		public void windowOpened(WindowEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowClosing(WindowEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowClosed(WindowEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowIconified(WindowEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowDeiconified(WindowEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowActivated(WindowEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowDeactivated(WindowEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
 	//button listener
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
@@ -399,7 +450,7 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		// Pop up the question panel in a new frame
 		// TODO: CHANGE THE QUESTION AS HYDROCARBON AS SOON AS HYDROCARBON QUESTIONS ARE WRITTEN
 		JFrame frame = new JFrame("Question");
-		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid");
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats );
 		frame.getContentPane().add( qpanel );
 		frame.setBounds(400, 400, 800, 600);
 		frame.setVisible( true );
@@ -418,6 +469,11 @@ public class HydrocarbonSlotsPanel extends JPanel {
 			return true;
 		}
 		return false;
+	}
+	
+	public CurrencyPanel getCurrencyPanel()
+	{
+		return currencyPanel;
 	}
 	
 }

@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * Upper and lower bounds for this subject are
  * defined as constants.
  * 
- * The questions from Hydrocarbons are written
+ * The questions from Alcohols / Ethers are written
  * by Irmak Akkuzuluoglu.
  * 
  *

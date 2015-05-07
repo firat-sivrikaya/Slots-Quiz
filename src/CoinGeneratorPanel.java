@@ -72,6 +72,11 @@ public class CoinGeneratorPanel extends JPanel {
 		buttonD = new JButton("D");
 		buttonE = new JButton("E");
 		
+		buttonA.setFocusable( false );
+		buttonB.setFocusable( false );
+		buttonC.setFocusable( false );
+		buttonD.setFocusable( false );
+		buttonE.setFocusable( false );
 	
 		//settings for A button
 		buttonA.setBounds(20, 497, 110, 35);
@@ -217,6 +222,7 @@ public class CoinGeneratorPanel extends JPanel {
 		g.drawImage( background, 0, 0, null);
 		// panel.getGraphics().drawImage
 		g.drawImage( new ImageIcon( location ).getImage(), 48, 62, 700, 350, null );
+		System.out.println("Location: " + location + " \nAnswer: " + answer ); 
 	}
 }
 

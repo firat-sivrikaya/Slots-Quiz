@@ -21,6 +21,7 @@ import java.util.*;
 public class CarboxylicAcidSlotsPanel extends JPanel {
 	
 	//VARIABLES
+	private Statistics stats;
 	
 	//images variables
 	private ImageIcon[] icon, numbers, counters;
@@ -60,8 +61,10 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 	private CurrencyPanel currencyPanel; //Currency Panel
 
 	//CONSTRUCTORS
-	public CarboxylicAcidSlotsPanel(){
+	public CarboxylicAcidSlotsPanel( Statistics statistics ){
 		
+		
+		stats = statistics;
 		//create the arrays
 		counters = new ImageIcon[6];
 		icon = new ImageIcon[5];
@@ -398,7 +401,7 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 		}
 		winSound4.start();
 		JFrame frame = new JFrame("Question");
-		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid");
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats);
 		frame.getContentPane().add( qpanel );
 		frame.setBounds(400, 400, 800, 600);
 		frame.setVisible( true );

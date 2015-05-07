@@ -22,6 +22,8 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 	
 	//VARIABLES
 	
+	private Statistics stats;
+	
 	//images variables
 	private ImageIcon[] icon, numbers, counters;
 	private Image background;
@@ -60,7 +62,9 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 	private CurrencyPanel currencyPanel; //Currency Panel
 
 	//CONSTRUCTORS
-	public AlcoholEtherSlotsPanel(){
+	public AlcoholEtherSlotsPanel( Statistics statistics ){
+		
+		stats = statistics;
 		
 		//create the arrays
 		counters = new ImageIcon[6];
@@ -398,7 +402,7 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 		}
 		winSound2.start();
 		JFrame frame = new JFrame("Question");
-		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("AlcoholEther");
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("AlcoholEther", this, stats);
 		frame.getContentPane().add( qpanel );
 		frame.setBounds(400, 400, 800, 600);
 		frame.setVisible( true );		

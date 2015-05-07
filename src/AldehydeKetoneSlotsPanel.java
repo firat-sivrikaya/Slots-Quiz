@@ -18,6 +18,7 @@ import java.io.*;
 public class AldehydeKetoneSlotsPanel extends JPanel {
 	
 	//VARIABLES
+	private Statistics stats;
 	
 	//images variables
 	private ImageIcon[] icon, numbers, counters;
@@ -57,8 +58,9 @@ public class AldehydeKetoneSlotsPanel extends JPanel {
 	private CurrencyPanel currencyPanel; //Currency Panel
 
 	//CONSTRUCTORS
-	public AldehydeKetoneSlotsPanel(){
+	public AldehydeKetoneSlotsPanel( Statistics statistics ){
 		
+		stats = statistics;
 		//create the arrays
 		counters = new ImageIcon[6];
 		icon = new ImageIcon[5];
@@ -397,7 +399,7 @@ public class AldehydeKetoneSlotsPanel extends JPanel {
 		
 		// TODO: CHANGE THE QUESTION AS HYDROCARBON AS SOON AS HYDROCARBON QUESTIONS ARE WRITTEN
 		JFrame frame = new JFrame("Question");
-		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("AldeKet");
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("AldeKet", this, stats );
 		frame.getContentPane().add( qpanel );
 		frame.setBounds(400, 400, 800, 600);
 		frame.setVisible( true );
