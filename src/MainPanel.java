@@ -130,8 +130,9 @@ public class MainPanel extends JPanel {
 					slots.setVisible( true);
 				}
 				if( play.getNext().equals("coinGen"))
+				{
 					cgp.setVisible( true);
-				
+				}
 				if( play.getNext().equals("back"))
 					wel.setVisible( true);
 			}
@@ -149,7 +150,6 @@ public class MainPanel extends JPanel {
 				if( slots.getNext().equals("hydrocarbons"))
 				{
 					hydro.setVisible( true);
-					//hydro.repaint();
 				}
 				if( slots.getNext().equals("alcohols"))
 				{
@@ -226,6 +226,14 @@ public class MainPanel extends JPanel {
 				
 				last = carbox;
 			}
+			if( e.getKeyCode() == KeyEvent.VK_ESCAPE && cgp.isVisible())
+			{
+				cgp.setVisible( false);
+				menu.setVisible( true);
+				
+				last = cgp;
+			}			
+			
 		}
 
 		public void keyReleased(KeyEvent arg0) {}

@@ -40,9 +40,9 @@ public class CoinGeneratorPanel extends JPanel {
 		question = new CoinGenerator();
 
 		
-		panel = new JPanel();
-		panel.setBounds(48, 62, 700, 350);
-		panel.setPreferredSize( new Dimension(700, 350));
+//		panel = new JPanel();
+//		panel.setBounds(48, 62, 700, 350);
+//		panel.setPreferredSize( new Dimension(700, 350));
 		
 		//Panel has to be 800* 600
 		this.setVisible( true);				
@@ -57,7 +57,9 @@ public class CoinGeneratorPanel extends JPanel {
 		q = question.askQuestion();
 		answer = q.getAnswer();
 		location = q.getLocation();	
-		System.out.println( "AALocation: " + location + "\n Answer: " + answer );
+		System.out.println( "Location: " + location + "\n Answer: " + answer );
+		
+//		panel.setOpaque( false );
 		
 		//Currency panel at the top left corner.
 		curPanel = new CurrencyPanel(0,0);
@@ -98,6 +100,8 @@ public class CoinGeneratorPanel extends JPanel {
 		add(buttonE);
 		
 		
+//		add( panel );
+		
 		//adding action listener to A button
 		buttonA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,6 +116,7 @@ public class CoinGeneratorPanel extends JPanel {
 					q = question.askQuestion();
 					answer = q.getAnswer();
 					location = q.getLocation();
+					repaint();
 				}
 			}
 		});
@@ -130,6 +135,7 @@ public class CoinGeneratorPanel extends JPanel {
 					q = question.askQuestion();
 					answer = q.getAnswer();
 					location = q.getLocation();
+					repaint();
 				}
 			}
 		});
@@ -150,6 +156,7 @@ public class CoinGeneratorPanel extends JPanel {
 					q = question.askQuestion();
 					answer = q.getAnswer();
 					location = q.getLocation();
+					repaint();
 				}
 			}
 		});
@@ -170,6 +177,7 @@ public class CoinGeneratorPanel extends JPanel {
 					q = question.askQuestion();
 					answer = q.getAnswer();
 					location = q.getLocation();
+					repaint();
 				}
 			}
 		}
@@ -190,12 +198,13 @@ public class CoinGeneratorPanel extends JPanel {
 					q = question.askQuestion();
 					answer = q.getAnswer();
 					location = q.getLocation();
+					repaint();
 				}
 			}
 		}
 		);
 		
-		add( panel );
+		
 		
 	}
 	
@@ -206,8 +215,8 @@ public class CoinGeneratorPanel extends JPanel {
 		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);
-		
-		panel.getGraphics().drawImage( new ImageIcon( location ).getImage(), 0, 0, null );
+		// panel.getGraphics().drawImage
+		g.drawImage( new ImageIcon( location ).getImage(), 48, 62, 700, 350, null );
 	}
 }
 

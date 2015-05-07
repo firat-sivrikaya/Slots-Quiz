@@ -1,5 +1,5 @@
 /* * 
-by Hüseyin BEYAN
+by Hï¿½seyin BEYAN
  * vers 1.0   28.04.2015
  * 
  * Panel to show menu page of our project
@@ -79,7 +79,7 @@ public class MenuPanel extends JPanel {
 	{
 		super.paintComponent( g);		
 
-		background = new ImageIcon( "images\\background.png" ).getImage();
+		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);		
 	}
