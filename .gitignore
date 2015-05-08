@@ -2,3 +2,11 @@
 .DS_Store
 /src/.DS_Store
 .classpath
+/resources/Thumbs.db
+/images/Thumbs.db
+/images/buttons/Thumbs.db
+/images/alceth/Thumbs.db
+/images/aldeket/Thumbs.db
+/images/carbox/Thumbs.db
+/images/hydro/Thumbs.db
+/images/AnswerButtons/Thumbs.db
