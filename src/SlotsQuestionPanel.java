@@ -43,7 +43,9 @@ public class SlotsQuestionPanel extends JPanel {
 	private Statistics stats;
 	private CurrencyPanel mainCurrency;
 	
-	public SlotsQuestionPanel( String s, JPanel j, Statistics statistics ) {
+	private int counter;
+	
+	public SlotsQuestionPanel( String s, JPanel j, Statistics statistics, int counter ) {
 		stats = statistics;
 		slotspanel = j;
 		
@@ -51,6 +53,9 @@ public class SlotsQuestionPanel extends JPanel {
 		
 		sqp = this;
 		isCorrect = 1;
+		
+		 this.counter = counter;
+		
 		// Initialize question panel
 		panel = new JPanel();
 		panel.setBounds(48, 62, 700, 350);
@@ -100,13 +105,10 @@ public class SlotsQuestionPanel extends JPanel {
 			Question q = slots.askQuestion();
 			answer = q.getAnswer();
 			location = q.getLocation();	
-		}
-		
-		
-		
+		}	
 		
 		//Currency panel at the top left corner.
-		curPanel = new CurrencyPanel( stats.getCoin() ,stats.getCrystal() );
+		curPanel = new CurrencyPanel( stats );
 		add(curPanel); 
 		
 		//Initializing the buttons
@@ -152,28 +154,29 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("A"))
 					{
 						System.out.println( "CORRECT!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Correct!", "You answered correctly and gained prize!", JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 );
-							curPanel.repaint();
+							stats.addCoins( 20 * counter);
+							stats.addCrystal( 1 * counter);
+							curPanel.update( stats);
 							// TODO: IMPORTANT!!!
-							mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							mainCurrency.repaint();
+							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
+							//mainCurrency.repaint();
 						}
 						
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong", "Wrong answer :( It was " + answer, JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer, "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
 					if ( isCorrect == 0 )
 					{
-						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
+						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );						
 						frame.dispose();
 					}
 					
@@ -188,20 +191,19 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("B"))
 					{
 						System.out.println( "CORRECT!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Correct!", "You answered correctly and gained prize!", JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 );
-							curPanel.repaint();
-							mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							mainCurrency.repaint();
+							stats.addCoins( 20 * counter);
+							stats.addCrystal( 1 * counter);
+							curPanel.update( stats);							
 						}
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong", "Wrong answer :( It was " + answer, JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer , "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
 					
@@ -221,20 +223,21 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("C"))
 					{
 						System.out.println( "CORRECT!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Correct!", "You answered correctly and gained prize!", JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 );
-							curPanel.repaint();
-							mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							mainCurrency.repaint();
+							stats.addCoins( 20 * counter);
+							stats.addCrystal( 1 * counter);
+							curPanel.update( stats);
+							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
+							//mainCurrency.repaint();
 						}
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong", "Wrong answer :( It was " + answer, JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer , "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
 					
@@ -254,21 +257,22 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("D"))
 					{
 						System.out.println( "CORRECT!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Correct!", "You answered correctly and gained prize!", JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null,  "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 );
-							curPanel.repaint();
-							mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							mainCurrency.repaint();
+							stats.addCoins( 20 * counter);
+							stats.addCrystal( 1 * counter);
+							curPanel.update( stats);
+							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
+							//mainCurrency.repaint();
 						}
 						
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong", "Wrong answer :( It was " + answer, JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer , "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
 					
@@ -291,20 +295,21 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("E"))
 					{
 						System.out.println( "CORRECT!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Correct!", "You answered correctly and gained prize!", JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 );
-							curPanel.repaint();
-							mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							mainCurrency.repaint();
+							stats.addCoins( 20 * counter);
+							stats.addCrystal( 1 * counter);
+							curPanel.update( stats);
+							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
+							//mainCurrency.repaint();
 						}
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong", "Wrong answer :( It was " + answer, JOptionPane.DEFAULT_OPTION,
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer , "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
 					
@@ -315,13 +320,7 @@ public class SlotsQuestionPanel extends JPanel {
 					}
 				}
 			}
-		});
-		
-
-		
-		
-		
-		
+		});		
 		
 		add(panel);
 		
@@ -354,6 +353,11 @@ public class SlotsQuestionPanel extends JPanel {
 	public SlotsQuestionPanel getPanel()
 	{
 		return this;
+	}
+	
+	public void updateStats()
+	{
+		
 	}
 	
 }

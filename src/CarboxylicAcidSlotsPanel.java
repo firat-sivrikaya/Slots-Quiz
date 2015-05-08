@@ -1,14 +1,9 @@
 /*
- * AlcoholEtherSlots Slots
+ * Hydrocarbon Slots
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
  */
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import javax.swing.Timer;
 
@@ -18,25 +13,28 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+import javax.sound.sampled.*;
+
 public class CarboxylicAcidSlotsPanel extends JPanel {
 	
 	//VARIABLES
+	
 	private Statistics stats;
 	
 	//images variables
 	private ImageIcon[] icon, numbers, counters;
 	private Image background;
 	private ImageIcon sloton, slotoff, header;
+	
 	//sounds variables
-	private File clickSound4;
-	private File winSlot4;
+	private File clickSound;
+	private File winSlot;
 	
-	private AudioInputStream createClick4;
-	private AudioInputStream createWin4;
+	private AudioInputStream createClick;
+	private AudioInputStream createWin;
 	
-	private Clip startSound4; 
-	private Clip winSound4;
-	
+	private Clip startSound; 
+	private Clip winSound;
 	//integer variables
 	private int first; //to start spin, 'first' should be '0'
 	private int[] saver; //to control line equalities and find the counter
@@ -62,7 +60,6 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 
 	//CONSTRUCTORS
 	public CarboxylicAcidSlotsPanel( Statistics statistics ){
-		
 		
 		stats = statistics;
 		//create the arrays
@@ -96,7 +93,7 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 		numbers[9] = new ImageIcon("images/numbers10.png");
 		
 		//currency panel
-		currencyPanel = new CurrencyPanel(0,0); //create
+		currencyPanel = new CurrencyPanel( stats); //create
 		currencyPanel.setLocation(0, 0); //setting location
 		
 		//spin button pictures
@@ -111,8 +108,8 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 		button.setFocusPainted(false); 
 		button.setOpaque(false);
 		button.setContentAreaFilled(false);
-		button.setBorderPainted(false);
-		button.setFocusable( false);
+		button.setBorderPainted(false);	
+		button.setFocusable(false);
 		//add listener to button
 		button.addActionListener(new ButtonListener());
 		
@@ -163,7 +160,7 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 		add(panel);
 		
 		//edit slots panel
-		panel.setPreferredSize(new Dimension (330, 330)); //dimension
+		setBounds( 0, 0, 800, 600);
 		panel.setBackground(Color.black); //background
 		
 		//add counter label to main panel
@@ -175,7 +172,7 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 		
 		//header panel
 		label2 = new JLabel(""); //create
-		label2.setBounds(81, -71, 800, 430); //locate
+		label2.setBounds(81, -110, 800, 430); //locate
 		add(label2); //add to main panel
 		label2.setIcon(header); //full with header icon
 		
@@ -267,72 +264,82 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 			}
 		}
 	}
-	
+		
 	//button listener
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
-			//set every image to gif
-			for ( int i = 0; i<9 ; i++)
-			{
-				label[i].setIcon(icon[0]);
-				label1.setIcon(counters[0]);
-			}
-			//change button picture
-			button.setIcon(sloton);
-			//set every number label to start settings
-			label_1.setIcon(numbers[0]);
-			label_2.setIcon(numbers[1]);
-			label_3.setIcon(numbers[2]);
-			label_4.setIcon(numbers[3]);
-			label_5.setIcon(numbers[4]);
-			label_6.setIcon(numbers[0]);
-			label_7.setIcon(numbers[3]);
-			label_8.setIcon(numbers[2]);
-			label_9.setIcon(numbers[1]);
-			label_10.setIcon(numbers[4]);
 			
-			//set first to start settings
-			first=0;
-			//start timers
-			timer.start();
-			timer2.start();
-			//start the sound when triggered
-			if(event.getSource()==button){
-				clickSound4 = new File("sounds/slot_payoff.wav");
+			if(stats.enoughCoin( 5))
+			{
+				stats.spendCoins( 5);
+				currencyPanel.update(stats);
+			
+				//set every image to gif
+				for ( int i = 0; i<9 ; i++)
+				{
+					label[i].setIcon(icon[0]);
+					label1.setIcon(counters[0]);
+				}
+				//change button picture
+				button.setIcon(sloton);
+				//set every number label to start settings
+				label_1.setIcon(numbers[0]);
+				label_2.setIcon(numbers[1]);
+				label_3.setIcon(numbers[2]);
+				label_4.setIcon(numbers[3]);
+				label_5.setIcon(numbers[4]);
+				label_6.setIcon(numbers[0]);
+				label_7.setIcon(numbers[3]);
+				label_8.setIcon(numbers[2]);
+				label_9.setIcon(numbers[1]);
+				label_10.setIcon(numbers[4]);
 				
-				try {
-					createClick4 =  AudioSystem.getAudioInputStream(clickSound4);
+				//set first to start settings
+				first=0;
+				//start timers
+				timer.start();
+				timer2.start();
+				//start the sound when triggered
+				if(event.getSource()==button){
+					clickSound = new File("sounds/slot_payoff.wav");
+					
 					try {
-						startSound4 = AudioSystem.getClip();
-						
-						
-					} catch (LineUnavailableException e) {
+						createClick =  AudioSystem.getAudioInputStream(clickSound);
+						try {
+							startSound = AudioSystem.getClip();
+							
+							
+						} catch (LineUnavailableException e) {
+							
+							e.printStackTrace();
+						}
+					} catch (UnsupportedAudioFileException e) {
+						  
+						e.printStackTrace();
+					} catch (IOException e) {
 						
 						e.printStackTrace();
+					} 
+					
+					try {
+						startSound.open(createClick);
+					} catch (LineUnavailableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				} catch (UnsupportedAudioFileException e) {
-					  
-					e.printStackTrace();
-				} catch (IOException e) {
-					
-					e.printStackTrace();
-				} 
+				startSound.start();
 				
-				try {
-					startSound4.open(createClick4);
-				} catch (LineUnavailableException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			   
 				}
-			startSound4.start();
-			
-			
-		   
+			}				
+			else
+			{
+				JOptionPane.showOptionDialog(null, " You dont have enough coins!!!","Oopss" ,JOptionPane.DEFAULT_OPTION,
+				        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 			}
-					
 		}
 	}
 	
@@ -370,12 +377,12 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 			}
 		}
 		if(counter!=0){
-			winSlot4 = new File("sounds/win.wav");
+			winSlot = new File("sounds/win.wav");
 		
 		try {
-			createWin4 =  AudioSystem.getAudioInputStream(winSlot4);
+			createWin =  AudioSystem.getAudioInputStream(winSlot);
 			try {
-				winSound4 = AudioSystem.getClip();
+				winSound = AudioSystem.getClip();
 				
 				
 			} catch (LineUnavailableException e) {
@@ -391,7 +398,7 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 		} 
 		
 		try {
-			winSound4.open(createWin4);
+			winSound.open(createWin);
 		} catch (LineUnavailableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -399,14 +406,34 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		winSound4.start();
+		winSound.start();
+		
+		// Pop up the question panel in a new frame
+		// TODO: CHANGE THE QUESTION AS HYDROCARBON AS SOON AS HYDROCARBON QUESTIONS ARE WRITTEN
 		JFrame frame = new JFrame("Question");
-		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats);
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats, counter );
 		frame.getContentPane().add( qpanel );
-		frame.setBounds(400, 400, 800, 600);
-		frame.setVisible( true );
-		}
+		frame.setBounds(100, 100, 800, 600);
+		frame.setVisible( true );		
+		frame.setResizable( false);
+		
+		frame.addWindowListener(new WindowAdapter() {			
+			public void windowActivated(WindowEvent e) {
+				//if you uncomment, it will make this panel not-visible when frame appeared
+				//setVisible( false);
+				currencyPanel.update( stats);
+				
+			}
 			
+			public void windowDeactivated(WindowEvent e) {
+				currencyPanel.update( stats);
+				//setVisible( true);
+			}
+			public void windowClosed(WindowEvent e) {
+				currencyPanel.update( stats);				
+			}
+		});
+		}	
 		
 		return counter; //return the ranked number
 			
@@ -415,7 +442,20 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 	//boolean method to open question
 	public boolean isTriggered(){
 		if(lineCounter()>0)
+		{
 			return true;
+		}
 		return false;
 	}
+	
+	public CurrencyPanel getCurrencyPanel()
+	{
+		return currencyPanel;
+	}	
+	
+	public void update( Statistics stats)
+	{
+		currencyPanel.update( stats);
+	}
+	
 }

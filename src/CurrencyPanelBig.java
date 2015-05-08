@@ -6,6 +6,7 @@
  */
 
 import java.awt.*;
+
 import javax.swing.*;
 
 
@@ -13,14 +14,18 @@ public class CurrencyPanelBig extends JPanel {
 	
 	private int coin;	
 	private int crystal;
-
+	private Statistics stats;	
+	private JLabel coinLabel;
+	private JLabel crysLabel;
 	/**
 	 * Create the panel.
 	 */
-	public CurrencyPanelBig( int coin, int crystal)
+	public CurrencyPanelBig( Statistics stat)
 	{
-		this.coin = coin;
-		this.crystal = crystal;
+		stats = stat;
+		
+		this.coin = stats.getCoin();
+		this.crystal = stats.getCrystal();		
 		
 		setLayout(null);
 		
@@ -28,12 +33,12 @@ public class CurrencyPanelBig extends JPanel {
 		
 		setBorder(BorderFactory.createMatteBorder( 1, 1, 1, 1,Color.black));
 		
-		JLabel coinLabel = new JLabel( coin + "");
+		coinLabel = new JLabel( coin + "");
 		coinLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		coinLabel.setBounds(57, 20, 58, 22);
 		add(coinLabel);
 		
-		JLabel crysLabel = new JLabel( crystal + "");
+		crysLabel = new JLabel( crystal + "");
 		crysLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		crysLabel.setBounds(57, 60, 58, 29);
 		add(crysLabel);
@@ -49,7 +54,6 @@ public class CurrencyPanelBig extends JPanel {
 		add(crysPict);
 		
 		setBackground( Color.WHITE);
-
 	}
 	
 	public void paintComponent( Graphics g)
@@ -59,5 +63,14 @@ public class CurrencyPanelBig extends JPanel {
 		g.drawLine(0, this.getHeight() / 2, this.getWidth(), this.getHeight() / 2);
 		
 		g.drawLine(this.getHeight() / 2, 0, this.getHeight() / 2,  this.getWidth() / 2);
+	}
+	
+	public void update( Statistics stat)
+	{
+		coin = stat.getCoin();
+		crystal = stat.getCrystal();
+		
+		coinLabel.setText( coin + "");
+		crysLabel.setText( crystal + "");
 	}
 }

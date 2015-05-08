@@ -23,21 +23,21 @@ public class OptionsPanel extends JPanel {
 	private Image background;
 	
 	//sound variables
-    private File buttonSound2;
-	
-	
-	private AudioInputStream createButtonSound2;
-	
-	
-	private Clip startButtonSound2;
+    private File buttonSound2;	
+	private AudioInputStream createButtonSound2;	
+	private Clip startButtonSound2;	
 	
 	private ProjectButton backButton;
+	private Statistics stats;
+	private CurrencyPanel curpanel;
 	
-	public OptionsPanel()
+	public OptionsPanel( Statistics stats)
 	{
 		setVisible( true);			
 		setBounds( 0,0, 800, 600);
 		setLayout(null);
+		
+		this.stats = stats;
 		
 		backButton = new ProjectButton("BACK");
 		backButton.addActionListener(new ActionListener() {
@@ -85,8 +85,8 @@ public class OptionsPanel extends JPanel {
 		
 		backButton.setBounds( 250, 400, 300, 50);
 		add(backButton);
-
-		CurrencyPanel curpanel = new CurrencyPanel( 200, 4);
+		
+		curpanel = new CurrencyPanel( stats);
 		add( curpanel);	
 	}
 	
@@ -98,5 +98,11 @@ public class OptionsPanel extends JPanel {
 		
 		g.drawImage( background, 0, 0, null);		
 	}
+	
+	public void update( Statistics stats)
+	{
+		curpanel.update( stats);
+	}
+
 
 }

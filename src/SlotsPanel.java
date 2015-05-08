@@ -25,28 +25,30 @@ public class SlotsPanel extends JPanel {
 	
 	//image variables
 	private Image background;
+	private Statistics stats;
+	private CurrencyPanel curpanel;
+	private ProjectButton aldeBtn;
+	private ProjectButton alcoBtn;
+	private ProjectButton carboxBtn;
+	private SlotsPanel panel;
 	
-	//sound variables
-	
-private File lockSound;
-	
-	
-private AudioInputStream createLockSound;
-	
-	
-private Clip startLockSound;
+	//sound variables	
+	private File lockSound;		
+	private AudioInputStream createLockSound;		
+	private Clip startLockSound;
 	
 	private String next;
 	
-	public SlotsPanel() {		
+	public SlotsPanel( Statistics stats) {		
 		setVisible( true);
 		setFocusable(true);
 		requestFocusInWindow();		
 		
 		next = "";
-				
+		this.stats = stats;
+		panel = this;
 		
-		CurrencyPanel curpanel = new CurrencyPanel( 200, 4);
+		curpanel = new CurrencyPanel( stats);
 		add( curpanel);
 		
 		ProjectButton hydroBtn = new ProjectButton("HYDROCARBONS");
@@ -95,38 +97,517 @@ private Clip startLockSound;
 		hydroBtn.setFocusable(false);
 		add(hydroBtn);
 		
-		ProjectButton aldeBtn = new ProjectButton("Locked-ALDEHYDES/KETONS");
-		aldeBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				next = "aldehydes";
-				setVisible( false);	
-			}
-		});
+		//////////////////////////////////////////////////////////////////////////////////////////////////////
+		if( stats.getAlde())
+		{
+			aldeBtn = new ProjectButton("ALDEHYDES/KETONS");		
+			aldeBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					next = "aldehydes";
+					
+					if(event.getSource()==aldeBtn){
+						lockSound = new File("sounds/door_lock.wav");
+						
+						try {
+							createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+							try {
+								startLockSound = AudioSystem.getClip();
+								
+								
+							} catch (LineUnavailableException e) {
+								
+								e.printStackTrace();
+							}
+						} catch (UnsupportedAudioFileException e) {
+							  
+							e.printStackTrace();
+						} catch (IOException e) {
+							
+							e.printStackTrace();
+						} 
+						
+						try {
+							startLockSound.open(createLockSound);
+						} catch (LineUnavailableException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						startLockSound.start();
+						setVisible( false);
+					}
+					
+					setVisible( false);	
+				}
+			});
+			
+		}
+		
+		else
+		{
+			aldeBtn = new ProjectButton("Locked-ALDEHYDES/KETONS");
+			aldeBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					//Custom button text
+					Object[] options = {"Unlock the Level", "Cancel"};
+					
+					int unlock;
+					
+					unlock = JOptionPane.showOptionDialog( null, " THIS LEVEL IS LOCKED","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+						    null,     			//do not use a custom Icon
+						    options,  			//the titles of buttons
+						    options[0]); 		//default button title
+					
+					if( unlock == JOptionPane.YES_OPTION)
+					{
+						if( !stats.enoughCrystal(5))
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
+							stats.spendCrystal( 5);
+							
+							stats.setAlde( true);
+							panel.update( stats);	
+							
+							remove( aldeBtn);
+							
+							panel.aldeBtn = new ProjectButton("ALDEHYDES/KETONS");	
+							
+							aldeBtn.setBounds(75, 400, 300, 50);
+							aldeBtn.setFocusable(false);
+							aldeBtn.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent event) {
+									next = "aldehydes";
+									
+									if(event.getSource()==aldeBtn){
+										lockSound = new File("sounds/door_lock.wav");
+										
+										try {
+											createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+											try {
+												startLockSound = AudioSystem.getClip();
+												
+												
+											} catch (LineUnavailableException e) {
+												
+												e.printStackTrace();
+											}
+										} catch (UnsupportedAudioFileException e) {
+											  
+											e.printStackTrace();
+										} catch (IOException e) {
+											
+											e.printStackTrace();
+										} 
+										
+										try {
+											startLockSound.open(createLockSound);
+										} catch (LineUnavailableException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										} catch (IOException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+										startLockSound.start();
+										setVisible( false);
+									}
+									
+									setVisible( false);	
+								}
+							});
+							add(aldeBtn);							
+							
+							next = "aldehydes";	
+							
+							if(event.getSource()==aldeBtn){
+								lockSound = new File("sounds/door_lock.wav");
+								
+								try {
+									createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+									try {
+										startLockSound = AudioSystem.getClip();
+										
+										
+									} catch (LineUnavailableException e) {
+										
+										e.printStackTrace();
+									}
+								} catch (UnsupportedAudioFileException e) {
+									  
+									e.printStackTrace();
+								} catch (IOException e) {
+									
+									e.printStackTrace();
+								} 
+								
+								try {
+									startLockSound.open(createLockSound);
+								} catch (LineUnavailableException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								startLockSound.start();
+								setVisible( false);
+							}
+							
+							setVisible( false);	
+						
+						}
+					}
+				}
+			});			
+		}			
 		aldeBtn.setBounds(75, 400, 300, 50);
 		aldeBtn.setFocusable(false);
 		add(aldeBtn);
 		
-		ProjectButton alcoBtn = new ProjectButton("Locked-ALCOHOLS/ETHERS");
-		alcoBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				next = "alcohols";
-				setVisible( false);				
-			}
-		});
+		//////////////////////////////////////////////////////////////////////////////////////////////////////
+		if( stats.getAlco())
+		{
+			alcoBtn = new ProjectButton("ALCOHOLS/ETHERS");		
+			alcoBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					next = "alcohols";
+					
+					if(event.getSource()==alcoBtn){
+						lockSound = new File("sounds/door_lock.wav");
+						
+						try {
+							createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+							try {
+								startLockSound = AudioSystem.getClip();
+								
+								
+							} catch (LineUnavailableException e) {
+								
+								e.printStackTrace();
+							}
+						} catch (UnsupportedAudioFileException e) {
+							  
+							e.printStackTrace();
+						} catch (IOException e) {
+							
+							e.printStackTrace();
+						} 
+						
+						try {
+							startLockSound.open(createLockSound);
+						} catch (LineUnavailableException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						startLockSound.start();
+						setVisible( false);
+					}
+					
+					setVisible( false);	
+				}
+			});
+			
+		}
+		
+		else
+		{
+			alcoBtn = new ProjectButton("Locked-ALCOHOLS/ETHERS");
+			alcoBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					//Custom button text
+					Object[] options = {"Unlock the Level", "Cancel"};
+					
+					int unlock;
+					
+					unlock = JOptionPane.showOptionDialog( null, " THIS LEVEL IS LOCKED","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+						    null,     			//do not use a custom Icon
+						    options,  			//the titles of buttons
+						    options[0]); 		//default button title
+					
+					if( unlock == JOptionPane.YES_OPTION)
+					{
+						if( !stats.enoughCrystal(5))
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
+							stats.spendCrystal( 5);
+							
+							stats.setAlco( true);
+							panel.update( stats);	
+							
+							remove( alcoBtn);
+							
+							panel.alcoBtn = new ProjectButton("ALCOHOLS/ETHERS");								
+							alcoBtn.setBounds(425, 270, 300, 50);
+							alcoBtn.setFocusable(false);
+							alcoBtn.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent event) {
+									next = "alcohols";
+									
+									if(event.getSource()==alcoBtn){
+										lockSound = new File("sounds/door_lock.wav");
+										
+										try {
+											createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+											try {
+												startLockSound = AudioSystem.getClip();
+												
+												
+											} catch (LineUnavailableException e) {
+												
+												e.printStackTrace();
+											}
+										} catch (UnsupportedAudioFileException e) {
+											  
+											e.printStackTrace();
+										} catch (IOException e) {
+											
+											e.printStackTrace();
+										} 
+										
+										try {
+											startLockSound.open(createLockSound);
+										} catch (LineUnavailableException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										} catch (IOException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+										startLockSound.start();
+										setVisible( false);
+									}
+									
+									setVisible( false);	
+								}
+							});
+							add(alcoBtn);							
+							
+							next = "alcohols";	
+							
+							if(event.getSource()==alcoBtn){
+								lockSound = new File("sounds/door_lock.wav");
+								
+								try {
+									createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+									try {
+										startLockSound = AudioSystem.getClip();
+										
+										
+									} catch (LineUnavailableException e) {
+										
+										e.printStackTrace();
+									}
+								} catch (UnsupportedAudioFileException e) {
+									  
+									e.printStackTrace();
+								} catch (IOException e) {
+									
+									e.printStackTrace();
+								} 
+								
+								try {
+									startLockSound.open(createLockSound);
+								} catch (LineUnavailableException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								startLockSound.start();
+								setVisible( false);
+							}
+							
+							setVisible( false);	
+						
+						}
+					}
+				}
+			});			
+		}			
 		alcoBtn.setBounds(425, 270, 300, 50);
 		alcoBtn.setFocusable(false);
 		add(alcoBtn);
 		
-		ProjectButton carboxBtn = new ProjectButton("Locked-CARBOXCYL�C ACIDS");
-		carboxBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				next = "carboxacids";
-				setVisible( false);
-			}
-		});
+		//////////////////////////////////////////////////////////////////////////////////////////////////////
+		if( stats.getCarbox())
+		{
+			carboxBtn = new ProjectButton("Locked-CARBOXCYLIC ACIDS");		
+			carboxBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					next = "carboxacids";
+					
+					if(event.getSource()==carboxBtn){
+						lockSound = new File("sounds/door_lock.wav");
+						
+						try {
+							createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+							try {
+								startLockSound = AudioSystem.getClip();
+								
+								
+							} catch (LineUnavailableException e) {
+								
+								e.printStackTrace();
+							}
+						} catch (UnsupportedAudioFileException e) {
+							  
+							e.printStackTrace();
+						} catch (IOException e) {
+							
+							e.printStackTrace();
+						} 
+						
+						try {
+							startLockSound.open(createLockSound);
+						} catch (LineUnavailableException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						startLockSound.start();
+						setVisible( false);
+					}
+					
+					setVisible( false);	
+				}
+			});
+			
+		}
+		
+		else
+		{
+			carboxBtn = new ProjectButton("Locked-CARBOXCYLIC ACIDS");
+			carboxBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					//Custom button text
+					Object[] options = {"Unlock the Level", "Cancel"};
+					
+					int unlock;
+					
+					unlock = JOptionPane.showOptionDialog( null, " THIS LEVEL IS LOCKED","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+						    null,     			//do not use a custom Icon
+						    options,  			//the titles of buttons
+						    options[0]); 		//default button title
+					
+					if( unlock == JOptionPane.YES_OPTION)
+					{
+						if( !stats.enoughCrystal(5))
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
+							stats.spendCrystal( 5);
+							
+							stats.setCarbox( true);
+							panel.update( stats);	
+							
+							remove( carboxBtn);
+							
+							panel.carboxBtn = new ProjectButton("CARBOXCYLIC ACIDS");	
+							
+							carboxBtn.setBounds(425, 400, 300, 50);
+							carboxBtn.setFocusable(false);
+							carboxBtn.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent event) {
+									next = "carboxacids";
+									
+									if(event.getSource()==carboxBtn){
+										lockSound = new File("sounds/door_lock.wav");
+										
+										try {
+											createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+											try {
+												startLockSound = AudioSystem.getClip();
+												
+												
+											} catch (LineUnavailableException e) {
+												
+												e.printStackTrace();
+											}
+										} catch (UnsupportedAudioFileException e) {
+											  
+											e.printStackTrace();
+										} catch (IOException e) {
+											
+											e.printStackTrace();
+										} 
+										
+										try {
+											startLockSound.open(createLockSound);
+										} catch (LineUnavailableException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										} catch (IOException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+										startLockSound.start();
+										setVisible( false);
+									}
+									
+									setVisible( false);	
+								}
+							});
+							add(carboxBtn);							
+							
+							next = "carboxacids";	
+							
+							if(event.getSource()==carboxBtn){
+								lockSound = new File("sounds/door_lock.wav");
+								
+								try {
+									createLockSound	 =  AudioSystem.getAudioInputStream(lockSound);
+									try {
+										startLockSound = AudioSystem.getClip();
+										
+										
+									} catch (LineUnavailableException e) {
+										
+										e.printStackTrace();
+									}
+								} catch (UnsupportedAudioFileException e) {
+									  
+									e.printStackTrace();
+								} catch (IOException e) {
+									
+									e.printStackTrace();
+								} 
+								
+								try {
+									startLockSound.open(createLockSound);
+								} catch (LineUnavailableException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								startLockSound.start();
+								setVisible( false);
+							}
+							
+							setVisible( false);							
+						}
+					}
+				}
+			});			
+		}			
 		carboxBtn.setBounds(425, 400, 300, 50);
 		carboxBtn.setFocusable(false);
 		add(carboxBtn);
+		
 		
 		JLabel slotsLabel = new JLabel("");
 		slotsLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
@@ -153,5 +634,12 @@ private Clip startLockSound;
 	{
 		return next;
 	}
+	
+	public void update( Statistics stat)
+	{
+		curpanel.update( stat);
+		stats = stat;
+	}
+
 	
 }

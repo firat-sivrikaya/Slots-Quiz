@@ -3,5 +3,6 @@
 	<classpathentry excluding="mysql-connector-java-5.1.35/src/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SlotsQuizLibrary"/>
+	<classpathentry kind="lib" path="C:/Users/DjCedrics/Eclipse/Slots-Quiz/lib/mysql-connector-java-5.1.35-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

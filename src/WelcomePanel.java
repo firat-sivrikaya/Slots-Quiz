@@ -25,29 +25,28 @@ public class WelcomePanel extends JPanel {
 	private Image background;
 	
 	//sound variables
-	private File buttonSound;
-	
-	
+	private File buttonSound;	
 	private AudioInputStream createButtonSound;
-	
-	
 	private Clip startButtonSound;
 	
-	
+	private CurrencyPanel curpanel ;
 	private ProjectButton playButton;
 	private ProjectButton helpButton;
 	private ProjectButton optionButton;
 	private ProjectButton exitButton;
+	private Statistics stats;
 	
 	private String next = "";
 	
-	public WelcomePanel() {
+	public WelcomePanel( Statistics stats) {
 		
 		setVisible( true);		
 		setBounds( 0,0, 800, 600);		
 		setLayout(null);
 		setFocusable(false);
 		requestFocusInWindow();
+		
+		this.stats = stats;
 		
 		JLabel titleLabel = new JLabel("");
 		titleLabel.setIcon(new ImageIcon("images/6ondddiQAq.png"));
@@ -235,15 +234,12 @@ public class WelcomePanel extends JPanel {
 					System.exit( 0);
 				}
 			}
-		});
-			
-			
-			
+		});			
 		
 		exitButton.setBounds(230, 492, 326, 35);
 		add(exitButton);
-		
-		CurrencyPanel curpanel = new CurrencyPanel( 200, 4);
+				
+		curpanel = new CurrencyPanel( stats);
 		add( curpanel);		
 	}
 	
@@ -260,5 +256,10 @@ public class WelcomePanel extends JPanel {
 	{
 		return next;
 	}	
+	
+	public void update( Statistics stats)
+	{
+		curpanel.update( stats);
+	}
 	
 }

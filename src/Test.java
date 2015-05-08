@@ -14,25 +14,22 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		WelcomePanel wel = new WelcomePanel();
 		
-		PlayPanel play = new PlayPanel();
+		Statistics stats = new Statistics();
 		
-		SlotsPanel slots = new SlotsPanel();
+		WelcomePanel wel = new WelcomePanel( stats);
 		
-		MenuPanel menu = new MenuPanel();
+		PlayPanel play = new PlayPanel( stats);
 		
-		HelpPanel help = new HelpPanel();
+		SlotsPanel slots = new SlotsPanel( stats);
 		
-		StatisticsPanel stat = new StatisticsPanel();
+		MenuPanel menu = new MenuPanel( stats);
 		
-		SlotsQuestionPanel panel = new SlotsQuestionPanel("HydroCarbon", play,  new Statistics() );
+		HelpPanel help = new HelpPanel( stats);
 		
+		StatisticsPanel stat = new StatisticsPanel( stats);
 		
-		
-
-
-		
+		SlotsQuestionPanel panel = new SlotsQuestionPanel("HydroCarbon", play,  new Statistics(), 1 );	
 		
 		
 		MainPanel main = new MainPanel();
@@ -45,8 +42,8 @@ public class Test {
 		//frame.getContentPane().add( menu);	
 		//frame.getContentPane().add( help);
 		//frame.getContentPane().add( stat);
-		//frame.getContentPane().add( main);
-		frame.getContentPane().add( panel);
+		frame.getContentPane().add( main);
+		//frame.getContentPane().add( panel);
 		
 		
 		frame.setVisible( true);

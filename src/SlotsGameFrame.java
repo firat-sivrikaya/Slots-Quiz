@@ -15,9 +15,9 @@ public class SlotsGameFrame {
 //		JPanel mainPanel = new JPanel();
 //		mainPanel.setBackground(Color.black);
 		mainPanel.setPreferredSize(new Dimension(800, 600));
-		SlotsPanel slotsPanel = new SlotsPanel();
-		mainPanel.add(slotsPanel);
-		slotsPanel.setLocation(800, 2);
+		//SlotsPanel slotsPanel = new SlotsPanel();
+		//mainPanel.add(slotsPanel);
+		//slotsPanel.setLocation(800, 2);
 		frame.getContentPane().add(mainPanel);
 		frame.pack();
 		frame.setVisible(true);

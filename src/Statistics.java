@@ -14,8 +14,8 @@ public class Statistics implements Serializable
 	
 	public Statistics()
 	{
-		coin = 10;
-		crystal = 0;
+		coin = 50;
+		crystal = 5;
 		
 		hydroOpen  = true;
 		alcoOpen   = false;
@@ -41,6 +41,32 @@ public class Statistics implements Serializable
 	public void addCrystal( int amount )
 	{
 		crystal = crystal + amount;
+	}
+	
+	public void spendCoins( int amount )
+	{
+		coin = coin - amount;
+	}	
+	
+	public void spendCrystal( int amount )
+	{
+		crystal = crystal - amount;
+	}
+	
+	public boolean enoughCoin( int amount)
+	{
+		if( coin >= amount)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean enoughCrystal( int amount)
+	{
+		if( crystal >= amount)
+			return true;
+		else
+			return false;
 	}
 	
 	public boolean[] openedLevels()
@@ -73,6 +99,26 @@ public class Statistics implements Serializable
 	public void setCarbox( boolean b)
 	{
 		carboxOpen = b;
+	}
+	
+	public boolean getHyrdo()
+	{
+		return hydroOpen;
+	}
+	
+	public boolean getAlco()
+	{
+		return alcoOpen;
+	}
+	
+	public boolean getAlde()
+	{
+		return aldeOpen;
+	}
+	
+	public boolean getCarbox( )
+	{
+		return carboxOpen;
 	}
 	
 	public String toString()

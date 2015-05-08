@@ -5,20 +5,25 @@ by H�seyin BEYAN
  * Panel to show statistics page of our project
  */
 import java.awt.*;
+
 import javax.swing.*;
+
 
 
 public class StatisticsPanel extends JPanel {
 
 	private Image background;
+	private Statistics stats;
+	private CurrencyPanelBig cur;
 	
-	public StatisticsPanel() 
+	public StatisticsPanel( Statistics stats) 
 	{
 		setVisible( true);				
 		setBounds( 0,0, 800, 600);		
 		setLayout(null);
+		this.stats = stats;
 		
-		CurrencyPanelBig cur = new CurrencyPanelBig( 100, 4);
+		cur = new CurrencyPanelBig( stats);
 		cur.setBounds( 300, 157, 200, 100);
 		add( cur);
 		
@@ -47,5 +52,10 @@ public class StatisticsPanel extends JPanel {
 		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);		
+	}
+	
+	public void update( Statistics stats)
+	{
+		cur.update( stats);
 	}
 }

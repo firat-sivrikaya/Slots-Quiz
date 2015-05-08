@@ -93,7 +93,7 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		numbers[9] = new ImageIcon("images/numbers10.png");
 		
 		//currency panel
-		currencyPanel = new CurrencyPanel( stats.getCoin(), stats.getCrystal() ); //create
+		currencyPanel = new CurrencyPanel( stats); //create
 		currencyPanel.setLocation(0, 0); //setting location
 		
 		//spin button pictures
@@ -172,7 +172,7 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		
 		//header panel
 		label2 = new JLabel(""); //create
-		label2.setBounds(81, -71, 800, 430); //locate
+		label2.setBounds(81, -110, 800, 430); //locate
 		add(label2); //add to main panel
 		label2.setIcon(header); //full with header icon
 		
@@ -264,121 +264,82 @@ public class HydrocarbonSlotsPanel extends JPanel {
 			}
 		}
 	}
-	
-	//question frame listener
-	// TODO:
-	private class QuestionFrameListener implements WindowListener
-	{
-
-		@Override
-		public void windowOpened(WindowEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowClosing(WindowEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowClosed(WindowEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowIconified(WindowEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowDeiconified(WindowEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowActivated(WindowEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowDeactivated(WindowEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
 		
-	}
-	
 	//button listener
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
-			//set every image to gif
-			for ( int i = 0; i<9 ; i++)
-			{
-				label[i].setIcon(icon[0]);
-				label1.setIcon(counters[0]);
-			}
-			//change button picture
-			button.setIcon(sloton);
-			//set every number label to start settings
-			label_1.setIcon(numbers[0]);
-			label_2.setIcon(numbers[1]);
-			label_3.setIcon(numbers[2]);
-			label_4.setIcon(numbers[3]);
-			label_5.setIcon(numbers[4]);
-			label_6.setIcon(numbers[0]);
-			label_7.setIcon(numbers[3]);
-			label_8.setIcon(numbers[2]);
-			label_9.setIcon(numbers[1]);
-			label_10.setIcon(numbers[4]);
 			
-			//set first to start settings
-			first=0;
-			//start timers
-			timer.start();
-			timer2.start();
-			//start the sound when triggered
-			if(event.getSource()==button){
-				clickSound = new File("sounds/slot_payoff.wav");
+			if(stats.enoughCoin( 5))
+			{
+				stats.spendCoins( 5);
+				currencyPanel.update(stats);
+			
+				//set every image to gif
+				for ( int i = 0; i<9 ; i++)
+				{
+					label[i].setIcon(icon[0]);
+					label1.setIcon(counters[0]);
+				}
+				//change button picture
+				button.setIcon(sloton);
+				//set every number label to start settings
+				label_1.setIcon(numbers[0]);
+				label_2.setIcon(numbers[1]);
+				label_3.setIcon(numbers[2]);
+				label_4.setIcon(numbers[3]);
+				label_5.setIcon(numbers[4]);
+				label_6.setIcon(numbers[0]);
+				label_7.setIcon(numbers[3]);
+				label_8.setIcon(numbers[2]);
+				label_9.setIcon(numbers[1]);
+				label_10.setIcon(numbers[4]);
 				
-				try {
-					createClick =  AudioSystem.getAudioInputStream(clickSound);
+				//set first to start settings
+				first=0;
+				//start timers
+				timer.start();
+				timer2.start();
+				//start the sound when triggered
+				if(event.getSource()==button){
+					clickSound = new File("sounds/slot_payoff.wav");
+					
 					try {
-						startSound = AudioSystem.getClip();
-						
-						
-					} catch (LineUnavailableException e) {
+						createClick =  AudioSystem.getAudioInputStream(clickSound);
+						try {
+							startSound = AudioSystem.getClip();
+							
+							
+						} catch (LineUnavailableException e) {
+							
+							e.printStackTrace();
+						}
+					} catch (UnsupportedAudioFileException e) {
+						  
+						e.printStackTrace();
+					} catch (IOException e) {
 						
 						e.printStackTrace();
+					} 
+					
+					try {
+						startSound.open(createClick);
+					} catch (LineUnavailableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				} catch (UnsupportedAudioFileException e) {
-					  
-					e.printStackTrace();
-				} catch (IOException e) {
-					
-					e.printStackTrace();
-				} 
+				startSound.start();
 				
-				try {
-					startSound.open(createClick);
-				} catch (LineUnavailableException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			   
 				}
-			startSound.start();
-			
-			
-		   
+			}				
+			else
+			{
+				JOptionPane.showOptionDialog(null, " You dont have enough coins!!!","Oopss" ,JOptionPane.DEFAULT_OPTION,
+				        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 			}
-					
 		}
 	}
 	
@@ -450,13 +411,29 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		// Pop up the question panel in a new frame
 		// TODO: CHANGE THE QUESTION AS HYDROCARBON AS SOON AS HYDROCARBON QUESTIONS ARE WRITTEN
 		JFrame frame = new JFrame("Question");
-		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats );
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats, counter );
 		frame.getContentPane().add( qpanel );
-		frame.setBounds(400, 400, 800, 600);
-		frame.setVisible( true );
+		frame.setBounds(100, 100, 800, 600);
+		frame.setVisible( true );		
+		frame.setResizable( false);
 		
-		}
+		frame.addWindowListener(new WindowAdapter() {			
+			public void windowActivated(WindowEvent e) {
+				//if you uncomment, it will make this panel not-visible when frame appeared
+				//setVisible( false);
+				currencyPanel.update( stats);
+				
+			}
 			
+			public void windowDeactivated(WindowEvent e) {
+				currencyPanel.update( stats);
+				//setVisible( true);
+			}
+			public void windowClosed(WindowEvent e) {
+				currencyPanel.update( stats);				
+			}
+		});
+		}	
 		
 		return counter; //return the ranked number
 			
@@ -474,6 +451,11 @@ public class HydrocarbonSlotsPanel extends JPanel {
 	public CurrencyPanel getCurrencyPanel()
 	{
 		return currencyPanel;
+	}	
+	
+	public void update( Statistics stats)
+	{
+		currencyPanel.update( stats);
 	}
 	
 }

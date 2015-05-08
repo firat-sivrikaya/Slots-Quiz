@@ -13,14 +13,19 @@ public class CurrencyPanel extends JPanel {
 	
 	private int coin;	
 	private int crystal;
+	private Statistics stats;	
+	private JLabel coinLabel;
+	private JLabel crysLabel;
 
 	/**
 	 * Create the panel.
 	 */
-	public CurrencyPanel( int coin, int crystal)
+	public CurrencyPanel( Statistics stat)
 	{
-		this.coin = coin;
-		this.crystal = crystal;
+		stats = stat;
+		
+		coin = stats.getCoin();
+		crystal = stats.getCrystal();
 		
 		setLayout(null);
 		
@@ -28,11 +33,11 @@ public class CurrencyPanel extends JPanel {
 		
 		setBorder(BorderFactory.createMatteBorder( 1, 1, 1, 1,Color.black));
 		 
-		JLabel coinLabel = new JLabel( coin + "");
+		coinLabel = new JLabel( coin + "");
 		coinLabel.setBounds(35, 5, 46, 14);
 		add(coinLabel);
 		
-		JLabel crysLabel = new JLabel( crystal + "");
+		crysLabel = new JLabel( crystal + "");
 		crysLabel.setBounds(35, 30, 46, 14);
 		add(crysLabel);
 		
@@ -58,4 +63,14 @@ public class CurrencyPanel extends JPanel {
 		
 		g.drawLine(this.getHeight() / 2, 0, this.getHeight() / 2,  this.getWidth() / 2);
 	}
+	
+	public void update( Statistics stat)
+	{
+		coin = stat.getCoin();
+		crystal = stat.getCrystal();
+		
+		coinLabel.setText(coin + "");
+		crysLabel.setText( crystal + "");
+	}
+	
 }

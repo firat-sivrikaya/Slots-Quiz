@@ -94,7 +94,7 @@ public class ProjectButton extends JButton
 			setText( "");
 		}
 		
-		if( s.equals( "CARBOXCYL�C ACIDS"))
+		if( s.equals( "CARBOXCYLIC ACIDS"))
 		{
 			setIcon(new ImageIcon("images/buttons/carboxbutton.png"));
 			setText( "");
@@ -112,7 +112,7 @@ public class ProjectButton extends JButton
 			setText( "");
 		}
 		
-		if( s.equals( "Locked-CARBOXCYL�C ACIDS"))
+		if( s.equals( "Locked-CARBOXCYLIC ACIDS"))
 		{
 			setIcon(new ImageIcon("images/buttons/carboxbuttonlocked.png"));
 			setText( "");

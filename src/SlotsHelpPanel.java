@@ -38,6 +38,7 @@ public class SlotsHelpPanel extends JPanel {
 	private JList list;
 	private JLabel label;
 	private ListListener lst;
+	private CurrencyPanel cur;
 	
 	public SlotsHelpPanel() 
 	{
@@ -47,7 +48,8 @@ public class SlotsHelpPanel extends JPanel {
 		setFocusable(false);
 		requestFocusInWindow();
 		
-		CurrencyPanel cur = new CurrencyPanel( 100, 4);
+		Statistics stats = new Statistics();
+		cur = new CurrencyPanel( stats);
 		cur.setBounds( 0, 0, 100, 50);
 		add( cur);
 		
@@ -161,5 +163,10 @@ public class SlotsHelpPanel extends JPanel {
 	public void reset()
 	{
 		label.setText( "Welcome to Slots Quiz!");
+	}
+	
+	public void update( Statistics stats)
+	{
+		cur.update( stats);
 	}
 }

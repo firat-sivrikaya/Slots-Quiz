@@ -30,7 +30,6 @@ public class MainPanel extends JPanel {
 	private CarboxylicAcidSlotsPanel carbox;
 	private SlotsHelpPanel shp;
 	private Statistics statistics;
-	
 	private JPanel last;
 	
 	JPanel[] array;
@@ -43,31 +42,31 @@ public class MainPanel extends JPanel {
 		setFocusable(true);
 		requestFocusInWindow();
 		
-		wel = new WelcomePanel();
+		wel = new WelcomePanel( statistics);
 		wel.setVisible( true);
 		add(wel);
 		
-		play = new PlayPanel();
+		play = new PlayPanel( statistics);
 		play.setVisible( false);
 		add( play);
 		
-		opt = new OptionsPanel();
+		opt = new OptionsPanel( statistics);
 		opt.setVisible( false);
 		add( opt);
 		
-		slots = new SlotsPanel();
+		slots = new SlotsPanel( statistics);
 		slots.setVisible( false);
 		add( slots);		
 		
-		help = new HelpPanel();
+		help = new HelpPanel( statistics);
 		help.setVisible( false);
 		add( help);	
 		
-		stat = new StatisticsPanel();
+		stat = new StatisticsPanel( statistics);
 		stat.setVisible( false);
 		add( stat);	
 		
-		menu = new MenuPanel();
+		menu = new MenuPanel( statistics);
 		menu.setVisible( false);
 		add( menu);	
 		
@@ -87,7 +86,7 @@ public class MainPanel extends JPanel {
 		carbox.setVisible( false);
 		add( carbox);
 		
-		cgp = new CoinGeneratorPanel();
+		cgp = new CoinGeneratorPanel( statistics);
 		cgp.setVisible( false );
 		add( cgp );		
 		
@@ -107,19 +106,27 @@ public class MainPanel extends JPanel {
 		wel.addComponentListener(new ComponentAdapter() {			
 			public void componentHidden(ComponentEvent e) {
 				if( wel.getNext().equals("help"))
-				{
+				{					
+					help.update( statistics);
 					help.setVisible( true);
 				}
 				if( wel.getNext().equals("play"))
-					play.setVisible( true);
+				{
+					play.update( statistics);
+					play.setVisible( true);					
+				}
 				if( wel.getNext().equals("options"))
-					opt.setVisible( true);
+				{
+					opt.update( statistics);
+					opt.setVisible( true);					
+				}
 			}
 		});
 		
 		opt.addComponentListener(new ComponentAdapter() {			
 			public void componentHidden(ComponentEvent e) {
 				wel.setVisible( true);
+				wel.update( statistics);
 			}
 		});
 		
@@ -127,6 +134,7 @@ public class MainPanel extends JPanel {
 			public void componentHidden(ComponentEvent e) {
 				help.reset();
 				wel.setVisible( true);
+				wel.update( statistics);
 			}
 		});
 		
@@ -134,6 +142,7 @@ public class MainPanel extends JPanel {
 			public void componentHidden(ComponentEvent e) {
 				help.reset();
 				menu.setVisible( true);
+				wel.update( statistics);
 			}
 		});
 		
@@ -142,13 +151,18 @@ public class MainPanel extends JPanel {
 				if( play.getNext().equals("slots"))
 				{
 					slots.setVisible( true);
+					slots.update( statistics);
 				}
 				if( play.getNext().equals("coinGen"))
 				{
 					cgp.setVisible( true);
+					cgp.update( statistics);
 				}
 				if( play.getNext().equals("back"))
+				{
 					wel.setVisible( true);
+					wel.update( statistics);
+				}
 			}
 		});
 		
@@ -157,27 +171,35 @@ public class MainPanel extends JPanel {
 				if( slots.getNext().equals("wel"))
 				{
 					wel.setVisible( true);
+					wel.update( statistics);
 				}
 				if( slots.getNext().equals("help"))
+				{
 					help.setVisible( true);	
+					help.update( statistics);
+				}
 				
 				if( slots.getNext().equals("hydrocarbons"))
 				{
 					hydro.setVisible( true);
+					hydro.update( statistics);
 				}
 				if( slots.getNext().equals("alcohols"))
 				{
 					alco.setVisible( true);
+					alco.update( statistics);
 				}
 				
 				if( slots.getNext().equals("aldehydes"))
 				{
 					alde.setVisible( true);
+					alde.update( statistics);
 				}
 				
 				if( slots.getNext().equals("carboxacids"))
 				{
 					carbox.setVisible( true);
+					carbox.update( statistics);
 				}
 			}
 		});	
@@ -189,10 +211,16 @@ public class MainPanel extends JPanel {
 					last.setVisible( true);
 				}
 				if( menu.getNext().equals("wel"))
+				{
 					wel.setVisible( true);
+					wel.update( statistics);
+				}
 				
 				if( menu.getNext().equals("help"))
+				{
 					shp.setVisible( true);
+					shp.update( statistics);
+				}
 			}
 		});
 		
@@ -205,6 +233,7 @@ public class MainPanel extends JPanel {
 			{
 				slots.setVisible( false);
 				menu.setVisible( true);
+				menu.update( statistics);
 				
 				last = slots;
 			}
@@ -213,6 +242,7 @@ public class MainPanel extends JPanel {
 			{
 				hydro.setVisible( false);
 				menu.setVisible( true);
+				menu.update( statistics);
 				
 				last = hydro;
 			}
@@ -221,6 +251,7 @@ public class MainPanel extends JPanel {
 			{
 				alco.setVisible( false);
 				menu.setVisible( true);
+				menu.update( statistics);
 				
 				last = alco;
 			}
@@ -229,6 +260,7 @@ public class MainPanel extends JPanel {
 			{
 				alde.setVisible( false);
 				menu.setVisible( true);
+				menu.update( statistics);
 				
 				last = alde;
 			}
@@ -237,6 +269,7 @@ public class MainPanel extends JPanel {
 			{
 				carbox.setVisible( false);
 				menu.setVisible( true);
+				menu.update( statistics);
 				
 				last = carbox;
 			}
@@ -244,6 +277,7 @@ public class MainPanel extends JPanel {
 			{
 				cgp.setVisible( false);
 				menu.setVisible( true);
+				menu.update( statistics);
 				
 				last = cgp;
 			}			

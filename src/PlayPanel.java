@@ -28,18 +28,15 @@ public class PlayPanel extends JPanel {
 	private Image background;
 	
 	//sound variable
-	 private File buttonSound3;
-	 
-		
-		
-	 private AudioInputStream createButtonSound3;
-		
-		
-	 private Clip startButtonSound3;
+	private File buttonSound3;		
+	private AudioInputStream createButtonSound3;		
+	private Clip startButtonSound3;
 	
+	private CurrencyPanel curpanel;
 	private String next;
+	private Statistics stats;
 	
-	public PlayPanel() {
+	public PlayPanel( Statistics stats) {
 		setVisible( false);
 		setLayout(null);
 		setBounds( 0,0, 800, 600);
@@ -47,6 +44,7 @@ public class PlayPanel extends JPanel {
 		requestFocusInWindow();
 		
 		next = "";
+		this.stats = stats;
 		
 		JLabel titleLabel = new JLabel("");
 		titleLabel.setIcon(new ImageIcon("images/6ondddiQAq.png"));
@@ -179,7 +177,7 @@ public class PlayPanel extends JPanel {
 		backBtn.setBounds(230, 453, 326, 35);
 		add(backBtn);
 				
-		CurrencyPanel curpanel = new CurrencyPanel( 200, 4);
+		curpanel = new CurrencyPanel( stats);
 		add( curpanel);
 		
 		
@@ -198,6 +196,11 @@ public class PlayPanel extends JPanel {
 	public String getNext()
 	{
 		return next;
+	}
+	
+	public void update( Statistics stats)
+	{
+		curpanel.update( stats);
 	}
 
 }

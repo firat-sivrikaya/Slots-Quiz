@@ -6,18 +6,23 @@ by H�seyin BEYAN
  */
 
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
 public class MenuPanel extends JPanel {
 
+	private CurrencyPanelBig cur;
 	private Image background;
 	private String next;
+	private Statistics stats;
 	
-	public MenuPanel() 
+	public MenuPanel( Statistics stats) 
 	{
+		this.stats = stats;
 		setVisible( true);				
 		setBounds( 0,0, 800, 600);		
 		setLayout(null);		
@@ -63,7 +68,7 @@ public class MenuPanel extends JPanel {
 		exitButton.setBounds(250, 480, 300, 50);
 		add(exitButton);
 		
-		CurrencyPanelBig cur = new CurrencyPanelBig( 100, 4);
+		cur = new CurrencyPanelBig( stats);
 		cur.setBounds( 300, 180, 200, 100);
 		add( cur);
 		
@@ -87,5 +92,10 @@ public class MenuPanel extends JPanel {
 	public String getNext()
 	{
 		return next;
+	}
+	
+	public void update( Statistics stats)
+	{
+		cur.update( stats);
 	}
 }

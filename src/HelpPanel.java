@@ -35,8 +35,10 @@ public class HelpPanel extends JPanel {
 	private JList list;
 	private JLabel label;
 	private ListListener lst;
+	private Statistics stats;
+	private CurrencyPanel curpanel;
 	
-	public HelpPanel() 
+	public HelpPanel( Statistics stats) 
 	{
 		setVisible( true);				
 		setBounds( 0,0, 800, 600);		
@@ -44,9 +46,11 @@ public class HelpPanel extends JPanel {
 		setFocusable(false);
 		requestFocusInWindow();
 		
-		CurrencyPanel cur = new CurrencyPanel( 100, 4);
-		cur.setBounds( 0, 0, 100, 50);
-		add( cur);
+		this.stats = stats;
+		
+		curpanel = new CurrencyPanel( stats);
+		curpanel.setBounds( 0, 0, 100, 50);
+		add( curpanel);
 		
 		JLabel lblHelp = new JLabel("");
 		lblHelp.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -159,4 +163,10 @@ public class HelpPanel extends JPanel {
 	{
 		label.setText( "Welcome to Slots Quiz!");
 	}
+	
+	public void update( Statistics stats)
+	{
+		curpanel.update( stats);
+	}
+
 }
