@@ -2,8 +2,14 @@ import java.sql.SQLException;
 
 /**
  * 
- * @author Firat Sivrikaya
+ * CarboxylicAcidS
  *
+ * @author Firat Sivrikaya
+ * @date 9 May 2015
+ * 
+ * This is the slots class for Carboxylic Acid questions. It has a askQuestion
+ * method, which returns a question from related topic and getter setter methods for
+ * lock status of the slots.
  */
 public class CarboxylicAcidS {
 	

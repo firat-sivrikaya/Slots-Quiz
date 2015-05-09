@@ -1,8 +1,11 @@
-/* @author Gokce Sakir Ozyurt
+/**
+ * CoinGeneratorPanel
+ * @author Gokce Sakir Ozyurt
  * @author Firat Sivrikaya
- * Question Class
+ * @date   09/05/2015
+ * 
+ * This is the panel class for questions that are asked in slots. 
  */
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -24,7 +27,10 @@ import javax.swing.JLabel;
 
 public class SlotsQuestionPanel extends JPanel {
 
+	final private int COIN_GAIN_AMOUNT = 20;
+	final private int CRYSTAL_GAIN_AMOUNT = 1;
 	
+	// properties
 	private SlotsQuestionPanel sqp;
 	private CurrencyPanel curPanel;
 	private Image background;
@@ -44,6 +50,7 @@ public class SlotsQuestionPanel extends JPanel {
 	private CurrencyPanel mainCurrency;
 	
 	private int counter;
+	// constructors 
 	
 	public SlotsQuestionPanel( String s, JPanel j, Statistics statistics, int counter ) {
 		stats = statistics;
@@ -154,32 +161,33 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("A"))
 					{
 						System.out.println( "CORRECT!");
+						// Popup info pane
 						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
+							// Add prizes to stats
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							// Update stats
 							curPanel.update( stats);
-							// TODO: IMPORTANT!!!
-							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							//mainCurrency.repaint();
 						}
 						
 					}
 					else
 					{
 						System.out.println( "FALSE!");
+						// Popup info pane
 						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer, "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
+					// If the button in popup clicked, close the frame
 					if ( isCorrect == 0 )
 					{
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );						
 						frame.dispose();
-					}
-					
+					}			
 				}
 			}
 		});
@@ -191,25 +199,31 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("B"))
 					{
 						System.out.println( "CORRECT!");
+						// Popup info pane
 						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
-							curPanel.update( stats);							
+							// Add prizes to stats
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							// Update stats
+							curPanel.update( stats);
 						}
+						
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer , "Wrong", JOptionPane.DEFAULT_OPTION,
+						// Popup info pane
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer, "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
-					
+					// If the button in popup clicked, close the frame
 					if ( isCorrect == 0 )
 					{
-						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
+						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );						
 						frame.dispose();
 					}
 				}
@@ -223,27 +237,31 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("C"))
 					{
 						System.out.println( "CORRECT!");
-						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!", JOptionPane.DEFAULT_OPTION,
+						// Popup info pane
+						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
+							// Add prizes to stats
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							// Update stats
 							curPanel.update( stats);
-							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							//mainCurrency.repaint();
 						}
+						
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer , "Wrong", JOptionPane.DEFAULT_OPTION,
+						// Popup info pane
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer, "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
-					
+					// If the button in popup clicked, close the frame
 					if ( isCorrect == 0 )
 					{
-						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
+						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );						
 						frame.dispose();
 					}
 				}
@@ -257,32 +275,33 @@ public class SlotsQuestionPanel extends JPanel {
 					if ( answer.equals("D"))
 					{
 						System.out.println( "CORRECT!");
-						isCorrect = JOptionPane.showOptionDialog(null,  "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
+						// Popup info pane
+						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
+							// Add prizes to stats
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							// Update stats
 							curPanel.update( stats);
-							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							//mainCurrency.repaint();
 						}
 						
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer , "Wrong", JOptionPane.DEFAULT_OPTION,
+						// Popup info pane
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer, "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
-					
+					// If the button in popup clicked, close the frame
 					if ( isCorrect == 0 )
 					{
-						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
+						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );						
 						frame.dispose();
-					}
-					
-
+					}		
 				}
 			}
 		});		
@@ -291,31 +310,34 @@ public class SlotsQuestionPanel extends JPanel {
 		buttonE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==buttonE){
-				
 					if ( answer.equals("E"))
 					{
 						System.out.println( "CORRECT!");
-						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!", JOptionPane.DEFAULT_OPTION,
+						// Popup info pane
+						isCorrect = JOptionPane.showOptionDialog(null, "You answered correctly and gained prize!", "Correct!",JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
+							// Add prizes to stats
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							// Update stats
 							curPanel.update( stats);
-							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							//mainCurrency.repaint();
 						}
+						
 					}
 					else
 					{
 						System.out.println( "FALSE!");
-						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer , "Wrong", JOptionPane.DEFAULT_OPTION,
+						// Popup info pane
+						isCorrect = JOptionPane.showOptionDialog(null, "Wrong answer :( It was " + answer, "Wrong", JOptionPane.DEFAULT_OPTION,
 						        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					}
-					
+					// If the button in popup clicked, close the frame
 					if ( isCorrect == 0 )
 					{
-						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
+						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );						
 						frame.dispose();
 					}
 				}
@@ -325,8 +347,6 @@ public class SlotsQuestionPanel extends JPanel {
 		add(panel);
 		
 
-//		timeLabel.setBounds(690, 11, 100, 46);
-//		add(timeLabel);
 		
 
 		

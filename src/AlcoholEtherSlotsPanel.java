@@ -1,7 +1,13 @@
-/*
- * Hydrocarbon Slots
+/**
+ * AlcoholEtherSlotsPanel
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
+ * @date   09/05/2015
+ * 
+ * This is the slots panel for alcohol ethers which holds
+ * the code for slots machine. If the slots is triggered,
+ * it asks a question from the related topic.
  */
 
 import javax.swing.*;
@@ -35,6 +41,7 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 	
 	private Clip startSound; 
 	private Clip winSound;
+	
 	//integer variables
 	private int first; //to start spin, 'first' should be '0'
 	private int[] saver; //to control line equalities and find the counter
@@ -324,10 +331,8 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 					try {
 						startSound.open(createClick);
 					} catch (LineUnavailableException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				startSound.start();
@@ -400,10 +405,8 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 		try {
 			winSound.open(createWin);
 		} catch (LineUnavailableException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		winSound.start();
@@ -412,6 +415,7 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 		// TODO: CHANGE THE QUESTION AS HYDROCARBON AS SOON AS HYDROCARBON QUESTIONS ARE WRITTEN
 		JFrame frame = new JFrame("Question");
 		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats, counter );
+		// Add the question panel to a new frame
 		frame.getContentPane().add( qpanel );
 		frame.setBounds(100, 100, 800, 600);
 		frame.setVisible( true );		

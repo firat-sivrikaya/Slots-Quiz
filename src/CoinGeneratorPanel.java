@@ -1,6 +1,12 @@
-/* @author Gokce Sakir Ozyurt
- * Question Class
+/**
+ * CoinGeneratorPanel
+ * @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
+ * @date   09/05/2015
+ * 
+ * This is the panel class for CoinGenerator. 
  */
+
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -19,8 +25,11 @@ import javax.swing.JLabel;
 
 public class CoinGeneratorPanel extends JPanel {
 
+	final private int COIN_GAIN_AMOUNT = 5;
+	
+	// properties
 	private CurrencyPanel curPanel;
-	private Image background;
+	private Image   background;
 	private JButton buttonA;
 	private JButton buttonB;
 	private JButton buttonC;
@@ -34,13 +43,10 @@ public class CoinGeneratorPanel extends JPanel {
 	private Question q;
 	private Statistics stats;
 	
+	// constructors
 	public CoinGeneratorPanel( Statistics stats) {
 		
 		question = new CoinGenerator();		
-		
-//		panel = new JPanel;
-//		panel.setBounds(48, 62, 700, 350);
-//		panel.setPreferredSize( new Dimension(700, 350));
 		
 		//Panel has to be 800* 600
 		this.setVisible( true);				
@@ -59,7 +65,6 @@ public class CoinGeneratorPanel extends JPanel {
 		location = q.getLocation();	
 		System.out.println( "Location: " + location + "\n Answer: " + answer );
 		
-//		panel.setOpaque( false );
 		
 		//Currency panel at the top left corner.
 		curPanel = new CurrencyPanel(stats);
@@ -72,6 +77,7 @@ public class CoinGeneratorPanel extends JPanel {
 		buttonD = new JButton("D");
 		buttonE = new JButton("E");
 		
+		// Set focusable
 		buttonA.setFocusable( false );
 		buttonB.setFocusable( false );
 		buttonC.setFocusable( false );
@@ -104,9 +110,6 @@ public class CoinGeneratorPanel extends JPanel {
 		buttonE.setBounds(660, 497, 110, 35);
 		add(buttonE);
 		
-		
-//		add( panel );
-		
 		//adding action listener to A button
 		buttonA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,7 +117,7 @@ public class CoinGeneratorPanel extends JPanel {
 					if ( answer.equals("A"))
 					{
 						System.out.println( "CORRECT!");
-						stats.addCoins( 5);
+						stats.addCoins( COIN_GAIN_AMOUNT );
 						curPanel.update( stats);
 					}
 					else
@@ -135,7 +138,7 @@ public class CoinGeneratorPanel extends JPanel {
 					if ( answer.equals("B"))
 					{
 						System.out.println( "CORRECT!");
-						stats.addCoins( 5);
+						stats.addCoins( COIN_GAIN_AMOUNT );
 						curPanel.update( stats);
 					}
 					else
@@ -156,7 +159,7 @@ public class CoinGeneratorPanel extends JPanel {
 				{
 					if ( answer.equals("C"))
 					{
-						stats.addCoins( 5);
+						stats.addCoins( COIN_GAIN_AMOUNT );
 						curPanel.update( stats);
 						System.out.println( "CORRECT!");
 					}
@@ -180,7 +183,7 @@ public class CoinGeneratorPanel extends JPanel {
 					if ( answer.equals("D"))
 					{
 						System.out.println( "CORRECT!");
-						stats.addCoins( 5);
+						stats.addCoins( COIN_GAIN_AMOUNT );
 						curPanel.update( stats);
 					}
 					else
@@ -204,7 +207,7 @@ public class CoinGeneratorPanel extends JPanel {
 					if ( answer.equals("E"))
 					{
 						System.out.println( "CORRECT!");
-						stats.addCoins( 5);
+						stats.addCoins( COIN_GAIN_AMOUNT );
 						curPanel.update( stats);
 					}
 					else
@@ -230,7 +233,6 @@ public class CoinGeneratorPanel extends JPanel {
 		background = new ImageIcon( "images/background.png" ).getImage();
 		
 		g.drawImage( background, 0, 0, null);
-		// panel.getGraphics().drawImage
 		g.drawImage( new ImageIcon( location ).getImage(), 48, 62, 700, 350, null );
 		System.out.println("Location: " + location + " \nAnswer: " + answer ); 
 	}

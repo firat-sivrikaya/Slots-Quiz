@@ -1,7 +1,13 @@
-/*
- * Hydrocarbon Slots
+/**
+ * AldehydeKetoneSlotsPanel
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
+ * @date   09/05/2015
+ * 
+ * This is the slots panel for aldehydes and ketones which holds
+ * the code for slots machine. If the slots is triggered,
+ * it asks a question from the related topic.
  */
 
 import javax.swing.*;

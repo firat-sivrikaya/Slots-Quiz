@@ -2,26 +2,26 @@ import java.sql.SQLException;
 /**
  * 
  * 
- * HydrocarbonQ
+ * CoinGeneratorQ
  * @author Firat Sivrikaya
  * @date 28/04/2015
  * 
- * This is the database class which gets questions
+ * This is the Coin Generator database class which gets questions
  * from subject "Hydrocarbons".
  * 
  * Upper and lower bounds for this subject are
  * defined as constants.
  * 
- * The questions from Hydrocarbons are written
- * by Irmak Akkuzuluoglu.
+ * The questions in Coin Generator are written
+ * by Firat Sivrikaya.
  * 
  *
  */
 
 public class CoinGeneratorQ extends Question{
 	
-	final int UPPER_BOUND = 21;
-	final int LOWER_BOUND = 34;
+	final int UPPER_BOUND = 1;
+	final int LOWER_BOUND = 20;
 	
 	public CoinGeneratorQ()
 	{

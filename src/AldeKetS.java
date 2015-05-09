@@ -2,9 +2,17 @@ import java.sql.SQLException;
 
 /**
  * 
- * @author Firat Sivrikaya
+ * AldeKetS
  *
+ * @author Firat Sivrikaya
+ * @date 9 May 2015
+ * 
+ * This is the slots class for Aldehyde Ketone questions. It has a askQuestion
+ * method, which returns a question from related topic and getter setter methods for
+ * lock status of the slots.
+ * 
  */
+
 public class AldeKetS {
 	// properties
 	AldeKetQ question;
