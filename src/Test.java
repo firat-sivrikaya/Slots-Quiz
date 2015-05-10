@@ -87,7 +87,7 @@ public class Test {
 		//frame.getContentPane().add( stat);
 		frame.getContentPane().add( main);
 		//frame.getContentPane().add( panel);
-		
+		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		
 		frame.setVisible( true);		
 		frame.setBounds(0,0,800,600);
@@ -112,7 +112,8 @@ public class Test {
 	
 	public static boolean startBackgroundMusic() {
 
-		backgroundSound = new File("sounds/bg2_converted.wav");
+		// Old background music: sounds/bg2_converted.wav
+		backgroundSound = new File("sounds/theme.wav");
 		createBackgroundSound = null;
 		startBackgroundSound = null;
 
@@ -146,7 +147,7 @@ public class Test {
 		}
 		FloatControl gainControl = 
 			    (FloatControl) startBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(-35.0f);
+			gainControl.setValue(-15.0f);
 			startBackgroundSound.loop(999999999);
 		return true;
 	}

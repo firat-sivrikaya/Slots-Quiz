@@ -306,7 +306,8 @@ public class SlotsQuestionPanel extends JPanel {
 
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
-						
+						stopBackgroundMusic();
+						startWinMusic();
 						
 						if ( s.equals("CarboxylicAcid") )
 						{
@@ -381,10 +382,10 @@ public class SlotsQuestionPanel extends JPanel {
 						winFrame.setVisible(true);
 						chrono.stop();
 						countDown.setIcon( null);
-						
+						stopBackgroundMusic();
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
-						
+						startWinMusic();
 						if ( s.equals("CarboxylicAcid") )
 						{
 							stats.addCoins( 20 * counter);
@@ -450,10 +451,10 @@ public class SlotsQuestionPanel extends JPanel {
 						winFrame.setVisible(true);
 						chrono.stop();
 						countDown.setIcon( null);
-						
+						stopBackgroundMusic();
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
-						
+						startWinMusic();
 						if ( s.equals("CarboxylicAcid") )
 						{
 							stats.addCoins( 20 * counter);
@@ -521,10 +522,10 @@ public class SlotsQuestionPanel extends JPanel {
 						winFrame.setVisible(true);
 						chrono.stop();
 						countDown.setIcon( null);
-						
+						stopBackgroundMusic();
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
-						
+						startWinMusic();
 						if ( s.equals("CarboxylicAcid") )
 						{
 							stats.addCoins( 20 * counter);
@@ -596,9 +597,10 @@ public class SlotsQuestionPanel extends JPanel {
 						winFrame.setVisible(true);
 						chrono.stop();
 						countDown.setIcon( null);
-						
+						stopBackgroundMusic();
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
+						startWinMusic();
 						if ( s.equals("CarboxylicAcid") )
 						{
 							stats.addCoins( 20 * counter);
@@ -724,6 +726,50 @@ public class SlotsQuestionPanel extends JPanel {
 		chrono.start();
 	}
 	
+	public static void startWinMusic(){
+		
+		File backgroundSound = new File("sounds/slotswin.wav");
+		AudioInputStream createBackgroundSound = null;
+		Clip startBackgroundSound = null;
+
+		try {
+			createBackgroundSound = AudioSystem
+					.getAudioInputStream(backgroundSound);
+			
+			try {
+				startBackgroundSound = AudioSystem.getClip();
+
+			} catch (LineUnavailableException e) {
+
+				e.printStackTrace();
+			}
+		} catch (UnsupportedAudioFileException e) {
+
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		try {
+			startBackgroundSound.open(createBackgroundSound);
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FloatControl gainControl = 
+			    (FloatControl) startBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(-20.0f);
+	}
+	
+	public static void stopBackgroundMusic() {
+		if (startBackgroundSound != null && startBackgroundSound.isRunning())
+			startBackgroundSound.stop();
+	}
+	
 	public static void startBackgroundMusic(){
 		
 		backgroundSound = new File("sounds/questionMusic.wav");
@@ -764,10 +810,6 @@ public class SlotsQuestionPanel extends JPanel {
 		startBackgroundSound.loop(10);	
 	}
 	
-	public static void stopBackgroundMusic() {
-		if (startBackgroundSound != null && startBackgroundSound.isRunning())
-			startBackgroundSound.stop();
-	}
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
