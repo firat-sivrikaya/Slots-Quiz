@@ -248,6 +248,10 @@ public class HydrocarbonSlotsPanel extends JPanel {
 			else
 			{
 				timer.stop();
+				spinning=false;
+				button.setIcon(sloton);
+				//button.setEnabled(true);
+				
 				label1.setIcon(counters[lineCounter()]);
 			}
 		}
@@ -257,6 +261,7 @@ public class HydrocarbonSlotsPanel extends JPanel {
 	private class SlotButtonListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
+			
 			if(timer2.isRunning())
 			{
 				button.setIcon(slotoff);
@@ -265,10 +270,19 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		}
 	}
 		
+	Boolean spinning = false;
+	
 	//button listener
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
+			if(spinning)
+				return;
 			
+			spinning=true;
+			
+			//button.setEnabled(false);
+			button.setIcon(slotoff);
+	
 			if(stats.enoughCoin( 5))
 			{
 				stats.spendCoins( 5);

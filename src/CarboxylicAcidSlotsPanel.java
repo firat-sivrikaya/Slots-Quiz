@@ -1,13 +1,7 @@
-/**
- * AlcoholEtherSlotsPanel
+/*
+ * Hydrocarbon Slots
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
- * @author Firat Sivrikaya
- * @date   09/05/2015
- * 
- * This is the slots panel for alcohols and ethers which holds
- * the code for slots machine. If the slots is triggered,
- * it asks a question from the related topic.
  */
 
 import javax.swing.*;
@@ -307,8 +301,6 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 				timer2.start();
 				//start the sound when triggered
 				if(event.getSource()==button){
-					
-					
 					clickSound = new File("sounds/slot_payoff.wav");
 					
 					try {

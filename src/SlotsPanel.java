@@ -1,5 +1,5 @@
 /*
- * by H�seyin BEYAN
+ * by Huseyin BEYAN
  * vers 1.0   24.04.2015
  * 
  * Panel to entering page of Slots in our project
@@ -441,7 +441,7 @@ public class SlotsPanel extends JPanel {
 		//////////////////////////////////////////////////////////////////////////////////////////////////////
 		if( stats.getCarbox())
 		{
-			carboxBtn = new ProjectButton("Locked-CARBOXCYLIC ACIDS");		
+			carboxBtn = new ProjectButton("CARBOXCYLIC ACIDS");		
 			carboxBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
 					next = "carboxacids";

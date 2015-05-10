@@ -5,13 +5,25 @@
  * This panel will allow us to switch between different panels of the game
  */
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
 
-public class MainPanel extends JPanel {
+public class MainPanel extends JPanel  {
+	
+
+	
+	
+		
 	
 	private CardLayout cl;
 	
@@ -34,9 +46,9 @@ public class MainPanel extends JPanel {
 	
 	JPanel[] array;
 	
-	public MainPanel() {	
+	public MainPanel( Statistics stats) {
 		
-		statistics = new Statistics();
+		statistics = stats;
 		setBounds( 0, 0, 800, 600);
 		setLayout( null);				
 		setFocusable(true);
@@ -156,6 +168,7 @@ public class MainPanel extends JPanel {
 				if( play.getNext().equals("coinGen"))
 				{
 					cgp.setVisible( true);
+					
 					cgp.update( statistics);
 				}
 				if( play.getNext().equals("back"))
@@ -223,8 +236,10 @@ public class MainPanel extends JPanel {
 				}
 			}
 		});
+		//MainPanel.startBackgroundMusic();
 		
 	}
+	
 	
 	private class MyKeyListener implements KeyListener
 	{	
@@ -295,5 +310,7 @@ public class MainPanel extends JPanel {
 			menu.setVisible( true);			
 		}		
 	}
+	
+
 	
 }

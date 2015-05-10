@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -228,11 +229,16 @@ public class WelcomePanel extends JPanel {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					startButtonSound.start();
+					startButtonSound.start();			
+				}		
 				
-				
-					System.exit( 0);
+				try {
+					stats.save();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
+				System.exit( 0);
 			}
 		});			
 		

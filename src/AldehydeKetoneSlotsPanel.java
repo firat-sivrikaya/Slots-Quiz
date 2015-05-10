@@ -1,13 +1,7 @@
-/**
- * AldehydeKetoneSlotsPanel
+/*
+ * Hydrocarbon Slots
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
- * @author Firat Sivrikaya
- * @date   09/05/2015
- * 
- * This is the slots panel for aldehydes and ketones which holds
- * the code for slots machine. If the slots is triggered,
- * it asks a question from the related topic.
  */
 
 import javax.swing.*;
@@ -263,8 +257,10 @@ public class AldehydeKetoneSlotsPanel extends JPanel {
 	private class SlotButtonListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
+
 			if(timer2.isRunning())
 			{
+				
 				button.setIcon(slotoff);
 				timer2.stop();
 			}
@@ -274,6 +270,7 @@ public class AldehydeKetoneSlotsPanel extends JPanel {
 	//button listener
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
+			
 			
 			if(stats.enoughCoin( 5))
 			{

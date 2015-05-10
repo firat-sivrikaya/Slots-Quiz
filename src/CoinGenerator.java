@@ -1,17 +1,11 @@
 import java.sql.SQLException;
 
 /**
- * 
  * CoinGenerator
- *
  * @author Firat Sivrikaya
- * @date 9 May 2015
- * 
- * This is the coin generator class which asks basic hydrocarbon
- * questions. It has a askQuestion
- * method, which returns a question from related topic.
+ * @date 06/05/2015
+ *
  */
-
 public class CoinGenerator {
 	// properties
 	CoinGeneratorQ question;

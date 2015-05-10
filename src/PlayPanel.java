@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
@@ -31,6 +32,16 @@ public class PlayPanel extends JPanel {
 	private File buttonSound3;		
 	private AudioInputStream createButtonSound3;		
 	private Clip startButtonSound3;
+	
+	static File backgroundSound;
+	static AudioInputStream createBackgroundSound;
+	static Clip startBackgroundSound;
+	
+	static File backgroundSound2;
+	static AudioInputStream createBackgroundSound2;
+	static Clip startBackgroundSound2;
+	
+	
 	
 	private CurrencyPanel curpanel;
 	private String next;
@@ -98,7 +109,10 @@ public class PlayPanel extends JPanel {
 			public void actionPerformed(ActionEvent event) {
 				next = "coinGen";
 				if(event.getSource()==coinGenButton){
+					
+					Test.stopBackgroundMusic();
 					buttonSound3 = new File("sounds/buttonSound.wav");
+					
 					
 					try {
 						createButtonSound3	 =  AudioSystem.getAudioInputStream(buttonSound3);
@@ -128,6 +142,10 @@ public class PlayPanel extends JPanel {
 						e.printStackTrace();
 					}
 					startButtonSound3.start();
+					
+					PlayPanel.startBackgroundMusic();
+					
+					
 				
 				
 				setVisible( false);
@@ -201,6 +219,51 @@ public class PlayPanel extends JPanel {
 	public void update( Statistics stats)
 	{
 		curpanel.update( stats);
+	}
+	public static void startBackgroundMusic() {
+
+		backgroundSound = new File("sounds/bg1_converted.wav");
+		createBackgroundSound = null;
+		startBackgroundSound = null;
+
+		try {
+			createBackgroundSound = AudioSystem
+					.getAudioInputStream(backgroundSound);
+			
+			try {
+				startBackgroundSound = AudioSystem.getClip();
+
+			} catch (LineUnavailableException e) {
+
+				e.printStackTrace();
+			}
+		} catch (UnsupportedAudioFileException e) {
+
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		try {
+			startBackgroundSound.open(createBackgroundSound);
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FloatControl gainControl = 
+			    (FloatControl) startBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(-35.0f);
+		startBackgroundSound.loop(999999999);
+		
+	}
+
+	public static void stopBackgroundMusic() {
+		if (startBackgroundSound != null && startBackgroundSound.isRunning())
+			startBackgroundSound.stop();
 	}
 
 }

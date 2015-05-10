@@ -13,6 +13,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JButton;
 
 
 public class OptionsPanel extends JPanel {
@@ -28,6 +29,7 @@ public class OptionsPanel extends JPanel {
 	private Clip startButtonSound2;	
 	
 	private ProjectButton backButton;
+	private ProjectButton soundIcon;
 	private Statistics stats;
 	private CurrencyPanel curpanel;
 	
@@ -66,7 +68,7 @@ public class OptionsPanel extends JPanel {
 					try {
 						startButtonSound2.open(createButtonSound2);
 					} catch (LineUnavailableException e) {
-						// TODO Auto-generated catch block
+						// 
 						e.printStackTrace();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -79,15 +81,33 @@ public class OptionsPanel extends JPanel {
 				}
 			}
 		});
-				
-				
-				
+		
+		ImageIcon on = new ImageIcon("images/soundIcon/Sound-on-icon.png");
+		ImageIcon of = new ImageIcon("images/soundIcon/Sound-off-icon.png");
+		
+		soundIcon = new ProjectButton("soundOn");
+		soundIcon.setIcon( on);
+		soundIcon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+					
+				if( event.getSource() == soundIcon && soundIcon.getIcon() == on)
+				{
+					SlotsQuestionPanel.stopBackgroundMusic();
+					Test.stopBackgroundMusic();
+					PlayPanel.stopBackgroundMusic();
+					soundIcon.setIcon(of);		
+				}							
+			}
+		});				
 		
 		backButton.setBounds( 250, 400, 300, 50);
-		add(backButton);
+		add(backButton);	
+		
+		soundIcon.setBounds(272, 132,256,256);
+		add(soundIcon);		
 		
 		curpanel = new CurrencyPanel( stats);
-		add( curpanel);	
+		add( curpanel);		
 	}
 	
 	public void paintComponent( Graphics g)
