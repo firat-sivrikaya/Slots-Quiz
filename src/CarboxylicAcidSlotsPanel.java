@@ -308,7 +308,6 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 				//start the sound when triggered
 				if(event.getSource()==button){
 					
-					button.disable();
 					
 					clickSound = new File("sounds/slot_payoff.wav");
 					
@@ -355,7 +354,6 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 	//number of ranked lines
 	public int lineCounter(){
 		int counter=0;
-		button.enable();
 		if(saver[0] == 0)
 			return 0;
 		else
