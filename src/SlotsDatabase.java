@@ -13,7 +13,10 @@ import java.util.ArrayList;
  * Slots Database gets question locations, answers and ids from
  * the question database and sets the variables accordingly.
  * 
- *
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 
+ * 4.0 International License. To view a copy of this license, 
+ * visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+ * 
  */
 
 public class SlotsDatabase {
