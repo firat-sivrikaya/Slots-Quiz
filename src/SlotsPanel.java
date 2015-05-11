@@ -1,8 +1,10 @@
 /*
- * by Huseyin BEYAN
+ * by Huseyin BEYAN & Firat SIVRIKAYA
  * vers 1.0   24.04.2015
  * 
  * Panel to entering page of Slots in our project
+ * 
+ * 
  */ 
 
 import java.awt.*;
@@ -21,6 +23,18 @@ import java.io.IOException;
 
 
 public class SlotsPanel extends JPanel {
+	
+	// constants
+	final private int ALCOHOLETHER_REQUIRED_CRYSTAL = 10;
+	final private int ALCOHOLETHER_REQUIRED_COIN = 100;
+	
+	final private int ALDEKET_REQUIRED_CRYSTAL = 15;
+	final private int ALDEKET_REQUIRED_COIN = 200;
+	
+	final private int CARBOX_REQUIRED_CRYSTAL = 20;
+	final private int CARBOX_REQUIRED_COIN = 250;
+	
+	
 	//VARIABLES
 	
 	//image variables
@@ -162,12 +176,13 @@ public class SlotsPanel extends JPanel {
 					
 					if( unlock == JOptionPane.YES_OPTION)
 					{
-						if( !stats.enoughCrystal(5))
+						if( !stats.enoughCrystal(ALDEKET_REQUIRED_CRYSTAL) && !stats.enoughCoin( ALDEKET_REQUIRED_COIN))
 							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
 						else
 						{
 							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
-							stats.spendCrystal( 5);
+							stats.spendCrystal(ALDEKET_REQUIRED_CRYSTAL);
+							stats.spendCoins(ALDEKET_REQUIRED_COIN);
 							
 							stats.setAlde( true);
 							panel.update( stats);	
@@ -206,10 +221,8 @@ public class SlotsPanel extends JPanel {
 										try {
 											startLockSound.open(createLockSound);
 										} catch (LineUnavailableException e) {
-											// TODO Auto-generated catch block
 											e.printStackTrace();
 										} catch (IOException e) {
-											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
 										startLockSound.start();
@@ -247,10 +260,8 @@ public class SlotsPanel extends JPanel {
 								try {
 									startLockSound.open(createLockSound);
 								} catch (LineUnavailableException e) {
-									// TODO Auto-generated catch block
 									e.printStackTrace();
 								} catch (IOException e) {
-									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
 								startLockSound.start();
@@ -333,13 +344,13 @@ public class SlotsPanel extends JPanel {
 					
 					if( unlock == JOptionPane.YES_OPTION)
 					{
-						if( !stats.enoughCrystal(5))
-							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
+						if( !stats.enoughCrystal(ALCOHOLETHER_REQUIRED_CRYSTAL) && !stats.enoughCoin( ALCOHOLETHER_REQUIRED_COIN) )
+							JOptionPane.showMessageDialog(null, "You dont have either enough crystals or coins :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
 						else
 						{
 							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
-							stats.spendCrystal( 5);
-							
+							stats.spendCrystal(ALCOHOLETHER_REQUIRED_CRYSTAL);
+							stats.spendCoins(ALCOHOLETHER_REQUIRED_COIN);
 							stats.setAlco( true);
 							panel.update( stats);	
 							
@@ -503,12 +514,13 @@ public class SlotsPanel extends JPanel {
 					
 					if( unlock == JOptionPane.YES_OPTION)
 					{
-						if( !stats.enoughCrystal(5))
+						if( !stats.enoughCrystal(CARBOX_REQUIRED_CRYSTAL) && !stats.enoughCoin( CARBOX_REQUIRED_COIN))
 							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
 						else
 						{
 							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
-							stats.spendCrystal( 5);
+							stats.spendCrystal( CARBOX_REQUIRED_CRYSTAL );
+							stats.spendCoins( CARBOX_REQUIRED_COIN );
 							
 							stats.setCarbox( true);
 							panel.update( stats);	

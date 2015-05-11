@@ -1,7 +1,11 @@
-/* @author Gokce Sakir Ozyurt
- * Question Class
+/* CoinGeneratorPanel
+ * @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
+ * 
+ * This is the panel class for coin generator. 
  */
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -25,21 +29,23 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 
 
 
 public class CoinGeneratorPanel extends JPanel {
-
+	// variables
 	private CurrencyPanel curPanel;
 	private Image background;	
-	
+	// button variables
 	private ProjectButton aButton;
 	private ProjectButton bButton;
 	private ProjectButton cButton;
 	private ProjectButton dButton;
 	private ProjectButton eButton;
-	
+	// sound variables
 	private static File backgroundSound;
 	private static AudioInputStream createBackgroundSound;
 	private static Clip startBackgroundSound;
@@ -58,34 +64,39 @@ public class CoinGeneratorPanel extends JPanel {
 	private String location;
 	private Question q;
 	private Statistics stats;
-	
+	// constructors
 	public CoinGeneratorPanel( Statistics stats) {
 		CoinGeneratorPanel.stopBackgroundMusic();
-		
+		// get the question instance from coin generator
 		question = new CoinGenerator();		
-		
-//		panel = new JPanel;
-//		panel.setBounds(48, 62, 700, 350);
-//		panel.setPreferredSize( new Dimension(700, 350));
+	
 		
 		//Panel has to be 800* 600
+		// Set the panel's properties
 		this.setVisible( true);				
 		this.setBounds( 0,0, 800, 600);
 		this.setFocusable(false);
 		this.requestFocusInWindow();
-		
+		// get the stats from constructors
 		this.stats = stats;
 		
 		//In order to move the necessary components
 		setLayout(null);
 		
-		// Get the question from database
+		// Get the question from database and print it for test purpose
 		q = question.askQuestion();
 		answer = q.getAnswer();
 		location = q.getLocation();	
 		System.out.println( "Location: " + location + "\n Answer: " + answer );
 		
-//		panel.setOpaque( false );
+		
+		// set the answer label's properties
+		JLabel answerLabel = new JLabel("Start!");
+		answerLabel.setFont(new Font("Phosphate", Font.PLAIN, 20));
+		answerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		answerLabel.setBounds(274, 552, 241, 16);
+		add(answerLabel);
+		
 		
 		//Currency panel at the top left corner.
 		curPanel = new CurrencyPanel(stats);
@@ -119,20 +130,24 @@ public class CoinGeneratorPanel extends JPanel {
 		eButton.setBounds(680, 470, 70, 70);
 		add(eButton);
 		
+		// set focusable
 		aButton.setFocusable( false );
 		bButton.setFocusable( false );
 		cButton.setFocusable( false );
 		dButton.setFocusable( false );
 		eButton.setFocusable( false );
 		
-//		add( panel );
 		
 		//adding action listener to A button
 		aButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				// Print the location for test purpose in the console
+				System.out.println("Location: " + location + " \nAnswer: " + answer ); 
+				
 				if(event.getSource()==aButton){
 					if ( answer.equals("A"))
 					{
+						// play correct sound
 						correctButton = new File("sounds/correct.wav");
 
 						try {
@@ -166,6 +181,8 @@ public class CoinGeneratorPanel extends JPanel {
 						
 						
 						System.out.println( "CORRECT!");
+						// Print correct message in the panel
+						answerLabel.setText("Correct!");
 						stats.addCoins( 5);
 						curPanel.update( stats);
 						repaint();
@@ -174,8 +191,11 @@ public class CoinGeneratorPanel extends JPanel {
 					else{						
 						
 						System.out.println( "FALSE!");
+						answerLabel.setForeground( Color.red );
+						// Print false message on the panel
+						answerLabel.setText("False! It was " + answer);
 						repaint();
-						
+						// play wrong answer sound
 						answerButton = new File("sounds/answerSelect.wav");
 
 						try {
@@ -223,6 +243,9 @@ public class CoinGeneratorPanel extends JPanel {
 		//adding action listener to B button
 		bButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				
+				System.out.println("Location: " + location + " \nAnswer: " + answer ); 
+				
 				if(event.getSource()==bButton){
 					if ( answer.equals("B"))
 					{
@@ -257,6 +280,8 @@ public class CoinGeneratorPanel extends JPanel {
 						}
 						startCorrectButton.start();
 						System.out.println( "CORRECT!");
+						answerLabel.setForeground( Color.green );
+						answerLabel.setText("Correct!");
 						stats.addCoins( 5);
 						curPanel.update( stats);
 						
@@ -264,6 +289,8 @@ public class CoinGeneratorPanel extends JPanel {
 					else{
 					
 						System.out.println( "FALSE!");
+						answerLabel.setForeground( Color.red );
+						answerLabel.setText("False! It was " + answer);
 						repaint();
 						answerButton = new File("sounds/gameover.wav");
 					
@@ -313,10 +340,15 @@ public class CoinGeneratorPanel extends JPanel {
 		//adding action listener to C button
 		cButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				
+				System.out.println("Location: " + location + " \nAnswer: " + answer ); 
+				
 				if(event.getSource()==cButton)
 				{
 					if ( answer.equals("C"))
 					{
+						answerLabel.setForeground( Color.green );
+						answerLabel.setText("Correct!");
 						correctButton = new File("sounds/correct.wav");
 
 						try {
@@ -357,7 +389,8 @@ public class CoinGeneratorPanel extends JPanel {
 					
 						repaint();
 						System.out.println( "FALSE!");
-						
+						answerLabel.setForeground( Color.red );
+						answerLabel.setText("False! It was " + answer);
 						answerButton = new File("sounds/gameover.wav");
 					
 
@@ -406,10 +439,15 @@ public class CoinGeneratorPanel extends JPanel {
 		//adding action listener to D button
 		dButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				
+				System.out.println("Location: " + location + " \nAnswer: " + answer ); 
+				
 				if(event.getSource()==dButton)
 				{
 					if ( answer.equals("D"))
 					{
+						answerLabel.setForeground( Color.green );
+						answerLabel.setText("Correct!");
 						correctButton = new File("sounds/correct.wav");
 
 						try {
@@ -450,7 +488,8 @@ public class CoinGeneratorPanel extends JPanel {
 					
 						repaint();
 						System.out.println( "FALSE!");
-					
+						answerLabel.setForeground( Color.red );
+						answerLabel.setText("False! It was " + answer);
 						answerButton = new File("sounds/gameover.wav");
 					
 
@@ -499,10 +538,15 @@ public class CoinGeneratorPanel extends JPanel {
 		//adding action listener to E button
 		eButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				
+				System.out.println("Location: " + location + " \nAnswer: " + answer ); 
+				
 				if(event.getSource()==eButton){
 				
 					if ( answer.equals("E"))
 					{
+						answerLabel.setForeground( Color.green );
+						answerLabel.setText("Correct!");
 						correctButton = new File("sounds/correct.wav");
 
 						try {
@@ -543,7 +587,8 @@ public class CoinGeneratorPanel extends JPanel {
 						System.out.println( "FALSE!");
 					
 						answerButton = new File("sounds/gameover.wav");
-				
+						answerLabel.setForeground( Color.red );
+						answerLabel.setText("False! It was " + answer);			
 
 						try {
 							createAnswerButton = AudioSystem
@@ -603,7 +648,6 @@ public class CoinGeneratorPanel extends JPanel {
 		g.drawImage( background, 0, 0, null);
 		// panel.getGraphics().drawImage
 		g.drawImage( new ImageIcon( location ).getImage(), 48, 62, 700, 350, null );
-		System.out.println("Location: " + location + " \nAnswer: " + answer ); 
 		repaint();
 	}
 	
@@ -656,6 +700,5 @@ public class CoinGeneratorPanel extends JPanel {
 		if (startBackgroundSound != null && startBackgroundSound.isRunning())
 			startBackgroundSound.stop();
 	}
-	
 }
 

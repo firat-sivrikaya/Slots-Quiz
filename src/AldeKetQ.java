@@ -19,17 +19,17 @@ import java.sql.SQLException;
  */
 
 public class AldeKetQ extends Question{
-	
+	// constants
 	final int UPPER_BOUND = 80;
 	final int LOWER_BOUND = 61;
-	
+	// constructors
 	public AldeKetQ()
 	{
 		super();
 		
 		
 	}
-	
+	// methods
 	public Question askQuestion() throws SQLException
 	{
 		return nextQuestion();

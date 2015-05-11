@@ -5,7 +5,8 @@
  */
 
 public interface Currency {
-public void gain( int amount);
-public void spend( int amount);
-public int getAmount();
+	// methods
+	public void gain( int amount);
+	public void spend( int amount);
+	public int getAmount();
 }

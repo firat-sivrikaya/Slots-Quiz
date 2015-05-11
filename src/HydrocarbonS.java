@@ -1,8 +1,10 @@
 import java.sql.SQLException;
 
 /**
- * 
+ * HydrocarbonS
  * @author Firat Sivrikaya
+ * @date 01/05/2015
+ * This is the slots class for hydrocarbon questions.
  *
  */
 public class HydrocarbonS {

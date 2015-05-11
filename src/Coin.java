@@ -1,6 +1,6 @@
 /* Coin
  * 01.05.2015 
- * author: @Irmak Akkuzuluoglu
+ * @author: Irmak Akkuzuluoglu
  */
 public class Coin implements Currency {
 

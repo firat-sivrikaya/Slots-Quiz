@@ -1,8 +1,10 @@
 import java.sql.SQLException;
 
 /**
- * 
+ * AldeKetS
  * @author Firat Sivrikaya
+ * @date 01/05/2015
+ * This is the slots class for aldehydes ketones questions.
  *
  */
 public class AldeKetS {

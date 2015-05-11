@@ -1,8 +1,10 @@
 import java.sql.SQLException;
 
 /**
- * 
+ * CarboxylicAcidS
  * @author Firat Sivrikaya
+ * @date 01/05/2015
+ * This is the slots class for carboxylic acid questions.
  *
  */
 public class CarboxylicAcidS {

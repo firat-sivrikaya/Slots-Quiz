@@ -1,6 +1,9 @@
-/* @author Gokce Sakir Ozyurt
+/* SlotsQuestionPanel
+ * @author Gokce Sakir Ozyurt
  * @author Firat Sivrikaya
- * Question Class
+ * 
+ * 
+ * This is the question panel which is used in all slots.
  */
 
 import java.awt.Color;
@@ -40,6 +43,7 @@ import javax.swing.event.AncestorListener;
 
 
 public class SlotsQuestionPanel extends JPanel {
+	// properties
 	private ProjectButton okButton;
 	private ProjectButton okButton2;
 	private ProjectButton okButton3;
@@ -89,7 +93,7 @@ public class SlotsQuestionPanel extends JPanel {
 	public Timer chrono;
 	
 	private int counter;
-	
+	// constructors
 	public SlotsQuestionPanel( String s, JPanel j, Statistics statistics, int counter ) 
 	{
 //		header = new ImageIcon()

@@ -1,8 +1,12 @@
 /*
- * Hydrocarbon Slots
+ * AlcoholEtherSlotsPanel
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
+ * @date 01/05/2015
+ * This is the panel class for aldehyde ketone slots.
  */
+
 
 import javax.swing.*;
 import javax.swing.Timer;

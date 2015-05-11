@@ -1,7 +1,10 @@
 /*
- * Hydrocarbon Slots
+ * AlcoholEtherSlotsPanel
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
+ * @date 01/05/2015
+ * This is the panel class for alcohol ether slots.
  */
 
 import javax.swing.*;

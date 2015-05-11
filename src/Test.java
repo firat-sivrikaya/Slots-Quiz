@@ -90,7 +90,7 @@ public class Test {
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		
 		frame.setVisible( true);		
-		frame.setBounds(0,0,800,600);
+		frame.setBounds(250,110,800,600);
 		frame.setResizable( false);
 
 		frame.addWindowListener(new WindowAdapter() {

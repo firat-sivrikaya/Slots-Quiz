@@ -19,16 +19,16 @@ import java.sql.SQLException;
  */
 
 public class CarboxylicAcidQ extends Question{
-	
+	// constants
 	final int UPPER_BOUND = 100;
 	final int LOWER_BOUND = 81;
-	
+	// constructors
 	public CarboxylicAcidQ()
 	{
 		super();
 		
 	}
-	
+	// methods
 	public Question askQuestion() throws SQLException
 	{
 		// Returns the next question with respect to the bounds

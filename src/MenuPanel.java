@@ -105,7 +105,7 @@ public class MenuPanel extends JPanel {
 		JLabel titleLabel = new JLabel("");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		titleLabel.setBounds(290, 60, 220, 100);
-		titleLabel.setIcon( new ImageIcon( "images\\menu.png"));
+		titleLabel.setIcon( new ImageIcon( "images/menu.png"));
 		add(titleLabel);
 		
 	}

@@ -2,6 +2,9 @@
  * Hydrocarbon Slots
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
+ * 
+ * This is the panel class for hydrocarbon slots.
  */
 
 import javax.swing.*;
