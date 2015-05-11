@@ -197,11 +197,10 @@ public class CoinGeneratorPanel extends JPanel {
 						
 						System.out.println( "FALSE!");
 						answerLabel.setForeground( Color.red );
-						// Print false message on the panel
 						answerLabel.setText("False! It was " + answer);
 						repaint();
-						// play wrong answer sound
-						answerButton = new File("sounds/answerSelect.wav");
+						answerButton = new File("sounds/gameover.wav");
+					
 
 						try {
 							createAnswerButton = AudioSystem

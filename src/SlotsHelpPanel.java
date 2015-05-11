@@ -100,6 +100,9 @@ public class SlotsHelpPanel extends JPanel {
 		add(btnBack);
 		
 		label = new JLabel( "  Welcome to Slots Quiz!");
+		
+		
+		
 		label.setFont(new Font("Helvetica", Font.PLAIN, 15));
 		//label.setBounds(277, 141, 290, 307);
 		label.setBackground( Color.white);
@@ -124,7 +127,7 @@ public class SlotsHelpPanel extends JPanel {
 	    
 	    
 	    JSplitPane splitPane = new JSplitPane( JSplitPane.HORIZONTAL_SPLIT, list, label);
-	    splitPane.setBounds(75, 140, 600, 306);
+	    splitPane.setBounds(75, 140, 600, 315);
 	    splitPane.setOneTouchExpandable (false);
 	    add(splitPane);
 	}
@@ -143,22 +146,32 @@ public class SlotsHelpPanel extends JPanel {
 	      public void valueChanged (ListSelectionEvent event)
 	      {
 	         if (list.isSelectionEmpty())
-	            label.setText (helping.getIntro());
+	        	 label.setText( "Welcome to Slots Quiz!");
+	         
 	         else
 	         {
-	            ImageIcon source = (ImageIcon)list.getSelectedValue();
-	            
-	            if( source.toString().equals("images/intro.png") )
-	            	label.setText( helping.getIntro());
-	            
-	            if(  source.toString().equals("images/def.png") )
-	            	label.setText( helping.getDef());
-	            
-	            if(  source.toString().equals("images/sym.png") )
-	            	label.setText( helping.getSym());
+	        	 ImageIcon source = (ImageIcon)list.getSelectedValue();	         
+	        	 
+	        	 if( source.toString().equals("images/intro.png") )
+	        	 {
+	        		 label.setText( "");
+	        		 label.setIcon( helping.getIntro());
+	        	 }
+	        	 
+	        	 if(  source.toString().equals("images/def.png") )
+	        	 {
+	        		 label.setText( "");
+	        		 label.setIcon( helping.getDef());
+	        	 }	
+	        	 
+	        	 if(  source.toString().equals("images/sym.png") )
+	        	 {
+	        		 label.setText( "");
+	        		 label.setIcon( helping.getSym());
+	        	 }
 	         }
-	      }
 	   }
+	}
 	
 	public void reset()
 	{

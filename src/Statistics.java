@@ -156,8 +156,8 @@ public class Statistics implements Serializable
 	
 	public void reset()
 	{
-		coin = 500;
-		crystal = 100;
+		coin = 10;
+		crystal = 0;
 		
 		hydroOpen  = true;
 		alcoOpen   = false;

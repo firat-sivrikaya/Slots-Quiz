@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 /*
  * by Hüseyin BEYAN
  * vers 1.0   28.04.2015
@@ -6,30 +8,30 @@
  */
 public class Help 
 {
-	String introduction;
-	String definitions;
-	String symbols;
+	ImageIcon introduction;
+	ImageIcon definitions;
+	ImageIcon symbols;
 	
 	public Help()
 	{
-		introduction = "<html>   In this place, introduction info <br /> will be written</html>";
+		introduction = new ImageIcon("images/intro.jpg");
 		
-		definitions =  "<html>   In this place, definitions that <br /> is used in our project will <br /> be written</html>";
+		definitions =  new ImageIcon("images/def.jpg");
 		
-		symbols =      "<html>   In this place, symbols in the project <br /> will be explained</html>";		
+		symbols = new ImageIcon("images/symbols.jpg");
 	}
 	
-	public String getIntro()
+	public ImageIcon getIntro()
 	{
 		return introduction;
 	}
 
-	public String getDef()
+	public ImageIcon getDef()
 	{
 		return definitions;
 	}
 	
-	public String getSym()
+	public ImageIcon getSym()
 	{
 		return symbols;
 	}
