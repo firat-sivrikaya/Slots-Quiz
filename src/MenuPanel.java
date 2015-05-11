@@ -51,7 +51,7 @@ public class MenuPanel extends JPanel {
 				next = "cont";
 			}
 		});
-		contLabel.setBounds(250, 300, 300, 50);
+		contLabel.setBounds(245, 303, 300, 50);
 		add(contLabel);
 		
 		ProjectButton button = new ProjectButton("BACK TO MAIN MENU");
@@ -70,7 +70,7 @@ public class MenuPanel extends JPanel {
 				next = "wel";
 			}
 		});
-		button.setBounds(250, 360, 300, 50);
+		button.setBounds(245, 363, 300, 50);
 		add(button);
 		
 		ProjectButton helpButton = new ProjectButton("HELP");
@@ -80,7 +80,7 @@ public class MenuPanel extends JPanel {
 				next = "help";
 			}
 		});
-		helpButton.setBounds(250, 420, 300, 50);
+		helpButton.setBounds(245, 423, 300, 50);
 		add(helpButton);
 		
 		ProjectButton exitButton = new ProjectButton("EXIT");
@@ -95,7 +95,7 @@ public class MenuPanel extends JPanel {
 				System.exit( 0);
 			}
 		});
-		exitButton.setBounds(250, 480, 300, 50);
+		exitButton.setBounds(245, 483, 300, 50);
 		add(exitButton);
 		
 		cur = new CurrencyPanelBig( stats);

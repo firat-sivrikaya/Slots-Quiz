@@ -48,6 +48,11 @@ public class ProjectButton extends JButton {
 			setText("");
 		} 
 		
+		if (s.equals("RESET")) {
+			setIcon( new ImageIcon("images/buttons/reset.png"));
+			setText("");
+		}
+		
 		if (s.equals("BACK")) 
 		{
 			setIcon(new ImageIcon("images/buttons/backbutton.png"));

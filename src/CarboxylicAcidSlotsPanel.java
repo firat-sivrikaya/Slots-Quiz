@@ -267,12 +267,18 @@ public class CarboxylicAcidSlotsPanel extends JPanel {
 			}
 		}
 	}
-		
+	
 	//button listener
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
 			
-			if(stats.enoughCoin( 5))
+			button.setIcon(slotoff);
+			if ( timer.isRunning() )
+			{
+				System.out.println("Too many clicks!");
+			}
+			
+			else if(stats.enoughCoin( 5))
 			{
 				stats.spendCoins( 5);
 				currencyPanel.update(stats);

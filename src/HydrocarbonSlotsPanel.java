@@ -251,7 +251,6 @@ public class HydrocarbonSlotsPanel extends JPanel {
 			else
 			{
 				timer.stop();
-				spinning=false;
 				button.setIcon(sloton);
 				//button.setEnabled(true);
 				
@@ -273,20 +272,18 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		}
 	}
 		
-	Boolean spinning = false;
 	
 	//button listener
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
-			if(spinning)
-				return;
 			
-			spinning=true;
-			
-			//button.setEnabled(false);
 			button.setIcon(slotoff);
-	
-			if(stats.enoughCoin( 5))
+			if ( timer.isRunning() )
+			{
+				System.out.println("Too many clicks!");
+			}
+			
+			else if(stats.enoughCoin( 5) )
 			{
 				stats.spendCoins( 5);
 				currencyPanel.update(stats);
@@ -354,8 +351,8 @@ public class HydrocarbonSlotsPanel extends JPanel {
 			}				
 			else
 			{
-				JOptionPane.showOptionDialog(null, " You dont have enough coins!!!","Oopss" ,JOptionPane.DEFAULT_OPTION,
-				        JOptionPane.INFORMATION_MESSAGE, null, null, null);
+				JOptionPane.showOptionDialog(null, " You dont have enough coins :(","Whoops!" ,JOptionPane.DEFAULT_OPTION,
+				        JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/sadface.png"), null, null);
 			}
 		}
 	}
@@ -426,9 +423,8 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		winSound.start();
 		
 		// Pop up the question panel in a new frame
-		// TODO: CHANGE THE QUESTION AS HYDROCARBON AS SOON AS HYDROCARBON QUESTIONS ARE WRITTEN
 		JFrame frame = new JFrame("Question");
-		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats, counter );
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("Hydrocarbon", this, stats, counter );
 		frame.getContentPane().add( qpanel );
 		frame.setBounds(100, 100, 800, 600);
 		frame.setVisible( true );		

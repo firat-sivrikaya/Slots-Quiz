@@ -62,7 +62,7 @@ public class MainPanel extends JPanel  {
 		play.setVisible( false);
 		add( play);
 		
-		opt = new OptionsPanel( statistics);
+		opt = new OptionsPanel( statistics );
 		opt.setVisible( false);
 		add( opt);
 		

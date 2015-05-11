@@ -12,6 +12,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
@@ -30,11 +31,14 @@ public class OptionsPanel extends JPanel {
 	
 	private ProjectButton backButton;
 	private ProjectButton soundIcon;
+	private ProjectButton resetButton;
 	private Statistics stats;
 	private CurrencyPanel curpanel;
-	
 	public OptionsPanel( Statistics stats)
 	{
+		// Get the slots panel instance to be able to update when reset
+		Object[] options = {"Yeah!", "No"};
+		
 		setVisible( true);			
 		setBounds( 0,0, 800, 600);
 		setLayout(null);
@@ -100,6 +104,33 @@ public class OptionsPanel extends JPanel {
 			}
 		});				
 		
+		resetButton = new ProjectButton("RESET");
+		resetButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+					
+				if( event.getSource() == resetButton )
+				{
+					int choice;
+					
+					choice = JOptionPane.showOptionDialog( null, "Are you sure to reset?","Reset your progress", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+						    new ImageIcon("images/resetIcon.png"),     			//do not use a custom Icon
+						    options,  			//the titles of buttons
+						    options[0]); 		//default button title
+					
+					if ( choice == JOptionPane.YES_OPTION )
+					{
+						stats.reset();
+						JOptionPane.showMessageDialog(null, "You have successfully reset your progress!","Done!", JOptionPane.YES_OPTION, new ImageIcon("images/tick.png") );
+						update( stats );
+						JOptionPane.showMessageDialog(null,"Now, please restart your game to confirm the reset", "Done!", JOptionPane.YES_OPTION, new ImageIcon("images/tick.png"));
+						System.exit(0);
+					}
+				}							
+			}
+		});		
+		resetButton.setBounds(290, 65, 220, 60);
+		add(resetButton);
+		
 		backButton.setBounds( 250, 400, 300, 50);
 		add(backButton);	
 		
@@ -123,6 +154,4 @@ public class OptionsPanel extends JPanel {
 	{
 		curpanel.update( stats);
 	}
-
-
 }

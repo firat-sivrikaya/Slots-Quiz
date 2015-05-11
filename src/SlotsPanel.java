@@ -169,18 +169,18 @@ public class SlotsPanel extends JPanel {
 					
 					int unlock;
 					
-					unlock = JOptionPane.showOptionDialog( null, " THIS LEVEL IS LOCKED","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
-						    null,     			//do not use a custom Icon
+					unlock = JOptionPane.showOptionDialog( null, " This level is locked!","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+						    new ImageIcon("images/lock.png"),     			//do not use a custom Icon
 						    options,  			//the titles of buttons
 						    options[0]); 		//default button title
 					
 					if( unlock == JOptionPane.YES_OPTION)
 					{
-						if( !stats.enoughCrystal(ALDEKET_REQUIRED_CRYSTAL) && !stats.enoughCoin( ALDEKET_REQUIRED_COIN))
-							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
+						if( !stats.enoughCrystal(ALDEKET_REQUIRED_CRYSTAL) || !stats.enoughCoin( ALDEKET_REQUIRED_COIN))
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
 						else
 						{
-							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
+							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/unlock.png") );
 							stats.spendCrystal(ALDEKET_REQUIRED_CRYSTAL);
 							stats.spendCoins(ALDEKET_REQUIRED_COIN);
 							
@@ -337,18 +337,18 @@ public class SlotsPanel extends JPanel {
 					
 					int unlock;
 					
-					unlock = JOptionPane.showOptionDialog( null, " THIS LEVEL IS LOCKED","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
-						    null,     			//do not use a custom Icon
+					unlock = JOptionPane.showOptionDialog( null, " This level is locked!","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+						    new ImageIcon("images/lock.png"),     			//do not use a custom Icon
 						    options,  			//the titles of buttons
 						    options[0]); 		//default button title
 					
 					if( unlock == JOptionPane.YES_OPTION)
 					{
-						if( !stats.enoughCrystal(ALCOHOLETHER_REQUIRED_CRYSTAL) && !stats.enoughCoin( ALCOHOLETHER_REQUIRED_COIN) )
-							JOptionPane.showMessageDialog(null, "You dont have either enough crystals or coins :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
+						if( !stats.enoughCrystal(ALCOHOLETHER_REQUIRED_CRYSTAL) || !stats.enoughCoin( ALCOHOLETHER_REQUIRED_COIN) )
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
 						else
 						{
-							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
+							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/unlock.png") );
 							stats.spendCrystal(ALCOHOLETHER_REQUIRED_CRYSTAL);
 							stats.spendCoins(ALCOHOLETHER_REQUIRED_COIN);
 							stats.setAlco( true);
@@ -507,18 +507,18 @@ public class SlotsPanel extends JPanel {
 					
 					int unlock;
 					
-					unlock = JOptionPane.showOptionDialog( null, " THIS LEVEL IS LOCKED","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
-						    null,     			//do not use a custom Icon
+					unlock = JOptionPane.showOptionDialog( null, " This level is locked!","Locked Level", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+						    new ImageIcon("images/lock.png"),     			//do not use a custom Icon
 						    options,  			//the titles of buttons
 						    options[0]); 		//default button title
 					
 					if( unlock == JOptionPane.YES_OPTION)
 					{
-						if( !stats.enoughCrystal(CARBOX_REQUIRED_CRYSTAL) && !stats.enoughCoin( CARBOX_REQUIRED_COIN))
-							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE);
+						if( !stats.enoughCrystal(CARBOX_REQUIRED_CRYSTAL) || !stats.enoughCoin( CARBOX_REQUIRED_COIN))
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
 						else
 						{
-							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE );
+							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/unlock.png") );
 							stats.spendCrystal( CARBOX_REQUIRED_CRYSTAL );
 							stats.spendCoins( CARBOX_REQUIRED_COIN );
 							

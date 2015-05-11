@@ -107,7 +107,12 @@ public class CoinGeneratorPanel extends JPanel {
 		bButton = new ProjectButton("B");
 		cButton = new ProjectButton("C");
 		dButton = new ProjectButton("D");
-		eButton = new ProjectButton("E");		
+		eButton = new ProjectButton("E");	
+		
+		JLabel headerImage = new JLabel("");
+		headerImage.setIcon(new ImageIcon("images/coingeneratorheader.png"));
+		headerImage.setBounds(165, 0, 400, 90);
+		add(headerImage);
 		
 		//settings for A button
 		aButton.setBounds(40, 470, 70, 70);

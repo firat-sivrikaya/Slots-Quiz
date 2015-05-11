@@ -267,12 +267,19 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 			}
 		}
 	}
-		
+	
+
 	//button listener
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
 			
-			if(stats.enoughCoin( 5))
+			button.setIcon(slotoff);
+			if ( timer.isRunning() )
+			{
+				System.out.println("Too many clicks!");
+			}
+			
+			else if(stats.enoughCoin( 5))
 			{
 				stats.spendCoins( 5);
 				currencyPanel.update(stats);
@@ -414,7 +421,7 @@ public class AlcoholEtherSlotsPanel extends JPanel {
 		// Pop up the question panel in a new frame
 		// TODO: CHANGE THE QUESTION AS HYDROCARBON AS SOON AS HYDROCARBON QUESTIONS ARE WRITTEN
 		JFrame frame = new JFrame("Question");
-		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("CarboxylicAcid", this, stats, counter );
+		SlotsQuestionPanel qpanel = new SlotsQuestionPanel("AlcoholEther", this, stats, counter );
 		frame.getContentPane().add( qpanel );
 		frame.setBounds(100, 100, 800, 600);
 		frame.setVisible( true );		
