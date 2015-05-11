@@ -88,7 +88,7 @@ public class Test {
 		frame.getContentPane().add( main);
 		//frame.getContentPane().add( panel);
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("images/icon.png"));
 		frame.setVisible( true);		
 		frame.setBounds(250,110,800,600);
 		frame.setResizable( false);

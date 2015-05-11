@@ -177,7 +177,7 @@ public class SlotsPanel extends JPanel {
 					if( unlock == JOptionPane.YES_OPTION)
 					{
 						if( !stats.enoughCrystal(ALDEKET_REQUIRED_CRYSTAL) || !stats.enoughCoin( ALDEKET_REQUIRED_COIN))
-							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals or coins!", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
 						else
 						{
 							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/unlock.png") );
@@ -345,7 +345,7 @@ public class SlotsPanel extends JPanel {
 					if( unlock == JOptionPane.YES_OPTION)
 					{
 						if( !stats.enoughCrystal(ALCOHOLETHER_REQUIRED_CRYSTAL) || !stats.enoughCoin( ALCOHOLETHER_REQUIRED_COIN) )
-							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals or coins!", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
 						else
 						{
 							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/unlock.png") );
@@ -515,7 +515,7 @@ public class SlotsPanel extends JPanel {
 					if( unlock == JOptionPane.YES_OPTION)
 					{
 						if( !stats.enoughCrystal(CARBOX_REQUIRED_CRYSTAL) || !stats.enoughCoin( CARBOX_REQUIRED_COIN))
-							JOptionPane.showMessageDialog(null, "You dont have enough crystals :(", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
+							JOptionPane.showMessageDialog(null, "You dont have enough crystals or coins!", "Couldn't unlocked", JOptionPane.ERROR_MESSAGE, new ImageIcon("images/sadface.png"));
 						else
 						{
 							JOptionPane.showMessageDialog(null, "Level is Unlocked!!", "Unlocked", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/unlock.png") );

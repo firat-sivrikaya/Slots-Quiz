@@ -94,7 +94,7 @@ public class CoinGeneratorPanel extends JPanel {
 		JLabel answerLabel = new JLabel("Start!");
 		answerLabel.setFont(new Font("Phosphate", Font.PLAIN, 20));
 		answerLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		answerLabel.setBounds(274, 552, 241, 16);
+		answerLabel.setBounds(274, 538, 241, 16);
 		add(answerLabel);
 		
 		
@@ -111,7 +111,7 @@ public class CoinGeneratorPanel extends JPanel {
 		
 		JLabel headerImage = new JLabel("");
 		headerImage.setIcon(new ImageIcon("images/coingeneratorheader.png"));
-		headerImage.setBounds(165, 0, 400, 90);
+		headerImage.setBounds(205, 0, 400, 90);
 		add(headerImage);
 		
 		//settings for A button
@@ -134,6 +134,7 @@ public class CoinGeneratorPanel extends JPanel {
 		//settings for E button
 		eButton.setBounds(680, 470, 70, 70);
 		add(eButton);
+		
 		
 		// set focusable
 		aButton.setFocusable( false );
@@ -651,7 +652,7 @@ public class CoinGeneratorPanel extends JPanel {
 		
 		g.drawImage( background, 0, 0, null);
 		// panel.getGraphics().drawImage
-		g.drawImage( new ImageIcon( location ).getImage(), 48, 62, 700, 350, null );
+		g.drawImage( new ImageIcon( location ).getImage(), 48, 102, 700, 350, null );
 		repaint();
 	}
 	
@@ -695,7 +696,7 @@ public class CoinGeneratorPanel extends JPanel {
 		}
 		FloatControl gainControl = 
 			    (FloatControl) startBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(-40.0f);
+			gainControl.setValue(-15.0f);
 		startBackgroundSound.loop(10);
 		
 	}

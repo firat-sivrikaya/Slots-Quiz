@@ -261,7 +261,7 @@ public class SlotsQuestionPanel extends JPanel {
 		
 		JLabel headerImage = new JLabel("");
 		headerImage.setIcon(new ImageIcon("images/slotsQHeader.png"));
-		headerImage.setBounds(165, 0, 400, 90);
+		headerImage.setBounds(205, 0, 400, 90);
 		add(headerImage);
 		
 		//CountDown
@@ -440,7 +440,31 @@ public class SlotsQuestionPanel extends JPanel {
 							stats.addCrystal( 1 * counter);
 							curPanel.update( stats);							
 						}
+						
+						else if ( s.equals("AlcoholEther" ))
+						{
+							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}
+						else if ( s.equals("Hydrocarbon" ))
+						{
+							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}		
+						
+						else if ( s.equals("AldeKet" ))
+						{
+							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}
+						
 					}
+					
+					
+					
 					else
 					{
 						answerButton = new File("sounds/gameover.wav");
@@ -514,6 +538,27 @@ public class SlotsQuestionPanel extends JPanel {
 							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
 							//mainCurrency.repaint();
 						}
+						
+						else if ( s.equals("AlcoholEther" ))
+						{
+							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}
+						else if ( s.equals("Hydrocarbon" ))
+						{
+							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}		
+						
+						else if ( s.equals("AldeKet" ))
+						{
+							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}
+						
 					}
 					else
 					{
@@ -588,6 +633,27 @@ public class SlotsQuestionPanel extends JPanel {
 							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
 							//mainCurrency.repaint();
 						}
+						
+						else if ( s.equals("AlcoholEther" ))
+						{
+							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}
+						else if ( s.equals("Hydrocarbon" ))
+						{
+							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}		
+						
+						else if ( s.equals("AldeKet" ))
+						{
+							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}
+						
 						
 					}
 					else
@@ -665,6 +731,27 @@ public class SlotsQuestionPanel extends JPanel {
 							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
 							//mainCurrency.repaint();
 						}
+						
+						else if ( s.equals("AlcoholEther" ))
+						{
+							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}
+						else if ( s.equals("Hydrocarbon" ))
+						{
+							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}		
+						
+						else if ( s.equals("AldeKet" ))
+						{
+							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
+							curPanel.update( stats);							
+						}
+						
 					}
 					else
 					{
