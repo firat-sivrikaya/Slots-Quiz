@@ -2,18 +2,26 @@ import java.sql.SQLException;
 /**
  * 
  * 
- * 
+ * AldeKetQ
  * @author Firat Sivrikaya
  * @date 28/04/2015
  * 
+ * This is the database class which gets questions
+ * from subject "Aldehydes Ketones".
+ * 
+ * Upper and lower bounds for this subject are
+ * defined as constants.
+ * 
+ * The questions from Aldehydes Ketones are written
+ * by Gokce Ozyurt.
  * 
  *
  */
 
 public class AldeKetQ extends Question{
 	
-	final int UPPER_BOUND = 40;
-	final int LOWER_BOUND = 21;
+	final int UPPER_BOUND = 80;
+	final int LOWER_BOUND = 61;
 	
 	public AldeKetQ()
 	{

@@ -20,8 +20,8 @@ import java.sql.SQLException;
 
 public class HydrocarbonQ extends Question{
 	
-	final int UPPER_BOUND = 34;
-	final int LOWER_BOUND = 21;
+	final int UPPER_BOUND = 60;
+	final int LOWER_BOUND = 41;
 	
 	public HydrocarbonQ()
 	{

@@ -20,7 +20,7 @@ import java.sql.SQLException;
 
 public class AlcoholEtherQ extends Question{
 	
-	final int UPPER_BOUND = 34;
+	final int UPPER_BOUND = 40;
 	final int LOWER_BOUND = 21;
 	
 	public AlcoholEtherQ()

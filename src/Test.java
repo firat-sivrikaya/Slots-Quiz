@@ -113,7 +113,7 @@ public class Test {
 	public static boolean startBackgroundMusic() {
 
 		// Old background music: sounds/bg2_converted.wav
-		backgroundSound = new File("sounds/theme.wav");
+		backgroundSound = new File("sounds/bg2_converted.wav");
 		createBackgroundSound = null;
 		startBackgroundSound = null;
 

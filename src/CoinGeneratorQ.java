@@ -20,8 +20,8 @@ import java.sql.SQLException;
 
 public class CoinGeneratorQ extends Question{
 	
-	final int UPPER_BOUND = 21;
-	final int LOWER_BOUND = 34;
+	final int UPPER_BOUND = 1;
+	final int LOWER_BOUND = 20;
 	
 	public CoinGeneratorQ()
 	{
