@@ -9,6 +9,9 @@ import java.sql.SQLException;
  */
 public class HydrocarbonS {
 	
+	static final int COIN_GAIN = 25;
+	static final int CRYSTAL_GAIN = 1;
+	
 	HydrocarbonQ question;
 	
 	

@@ -8,6 +8,9 @@ import java.sql.SQLException;
  *
  */
 public class AlcoholEtherS {
+	
+	static final int COIN_GAIN = 35;
+	static final int CRYSTAL_GAIN = 1;
 	// variables
 	AlcoholEtherQ question;
 	

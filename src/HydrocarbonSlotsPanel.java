@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 
 import javax.sound.sampled.*;
@@ -60,10 +61,13 @@ public class HydrocarbonSlotsPanel extends JPanel {
 	//panel variable
 	private JPanel panel; //to put slots icons
 	private CurrencyPanel currencyPanel; //Currency Panel
+	
+
 
 	//CONSTRUCTORS
 	public HydrocarbonSlotsPanel( Statistics statistics ){
 		
+
 		stats = statistics;
 		//create the arrays
 		counters = new ImageIcon[6];
@@ -136,6 +140,7 @@ public class HydrocarbonSlotsPanel extends JPanel {
 		
 		//create GridLayout to slots panel
 		panel.setLayout( new GridLayout(3,3));
+		
 		
 		//pictures to full grid layout
 		icon[0] = new ImageIcon("images/hydro/gifhydro.gif"); //gif

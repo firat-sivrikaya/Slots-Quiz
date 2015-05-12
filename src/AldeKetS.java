@@ -8,15 +8,15 @@ import java.sql.SQLException;
  *
  */
 public class AldeKetS {
+	static final int COIN_GAIN = 20;
+	static final int CRYSTAL_GAIN = 2;
+	
 	// properties
 	AldeKetQ question;
-	boolean opened;
 	// constructors
 	public AldeKetS()
 	{
 		question = new AldeKetQ();
-		// This slot machine is closed by default.
-		opened = false;
 	}
 	
 	// methods
@@ -31,15 +31,6 @@ public class AldeKetS {
 		}
 		return q;
 	}
-	
-	public void setOpened( boolean b )
-	{
-		opened = b;
-	}
-	
-	public boolean isOpened()
-	{
-		return opened;
-	}
+
 	
 }

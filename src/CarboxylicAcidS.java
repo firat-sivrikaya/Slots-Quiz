@@ -9,6 +9,9 @@ import java.sql.SQLException;
  */
 public class CarboxylicAcidS {
 	
+	static final int COIN_GAIN = 45;
+	static final int CRYSTAL_GAIN = 3;
+	
 	// properties
 	CarboxylicAcidQ question;
 	boolean opened;

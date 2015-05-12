@@ -98,10 +98,24 @@ public class SlotsQuestionPanel extends JPanel {
 	public Timer chrono;
 	
 	private int counter;
+	
+	//slots
+	HydrocarbonS hydrocarbonSlots;
+	AldeKetS aldeketSlots;
+	CarboxylicAcidS carboxSlots;
+	AlcoholEtherS alcoethSlots;
+	
 	// constructors
 	public SlotsQuestionPanel( String s, JPanel j, Statistics statistics, int counter ) 
 	{
-//		header = new ImageIcon()
+		
+		// initialize slots
+		hydrocarbonSlots = new HydrocarbonS();
+		aldeketSlots     = new AldeKetS();
+		carboxSlots      = new CarboxylicAcidS();
+		alcoethSlots     = new AlcoholEtherS();
+		
+
 		okButton = new ProjectButton("OK");
 		okButton2 = new ProjectButton("OK");
 		okButton3 = new ProjectButton("OK");
@@ -201,8 +215,7 @@ public class SlotsQuestionPanel extends JPanel {
 		// Check the current slot category and set the question accordingly.
 		if ( s.equals("Hydrocarbon") )
 		{
-			HydrocarbonS slots = new HydrocarbonS();
-			Question q = slots.askQuestion();
+			Question q = hydrocarbonSlots.askQuestion();
 			answer = q.getAnswer();
 			location = q.getLocation();
 			SlotsQuestionPanel.startBackgroundMusic();
@@ -211,8 +224,7 @@ public class SlotsQuestionPanel extends JPanel {
 		
 		else if ( s.equals("AlcoholEther") )
 		{
-			AlcoholEtherS slots = new AlcoholEtherS();
-			Question q = slots.askQuestion();
+			Question q = alcoethSlots.askQuestion();
 			answer = q.getAnswer();
 			location = q.getLocation();
 			SlotsQuestionPanel.startBackgroundMusic();
@@ -221,8 +233,7 @@ public class SlotsQuestionPanel extends JPanel {
 		
 		else if ( s.equals("AldeKet") )
 		{
-			AldeKetS slots = new AldeKetS();
-			Question q = slots.askQuestion();
+			Question q = aldeketSlots.askQuestion();
 			answer = q.getAnswer();
 			location = q.getLocation();
 			SlotsQuestionPanel.startBackgroundMusic();
@@ -230,8 +241,7 @@ public class SlotsQuestionPanel extends JPanel {
 		
 		else if ( s.equals("CarboxylicAcid") )
 		{
-			CarboxylicAcidS slots = new CarboxylicAcidS();
-			Question q = slots.askQuestion();
+			Question q = carboxSlots.askQuestion();
 			answer = q.getAnswer();
 			location = q.getLocation();	
 			SlotsQuestionPanel.startBackgroundMusic();
@@ -318,14 +328,33 @@ public class SlotsQuestionPanel extends JPanel {
 						stopBackgroundMusic();
 						startWinMusic();
 						
+						// Depending on the slots type, give rewards
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							stats.addCoins( CarboxylicAcidS.COIN_GAIN * counter);
+							stats.addCrystal( CarboxylicAcidS.CRYSTAL_GAIN * counter);
 							curPanel.update( stats);
-							// TODO: IMPORTANT!!!
-							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							//mainCurrency.repaint();
+						}
+						
+						else if ( s.equals("Hydrocarbon") )
+						{
+							stats.addCoins( HydrocarbonS.COIN_GAIN * counter);
+							stats.addCrystal( HydrocarbonS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AldeKet") )
+						{
+							stats.addCoins( AldeKetS.COIN_GAIN * counter);
+							stats.addCrystal( AldeKetS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AlcoholEther"))
+						{
+							stats.addCoins( AlcoholEtherS.COIN_GAIN * counter);
+							stats.addCrystal( AlcoholEtherS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
 						}
 						
 					}
@@ -395,11 +424,33 @@ public class SlotsQuestionPanel extends JPanel {
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
 						startWinMusic();
+						// Depending on the slots type, give rewards
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
+							stats.addCoins( CarboxylicAcidS.COIN_GAIN * counter);
+							stats.addCrystal( CarboxylicAcidS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("Hydrocarbon") )
+						{
+							stats.addCoins( HydrocarbonS.COIN_GAIN * counter);
+							stats.addCrystal( HydrocarbonS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AldeKet") )
+						{
+							stats.addCoins( AldeKetS.COIN_GAIN * counter);
+							stats.addCrystal( AldeKetS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AlcoholEther"))
+						{
+							stats.addCoins( AlcoholEtherS.COIN_GAIN * counter);
+							stats.addCrystal( AlcoholEtherS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
 						}
 					}
 					else
@@ -464,13 +515,33 @@ public class SlotsQuestionPanel extends JPanel {
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
 						startWinMusic();
+						// Depending on the slots type, give rewards
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							stats.addCoins( CarboxylicAcidS.COIN_GAIN * counter);
+							stats.addCrystal( CarboxylicAcidS.CRYSTAL_GAIN * counter);
 							curPanel.update( stats);
-							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							//mainCurrency.repaint();
+						}
+						
+						else if ( s.equals("Hydrocarbon") )
+						{
+							stats.addCoins( HydrocarbonS.COIN_GAIN * counter);
+							stats.addCrystal( HydrocarbonS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AldeKet") )
+						{
+							stats.addCoins( AldeKetS.COIN_GAIN * counter);
+							stats.addCrystal( AldeKetS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AlcoholEther"))
+						{
+							stats.addCoins( AlcoholEtherS.COIN_GAIN * counter);
+							stats.addCrystal( AlcoholEtherS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
 						}
 					}
 					else
@@ -535,13 +606,33 @@ public class SlotsQuestionPanel extends JPanel {
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
 						startWinMusic();
+						// Depending on the slots type, give rewards
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							stats.addCoins( CarboxylicAcidS.COIN_GAIN * counter);
+							stats.addCrystal( CarboxylicAcidS.CRYSTAL_GAIN * counter);
 							curPanel.update( stats);
-							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							//mainCurrency.repaint();
+						}
+						
+						else if ( s.equals("Hydrocarbon") )
+						{
+							stats.addCoins( HydrocarbonS.COIN_GAIN * counter);
+							stats.addCrystal( HydrocarbonS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AldeKet") )
+						{
+							stats.addCoins( AldeKetS.COIN_GAIN * counter);
+							stats.addCrystal( AldeKetS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AlcoholEther"))
+						{
+							stats.addCoins( AlcoholEtherS.COIN_GAIN * counter);
+							stats.addCrystal( AlcoholEtherS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
 						}
 						
 					}
@@ -610,13 +701,33 @@ public class SlotsQuestionPanel extends JPanel {
 						JFrame frame = (JFrame) SwingUtilities.getWindowAncestor( sqp );
 						frame.setEnabled( false);
 						startWinMusic();
+						// Depending on the slots type, give rewards
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
+							stats.addCoins( CarboxylicAcidS.COIN_GAIN * counter);
+							stats.addCrystal( CarboxylicAcidS.CRYSTAL_GAIN * counter);
 							curPanel.update( stats);
-							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
-							//mainCurrency.repaint();
+						}
+						
+						else if ( s.equals("Hydrocarbon") )
+						{
+							stats.addCoins( HydrocarbonS.COIN_GAIN * counter);
+							stats.addCrystal( HydrocarbonS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AldeKet") )
+						{
+							stats.addCoins( AldeKetS.COIN_GAIN * counter);
+							stats.addCrystal( AldeKetS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
+						}
+						
+						else if ( s.equals("AlcoholEther"))
+						{
+							stats.addCoins( AlcoholEtherS.COIN_GAIN * counter);
+							stats.addCrystal( AlcoholEtherS.CRYSTAL_GAIN * counter);
+							curPanel.update( stats);
 						}
 					}
 					else
