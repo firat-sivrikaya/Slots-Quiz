@@ -44,7 +44,6 @@ public class OptionsPanel extends JPanel {
 	private CurrencyPanel curpanel;
 	public OptionsPanel( Statistics stats)
 	{
-		// Get the slots panel instance to be able to update when reset
 		Object[] options = {"Yeah!", "No"};
 		// Set the properties of panel
 		setVisible( true);			
@@ -108,7 +107,16 @@ public class OptionsPanel extends JPanel {
 					Test.stopBackgroundMusic();
 					PlayPanel.stopBackgroundMusic();
 					soundIcon.setIcon(of);		
-				}							
+				}	
+				
+				else if ( event.getSource() == soundIcon && soundIcon.getIcon() == of )
+				{
+					SlotsQuestionPanel.startBackgroundMusic();
+					Test.startBackgroundMusic();
+					PlayPanel.startBackgroundMusic();
+					soundIcon.setIcon(on);
+				}
+				
 			}
 		});				
 		// Reset button
