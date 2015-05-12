@@ -1,5 +1,6 @@
 /*
  * @author Hazal Buruk
+ * @date 27/04/2015
  */
 
 import javax.swing.*;
@@ -8,6 +9,7 @@ import java.awt.geom.*;
 
 public class SlotsButton extends JButton {
 	
+	// constructors
 	public SlotsButton(String label) {
 	    super(label);
 
@@ -15,8 +17,8 @@ public class SlotsButton extends JButton {
 	    setContentAreaFilled(false);
 	  }
 
-
-	  public void paintComponent(Graphics g) {
+	// methods
+	public void paintComponent(Graphics g) {
 	    if (getModel().isArmed()) {
 	      g.setColor(Color.lightGray);
 	    } else {
@@ -27,14 +29,14 @@ public class SlotsButton extends JButton {
 	    super.paintComponent(g);
 	  }
 
-	  public void paintBorder(Graphics g) {
+	public void paintBorder(Graphics g) {
 	    g.setColor(getForeground());
 	    g.drawOval(0, 0, 100, 
 	      100);
 	  }
-
-	  Shape shape;
-	  public boolean contains(int x, int y) {
+	// contains method
+	Shape shape;
+	public boolean contains(int x, int y) {
 	
 	    if (shape == null || 
 	      !shape.getBounds().equals(getBounds())) {

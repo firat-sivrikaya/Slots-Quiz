@@ -1,3 +1,10 @@
+/* OptionsPanel
+ * @author Gokce Sakir Ozyurt
+ * @author Firat Sivrikaya
+ * 
+ * This is the panel class for options. User can reset his progress,
+ * and mute the background music in options panel. 
+ */
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.SystemColor;
@@ -29,7 +36,7 @@ public class OptionsPanel extends JPanel {
     private File buttonSound2;	
 	private AudioInputStream createButtonSound2;	
 	private Clip startButtonSound2;	
-	
+	// buttons and panels
 	private ProjectButton backButton;
 	private ProjectButton soundIcon;
 	private ProjectButton resetButton;
@@ -39,13 +46,13 @@ public class OptionsPanel extends JPanel {
 	{
 		// Get the slots panel instance to be able to update when reset
 		Object[] options = {"Yeah!", "No"};
-		
+		// Set the properties of panel
 		setVisible( true);			
 		setBounds( 0,0, 800, 600);
 		setLayout(null);
-		
+		// Get the global stats
 		this.stats = stats;
-		
+		// Back button
 		backButton = new ProjectButton("BACK");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -86,10 +93,10 @@ public class OptionsPanel extends JPanel {
 				}
 			}
 		});
-		
+		// Set the on off images 
 		ImageIcon on = new ImageIcon("images/soundIcon/Sound-on-icon.png");
 		ImageIcon of = new ImageIcon("images/soundIcon/Sound-off-icon.png");
-		
+		// Sound on button
 		soundIcon = new ProjectButton("soundOn");
 		soundIcon.setIcon( on);
 		soundIcon.addActionListener(new ActionListener() {
@@ -104,7 +111,7 @@ public class OptionsPanel extends JPanel {
 				}							
 			}
 		});				
-		
+		// Reset button
 		resetButton = new ProjectButton("RESET");
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -112,29 +119,34 @@ public class OptionsPanel extends JPanel {
 				if( event.getSource() == resetButton )
 				{
 					int choice;
-					
+					// Get the choice from user
 					choice = JOptionPane.showOptionDialog( null, "Are you sure to reset?","Reset your progress", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
 						    new ImageIcon("images/resetIcon.png"),     			//do not use a custom Icon
 						    options,  			//the titles of buttons
 						    options[0]); 		//default button title
 					
+					// If the choice is yes, reset the progress
 					if ( choice == JOptionPane.YES_OPTION )
 					{
+						// Reset the stats
 						stats.reset();
 						JOptionPane.showMessageDialog(null, "You have successfully reset your progress!","Done!", JOptionPane.YES_OPTION, new ImageIcon("images/tick.png") );
+						// Update the stats
 						update( stats );
 						JOptionPane.showMessageDialog(null,"Now, please restart your game to confirm the reset", "Done!", JOptionPane.YES_OPTION, new ImageIcon("images/tick.png"));
 						try {
+							// Save the stats
 							stats.save();
 						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						// Exit the application to make changes occur
 						System.exit(0);
 					}
 				}							
 			}
 		});		
+		// Set the bounds of graphical components.
 		resetButton.setBounds(290, 65, 220, 60);
 		add(resetButton);
 		
@@ -147,7 +159,7 @@ public class OptionsPanel extends JPanel {
 		curpanel = new CurrencyPanel( stats);
 		add( curpanel);		
 	}
-	
+	// Paint component
 	public void paintComponent( Graphics g)
 	{
 		super.paintComponent( g);		
@@ -157,6 +169,7 @@ public class OptionsPanel extends JPanel {
 		g.drawImage( background, 0, 0, null);		
 	}
 	
+	// Update currency panel
 	public void update( Statistics stats)
 	{
 		curpanel.update( stats);

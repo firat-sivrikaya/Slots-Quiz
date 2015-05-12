@@ -1,9 +1,22 @@
+/**Statistics
+ * @author Huseyin Beyan
+ * @author Firat Sivrikaya
+ * @date 08/05/2015
+ * This is the statistics class which holds coin and crystal amount,
+ * and lock statuses of the slots.
+ * 
+ */
+
 import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 
 public class Statistics implements Serializable
 {
+	// properties
+	final int RESET_COIN_AMOUNT = 10;
+	final int RESET_CRYSTAL_AMOUNT = 10;
+	
 	int coin;
 	int crystal;
 	
@@ -14,15 +27,16 @@ public class Statistics implements Serializable
 	
 	public Statistics()
 	{
-		coin = 15;
+		// initialize currencies
+		coin = 10;
 		crystal = 0;
-		
+		// initialize slots locks
 		hydroOpen  = true;
 		alcoOpen   = false;
 		aldeOpen   = false;
 		carboxOpen = false;		
 	}
-	
+	// currency getters
 	public int getCoin()
 	{
 		return coin;		
@@ -32,7 +46,7 @@ public class Statistics implements Serializable
 	{
 		return crystal;		
 	}
-	
+	// adder and spender methods
 	public void addCoins( int amount )
 	{
 		coin = coin + amount;
@@ -52,7 +66,7 @@ public class Statistics implements Serializable
 	{
 		crystal = crystal - amount;
 	}
-	
+	// checks if the coin amount is enough or not 
 	public boolean enoughCoin( int amount)
 	{
 		if( coin >= amount)
@@ -60,7 +74,7 @@ public class Statistics implements Serializable
 		else
 			return false;
 	}
-	
+	// checks if the crystal amount is enough or not
 	public boolean enoughCrystal( int amount)
 	{
 		if( crystal >= amount)
@@ -68,7 +82,7 @@ public class Statistics implements Serializable
 		else
 			return false;
 	}
-	
+	// returns opened levels in a boolean array
 	public boolean[] openedLevels()
 	{
 		boolean[] array = new boolean[4];
@@ -80,7 +94,7 @@ public class Statistics implements Serializable
 				
 		return array;
 	}
-	
+	// getters and setters
 	public void setHyrdo( boolean b)
 	{
 		hydroOpen = b;
@@ -153,11 +167,11 @@ public class Statistics implements Serializable
 			exc.printStackTrace(); // If there was an error, print the info.
 			}		
 	}
-	
+	// resets the statistics
 	public void reset()
 	{
-		coin = 10;
-		crystal = 0;
+		coin = RESET_COIN_AMOUNT;
+		crystal = RESET_CRYSTAL_AMOUNT;
 		
 		hydroOpen  = true;
 		alcoOpen   = false;

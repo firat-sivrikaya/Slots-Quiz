@@ -1,5 +1,5 @@
 /*
- * AlcoholEtherSlotsPanel
+ * AldehydeKetoneSlotsPanel
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
  * @author Firat Sivrikaya

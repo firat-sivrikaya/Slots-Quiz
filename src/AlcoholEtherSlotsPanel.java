@@ -1,4 +1,4 @@
-/*
+/**
  * AlcoholEtherSlotsPanel
  * @author Hazal Buruk
  * @author Gokce Sakir Ozyurt
