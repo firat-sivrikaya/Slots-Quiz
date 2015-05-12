@@ -4,6 +4,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
@@ -123,6 +124,12 @@ public class OptionsPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, "You have successfully reset your progress!","Done!", JOptionPane.YES_OPTION, new ImageIcon("images/tick.png") );
 						update( stats );
 						JOptionPane.showMessageDialog(null,"Now, please restart your game to confirm the reset", "Done!", JOptionPane.YES_OPTION, new ImageIcon("images/tick.png"));
+						try {
+							stats.save();
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						System.exit(0);
 					}
 				}							

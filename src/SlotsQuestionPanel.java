@@ -44,17 +44,8 @@ import javax.swing.event.AncestorListener;
 
 public class SlotsQuestionPanel extends JPanel {
 	// constants
-	final private int CARBOX_COIN_GAIN_AMOUNT = 50;
-	final private int CARBOX_CRYSTAL_GAIN_AMOUNT = 3;
-	
-	final private int HYDROCARBON_COIN_GAIN_AMOUNT = 15;
-	final private int HYDROCARBON_CRYSTAL_GAIN_AMOUNT = 1;
-	
-	final private int ALCOHOLETHER_COIN_GAIN_AMOUNT = 15;
-	final private int ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT = 2;
-	
-	final private int ALDEKET_COIN_GAIN_AMOUNT = 25;
-	final private int ALDEKET_CRYSTAL_GAIN_AMOUNT = 1;
+	final private int COIN_GAIN_AMOUNT = 20;
+	final private int CRYSTAL_GAIN_AMOUNT = 1;
 	
 	
 	// properties
@@ -174,22 +165,22 @@ public class SlotsQuestionPanel extends JPanel {
 		
 		
 		winFrame.setContentPane(new JLabel(winBackground));
-		winFrame.getContentPane().setLayout(null);
+		winFrame.setLayout(null);
 		okButton.setBounds(200, 180, 100,27);
 		okButton.addActionListener(new ButtonListener());
-		winFrame.getContentPane().add(okButton);
+		winFrame.add(okButton);
 		
 		loseFrame.setContentPane(new JLabel(loseBackground));
-		loseFrame.getContentPane().setLayout(null);
+		loseFrame.setLayout(null);
 		okButton2.setBounds(200, 180, 100,27);
 		okButton2.addActionListener(new ButtonListener());
-		loseFrame.getContentPane().add(okButton2);
+		loseFrame.add(okButton2);
 		
 		noTimeLeftFrame.setContentPane(new JLabel(noTimeLeftBackground));
-		noTimeLeftFrame.getContentPane().setLayout(null);
+		noTimeLeftFrame.setLayout(null);
 		okButton3.setBounds(200, 180, 100,27);
 		okButton3.addActionListener(new ButtonListener());
-		noTimeLeftFrame.getContentPane().add(okButton3);
+		noTimeLeftFrame.add(okButton3);
 		
 		
 		
@@ -259,11 +250,6 @@ public class SlotsQuestionPanel extends JPanel {
 		buttonD = new ProjectButton("D");
 		buttonE = new ProjectButton("E");
 		
-		JLabel headerImage = new JLabel("");
-		headerImage.setIcon(new ImageIcon("images/slotsQHeader.png"));
-		headerImage.setBounds(205, 0, 400, 90);
-		add(headerImage);
-		
 		//CountDown
 		
 		countDown= new JLabel();
@@ -318,8 +304,6 @@ public class SlotsQuestionPanel extends JPanel {
 			public void actionPerformed(ActionEvent event) {
 				if(event.getSource()==buttonA){
 					
-					System.out.println("Location: " + location + " \nAnswer: " + answer ); 
-					
 					if ( answer.equals("A"))
 					{
 						System.out.println( "CORRECT!");
@@ -336,34 +320,13 @@ public class SlotsQuestionPanel extends JPanel {
 						
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( CARBOX_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( CARBOX_CRYSTAL_GAIN_AMOUNT * counter);
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
 							curPanel.update( stats);
 							// TODO: IMPORTANT!!!
 							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
 							//mainCurrency.repaint();
 						}
-						
-						else if ( s.equals("AlcoholEther" ))
-						{
-							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						else if ( s.equals("Hydrocarbon" ))
-						{
-							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}		
-						
-						else if ( s.equals("AldeKet" ))
-						{
-							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}						
-						
 						
 					}
 					else
@@ -420,8 +383,6 @@ public class SlotsQuestionPanel extends JPanel {
 			public void actionPerformed(ActionEvent event) {
 				if(event.getSource()==buttonB){
 					
-					System.out.println("Location: " + location + " \nAnswer: " + answer ); 
-					
 					if ( answer.equals("B"))
 					{
 						System.out.println( "CORRECT!");
@@ -436,35 +397,11 @@ public class SlotsQuestionPanel extends JPanel {
 						startWinMusic();
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
 							curPanel.update( stats);							
 						}
-						
-						else if ( s.equals("AlcoholEther" ))
-						{
-							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						else if ( s.equals("Hydrocarbon" ))
-						{
-							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}		
-						
-						else if ( s.equals("AldeKet" ))
-						{
-							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						
 					}
-					
-					
-					
 					else
 					{
 						answerButton = new File("sounds/gameover.wav");
@@ -515,9 +452,6 @@ public class SlotsQuestionPanel extends JPanel {
 		buttonC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if(event.getSource()==buttonC){
-					
-					System.out.println("Location: " + location + " \nAnswer: " + answer ); 
-					
 					if ( answer.equals("C"))
 					{
 						System.out.println( "CORRECT!");
@@ -532,33 +466,12 @@ public class SlotsQuestionPanel extends JPanel {
 						startWinMusic();
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
 							curPanel.update( stats);
 							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
 							//mainCurrency.repaint();
 						}
-						
-						else if ( s.equals("AlcoholEther" ))
-						{
-							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						else if ( s.equals("Hydrocarbon" ))
-						{
-							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}		
-						
-						else if ( s.equals("AldeKet" ))
-						{
-							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						
 					}
 					else
 					{
@@ -610,9 +523,6 @@ public class SlotsQuestionPanel extends JPanel {
 		buttonD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if(event.getSource()==buttonD){
-					
-					System.out.println("Location: " + location + " \nAnswer: " + answer ); 
-					
 					if ( answer.equals("D"))
 					{
 						System.out.println( "CORRECT!");
@@ -627,33 +537,12 @@ public class SlotsQuestionPanel extends JPanel {
 						startWinMusic();
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
 							curPanel.update( stats);
 							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
 							//mainCurrency.repaint();
 						}
-						
-						else if ( s.equals("AlcoholEther" ))
-						{
-							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						else if ( s.equals("Hydrocarbon" ))
-						{
-							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}		
-						
-						else if ( s.equals("AldeKet" ))
-						{
-							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						
 						
 					}
 					else
@@ -709,8 +598,6 @@ public class SlotsQuestionPanel extends JPanel {
 			public void actionPerformed(ActionEvent event) {
 				if(event.getSource()==buttonE){
 				
-					System.out.println("Location: " + location + " \nAnswer: " + answer ); 
-					
 					if ( answer.equals("E"))
 					{
 						System.out.println( "CORRECT!");
@@ -725,33 +612,12 @@ public class SlotsQuestionPanel extends JPanel {
 						startWinMusic();
 						if ( s.equals("CarboxylicAcid") )
 						{
-							stats.addCoins( 20 * counter);
-							stats.addCrystal( 1 * counter);
+							stats.addCoins( COIN_GAIN_AMOUNT * counter);
+							stats.addCrystal( CRYSTAL_GAIN_AMOUNT * counter);
 							curPanel.update( stats);
 							//mainCurrency = ((HydrocarbonSlotsPanel) j).getCurrencyPanel();
 							//mainCurrency.repaint();
 						}
-						
-						else if ( s.equals("AlcoholEther" ))
-						{
-							stats.addCoins( ALCOHOLETHER_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALCOHOLETHER_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						else if ( s.equals("Hydrocarbon" ))
-						{
-							stats.addCoins( HYDROCARBON_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( HYDROCARBON_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}		
-						
-						else if ( s.equals("AldeKet" ))
-						{
-							stats.addCoins( ALDEKET_COIN_GAIN_AMOUNT * counter);
-							stats.addCrystal( ALDEKET_CRYSTAL_GAIN_AMOUNT * counter);
-							curPanel.update( stats);							
-						}
-						
 					}
 					else
 					{
@@ -845,8 +711,7 @@ public class SlotsQuestionPanel extends JPanel {
 		g.drawImage( background, 0, 0, null);
 		
 		// Print the question 
-		panel.getGraphics().drawImage( new ImageIcon( location ).getImage(), 0, 0, null );
-
+		panel.getGraphics().drawImage( new ImageIcon( location ).getImage(), 0, 0, null ); 
 	}
 	
 	public int getCorrect()
