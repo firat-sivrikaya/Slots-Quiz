@@ -57,15 +57,20 @@ public class MenuPanel extends JPanel {
 		ProjectButton button = new ProjectButton("BACK TO MAIN MENU");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				if(event.getSource()==button){
-				MenuPanel.stopBackgroundMusic();
-				PlayPanel.stopBackgroundMusic();
-				SlotsQuestionPanel.stopBackgroundMusic();
-				
-				Test.stopBackgroundMusic();
-				
-				Test.startBackgroundMusic();
+				if(event.getSource()==button)
+				{
+					// Stop all musics
+					MenuPanel.stopBackgroundMusic();
+					PlayPanel.stopBackgroundMusic();
+					SlotsQuestionPanel.stopBackgroundMusic();
+					
+					Test.stopBackgroundMusic();
+					// If user haven't muted, start background music again
+					if ( !OptionsPanel.mute )
+						Test.startBackgroundMusic();
+					
 				}
+				
 				setVisible( false);
 				next = "wel";
 			}

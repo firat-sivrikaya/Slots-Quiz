@@ -21,7 +21,9 @@ import java.io.IOException;
 public class MainPanel extends JPanel  {
 	
 
-	
+	static File backgroundSound;
+	static AudioInputStream createBackgroundSound;
+	static Clip startBackgroundSound;
 	
 		
 	
@@ -194,23 +196,27 @@ public class MainPanel extends JPanel  {
 				
 				if( slots.getNext().equals("hydrocarbons"))
 				{
+					Test.stopBackgroundMusic();
 					hydro.setVisible( true);
 					hydro.update( statistics);
 				}
 				if( slots.getNext().equals("alcohols"))
 				{
+					Test.stopBackgroundMusic();
 					alco.setVisible( true);
 					alco.update( statistics);
 				}
 				
 				if( slots.getNext().equals("aldehydes"))
 				{
+					Test.stopBackgroundMusic();
 					alde.setVisible( true);
 					alde.update( statistics);
 				}
 				
 				if( slots.getNext().equals("carboxacids"))
 				{
+					Test.stopBackgroundMusic();
 					carbox.setVisible( true);
 					carbox.update( statistics);
 				}

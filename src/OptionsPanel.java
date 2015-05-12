@@ -27,6 +27,7 @@ import javax.swing.JButton;
 
 public class OptionsPanel extends JPanel {
 
+	static boolean mute = false;
 	//VARIABLES
 	
 	//image variables
@@ -101,20 +102,28 @@ public class OptionsPanel extends JPanel {
 		soundIcon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 					
+				// If sound icon is on, when clicked, turn off the sound
 				if( event.getSource() == soundIcon && soundIcon.getIcon() == on)
 				{
+					// Stop all musics
 					SlotsQuestionPanel.stopBackgroundMusic();
 					Test.stopBackgroundMusic();
 					PlayPanel.stopBackgroundMusic();
-					soundIcon.setIcon(of);		
+					// Set the icon to off
+					soundIcon.setIcon(of);
+					
+					mute = true;
 				}	
-				
+				// If sound icon is of, when clicked, turn on the sound
 				else if ( event.getSource() == soundIcon && soundIcon.getIcon() == of )
 				{
+					// Start all musics
 					SlotsQuestionPanel.startBackgroundMusic();
 					Test.startBackgroundMusic();
 					PlayPanel.startBackgroundMusic();
+					// Set the icon to on
 					soundIcon.setIcon(on);
+					mute = false;
 				}
 				
 			}
