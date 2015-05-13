@@ -203,6 +203,7 @@ public class SlotsQuestionPanel extends JPanel {
 		//this.add(noTimeLeftFrame);
 		
 		
+		
 		//Panel has to be 800* 600
 		this.setVisible( true);				
 		this.setBounds( 0,0, 800, 600);
@@ -222,6 +223,7 @@ public class SlotsQuestionPanel extends JPanel {
 			
 		}
 		
+
 		else if ( s.equals("AlcoholEther") )
 		{
 			Question q = alcoethSlots.askQuestion();

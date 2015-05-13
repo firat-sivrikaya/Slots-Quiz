@@ -146,14 +146,8 @@ public class ProjectButton extends JButton {
 		
 		if (s.equals("soundOn")) {
 			setIcon(new ImageIcon("images/soundIcon/Sound-on-icon.png"));
-			setRolloverIcon(new ImageIcon("images/soundIcon/Sound-off-icon.png"));
 			setText("");
 		} 
-		
-		if (s.equals("soundOn")) {
-			setIcon(new ImageIcon("images/soundIcon/Sound-on-icon.png"));
-			setText("");
-		}
 		
 		if (s.equals("soundOf")) {
 			setIcon(new ImageIcon("images/soundIcon/Sound-off-icon.png"));
