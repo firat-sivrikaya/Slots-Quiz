@@ -6,5 +6,3 @@ A Java-based Slots game which lets users practice and learn organic chemistry wh
 - Latest version of Eclipse Luna
 - JDK 8
 
-##How to Build
-- 
