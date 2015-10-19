@@ -28,9 +28,9 @@ public class SlotsDatabase {
 	
     // JDBC driver name, Database URL, User and Password
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/TEST";
-    static final String USER = "root";
-    static final String PASS = "";
+    static final String DB_URL = "jdbc:mysql://217.199.187.60/cl50-slotsquiz";
+    static final String USER = "cl50-slotsquiz";
+    static final String PASS = "s-kUe.XVV";
     static final int QUESTION_COUNT = 100;
     static final int QUESTION_LIST_RESET_COUNT = 7;
     

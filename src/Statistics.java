@@ -14,8 +14,8 @@ import java.util.logging.*;
 public class Statistics implements Serializable
 {
 	// properties
-	final int RESET_COIN_AMOUNT = 10;
-	final int RESET_CRYSTAL_AMOUNT = 0;
+	final int RESET_COIN_AMOUNT = 1000;
+	final int RESET_CRYSTAL_AMOUNT = 150;
 	
 	int coin;
 	int crystal;
